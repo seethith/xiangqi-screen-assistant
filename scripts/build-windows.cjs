@@ -14,7 +14,7 @@ async function main(){
  const template=fs.readFileSync(path.join(root,'desktop/installer.nsi'),'utf8');
  const substitutions={VERSION:pkg.version,VERSION_QUAD:pkg.version+'.0',OUTPUT:quote(path.join(output,pkg.build.productName+' Setup '+pkg.version+'.exe')),ROOT:quote(root),INSTALL_FILES:install,REMOVE_FILES:remove};
  const script=template.replace(/@@([A-Z_]+)@@/g,(_,key)=>substitutions[key]);
- fs.mkdirSync(output,{recursive:true});const generated=path.join(output,'installer-generated.nsi');fs.writeFileSync(generated,script);
+ fs.mkdirSync(output,{recursive:true});const generated=path.join(output,'installer-generated.nsi');fs.writeFileSync(generated,'\uFEFF'+script,'utf8');
  const tool=await require('app-builder-lib/out/toolsets/windows').getMakeNsisPath(null);
  run(tool.path,['-V3',generated],{env:{...process.env,...tool.env}});
  fs.writeFileSync(path.join(output,'installer-audit.json'),JSON.stringify({version:pkg.version,nsis:'3.0.4.1',compression:'zlib',externalPlugins:[],files:files.length,uninstaller:'deletes only enumerated application files; removes empty folders; preserves user data',script:'desktop/installer.nsi'},null,2)+'\n');
