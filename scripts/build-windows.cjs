@@ -7,7 +7,7 @@ function run(exe,args,options={}){const result=spawnSync(exe,args,{cwd:root,stdi
 function walk(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>{const p=path.join(dir,e.name);if(e.isSymbolicLink())throw Error('Unexpected symlink '+p);return e.isDirectory()?walk(p):[p];});}
 const quote=s=>s.replaceAll('$','$$').replaceAll('"','$\\"');
 async function main(){
- if(!process.argv.includes('--skip-pack'))run(process.execPath,[require.resolve('electron-builder/cli.js'),'--win','dir','--x64','--config.directories.output='+output]);
+ if(!process.argv.includes('--skip-pack'))run(process.execPath,[require.resolve('electron-builder/cli.js'),'--win','dir','--x64','--publish','never','--config.directories.output='+output]);
  const files=walk(appDir).sort(),dirs=[...new Set(files.flatMap(f=>{let d=path.dirname(path.relative(appDir,f)),result=[];while(d!=='.'){result.push(d);d=path.dirname(d);}return result;}))].sort((a,b)=>b.length-a.length);
  const install=files.map(f=>{const rel=path.relative(appDir,f),dir=path.dirname(rel);return 'SetOutPath "$INSTDIR'+(dir==='.'?'':'\\'+quote(dir.replaceAll(path.sep,'\\')))+'"\nFile "'+quote(f)+'"';}).join('\n');
  const remove=files.map(f=>'Delete "$INSTDIR\\'+quote(path.relative(appDir,f).replaceAll(path.sep,'\\'))+'"').concat(dirs.map(d=>'RMDir "$INSTDIR\\'+quote(d.replaceAll(path.sep,'\\'))+'"')).join('\n');

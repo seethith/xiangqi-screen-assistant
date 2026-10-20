@@ -9,11 +9,12 @@
     "check": "node scripts/check.mjs",
     "desktop": "electron .",
     "desktop:smoke": "electron . --smoke",
-    "desktop:mac": "electron-builder --mac dmg --arm64",
+    "desktop:mac": "electron-builder --mac dmg --arm64 --publish never",
     "desktop:win": "node scripts/build-windows.cjs",
     "desktop:pack": "electron-builder --dir",
     "desktop:capture-smoke": "electron . --capture-smoke",
-    "compliance:check": "python3 scripts/check-compliance.py"
+    "compliance:check": "python3 scripts/check-compliance.py",
+    "predesktop:mac": "node scripts/prepare-electron-notices.cjs"
   },
   "license": "GPL-3.0-or-later",
   "devDependencies": {

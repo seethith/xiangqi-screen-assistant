@@ -106,6 +106,7 @@ app.whenReady().then(async()=>{
  if(SMOKE||LIVE_DEBUG)mainWindow.webContents.on('console-message',event=>console.log('[renderer]',event.message));
  await mainWindow.loadURL(APP_ORIGIN+(SMOKE?'/?smoke=1':LIVE_DEBUG?'/?liveDebug=1':'/'));
  if(RELEASE_SELF_TEST){try{
+  if(app.isPackaged){const noticeRoot=process.platform==='darwin'?process.resourcesPath:path.dirname(process.execPath);for(const name of ['LICENSE.electron.txt','LICENSES.chromium.html']){const info=await fs.stat(path.join(noticeRoot,name));if(!info.size)throw Error('Missing packaged Electron notice: '+name);}}
   const result=await mainWindow.webContents.executeJavaScript(`(async()=>{
    await window.rulesReady;if(!crossOriginIsolated||!window.desktopAPI)throw Error('release UI initialization failed');
    const html=await (await fetch('/licenses.html')).text(),doc=new DOMParser().parseFromString(html,'text/html');
@@ -113,6 +114,7 @@ app.whenReady().then(async()=>{
    for(const href of links){const r=await fetch(href,{method:'HEAD'});if(!r.ok)throw Error('broken release license/source link: '+href+' '+r.status);}
    const source=new Uint8Array(await (await fetch('/source.zip')).arrayBuffer());if(source[0]!==80||source[1]!==75)throw Error('source is not a ZIP');
    const pose=await window.desktopAPI.modelInfer('pose',new Float32Array(3*256*256));if(pose[0].data.length!==2048)throw Error('release model failed');
+   const layout=await window.desktopAPI.modelInfer('layout',new Float32Array(3*315*280));if(layout[0].data.length!==1440)throw Error('release layout model failed');
    const {AnalysisEngine}=await import('/engine-client.js');const engine=new AnalysisEngine(()=>{});let done,error;
    engine.onEvent=e=>{if(e.type==='done')done=e;if(e.type==='error')error=e.text;};
    try{await engine.analyze({baseFen:'4k4/3R1R3/2N1P4/9/9/9/9/9/9/4K4 w - - 0 1',moves:[]},{time:200,hash:16,multi:false,strength:'enhanced'});for(let i=0;i<300&&!done&&!error;i++)await new Promise(r=>setTimeout(r,50));if(error||!done||done.mode!=='enhanced')throw Error(error||'release enhanced engine failed');}finally{engine.reset();}
