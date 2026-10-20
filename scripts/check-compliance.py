@@ -2,8 +2,8 @@
 from pathlib import Path
 import json, hashlib, tarfile, zipfile, re
 root=Path(__file__).resolve().parents[1]
-manifest=json.loads((root/'dist/compliance/component-manifest.json').read_text())
-pkg=json.loads((root/'package.json').read_text())
+manifest=json.loads((root/'dist/compliance/component-manifest.json').read_text(encoding='utf-8'))
+pkg=json.loads((root/'package.json').read_text(encoding='utf-8'))
 assert pkg['version']==manifest['version'] and pkg['license']==manifest['applicationLicense']
 assert not pkg.get('dependencies'),'Unexpected unreviewed production npm dependency'
 covered=set()
@@ -25,18 +25,18 @@ for c in manifest['components']:
             assert not any('/../' in n or n.startswith('/') for n in names)
 for directory in ['dist/engine','dist/rules','dist/ocr/core']:
     for p in (root/directory).rglob('*'):
-        if p.is_file():assert str(p.relative_to(root)) in covered,('Unreviewed asset',str(p))
+        if p.is_file():assert p.relative_to(root).as_posix() in covered,('Unreviewed asset',str(p))
 for f in manifest['sourceArchives']:
     assert hashlib.sha256((root/f['path']).read_bytes()).hexdigest()==f['sha256'],f['path']
 assert not list((root/'dist').rglob('*.onnx')),'Desktop-only weights leaked into static distribution'
 assert not (root/'dist/engine/xiangqi-83f16c17fe26.nnue').exists()
 runtime=root/'desktop/vendor/onnxruntime'
 assert not any('directml' in p.name.lower() or 'dxcompiler' in p.name.lower() or 'dxil.' in p.name.lower() for p in runtime.rglob('*'))
-for f in json.loads((runtime/'manifest.json').read_text())['files']:
+for f in json.loads((runtime/'manifest.json').read_text(encoding='utf-8'))['files']:
     assert hashlib.sha256((runtime/f['file']).read_bytes()).hexdigest()==f['sha256'],f['file']
-worker=(root/'desktop/model-worker.cjs').read_text()
+worker=(root/'desktop/model-worker.cjs').read_text(encoding='utf-8')
 assert "executionProviders:['cpu']" in worker and 'worker_threads' in worker
-installer=(root/'desktop/installer.nsi').read_text()
+installer=(root/'desktop/installer.nsi').read_text(encoding='utf-8')
 assert 'SetCompressor zlib' in installer and not re.search(r'(WinShell|StdUtils|nsis7z|nsProcess|INetC|UAC)::',installer)
 for p in (root/'dist').rglob('*'):
     assert not p.is_symlink() and p.name not in ['.DS_Store','.env'],str(p)

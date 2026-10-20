@@ -4,7 +4,7 @@ No API key or screen upload is required. Keep TLS certificate verification enabl
 from pathlib import Path
 import json,hashlib,subprocess
 root=Path(__file__).resolve().parents[1]/'desktop/models'
-for entry in json.loads((root/'manifest.json').read_text())['models']:
+for entry in json.loads((root/'manifest.json').read_text(encoding='utf-8'))['models']:
  p=root/entry['file']
  if p.exists() and hashlib.sha256(p.read_bytes()).hexdigest()==entry['sha256']:
   print('Verified',entry['file']);continue
