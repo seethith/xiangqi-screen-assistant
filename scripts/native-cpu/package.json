@@ -1,0 +1,10 @@
+{
+  "name": "xiangqi-ort-cpu-build",
+  "version": "1.0.0",
+  "private": true,
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "cmake-js": "8.0.0",
+    "node-addon-api": "6.1.0"
+  }
+}

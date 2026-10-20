@@ -1,8 +1,13 @@
 name: Windows package verification
 on:
   workflow_dispatch:
+    inputs:
+      upload_release:
+        description: Upload tested installer to an existing draft release
+        type: boolean
+        default: false
 permissions:
-  contents: read
+  contents: write
 jobs:
   verify:
     runs-on: windows-2022
@@ -44,9 +49,24 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Installed app self-test failed' }
           $process = Start-Process -FilePath "$testDir/Uninstall.exe" -ArgumentList '/S' -Wait -PassThru
           if ($process.ExitCode -ne 0) { throw 'Uninstaller failed' }
+          for ($i=0; $i -lt 40 -and (Test-Path "$testDir/象棋屏幕助手.exe"); $i++) { Start-Sleep -Milliseconds 100 }
+          if (Test-Path "$testDir/象棋屏幕助手.exe") { throw 'Uninstaller left application executable behind' }
+      - name: Upload tested installer to draft release
+        if: inputs.upload_release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: pwsh
+        run: |
+          $version = (Get-Content package.json | ConvertFrom-Json).version
+          $asset = "release/v$version/xiangqi-screen-assistant-$version-windows-x64-setup.exe"
+          Copy-Item (Get-ChildItem "release/v$version/*Setup*.exe").FullName $asset
+          gh release upload "v$version" $asset --clobber
+          if ($LASTEXITCODE -ne 0) { throw 'Release upload failed' }
       - uses: actions/upload-artifact@v4
+        if: ${{ !inputs.upload_release }}
         with:
           name: xiangqi-1.5.1-windows-x64
+          retention-days: 1
           path: |
             release/v1.5.1/*Setup*.exe
             release/v1.5.1/installer-audit.json

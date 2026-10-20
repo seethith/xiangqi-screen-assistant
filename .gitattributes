@@ -11,3 +11,8 @@
 *.ico binary
 *.woff binary
 *.zip binary
+
+# Preserve upstream bytes: published SHA-256 inventories include license text too.
+dist/** -text
+desktop/vendor/** -text
+desktop/models/** -text

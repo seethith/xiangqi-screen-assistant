@@ -1,0 +1,51 @@
+name: macOS package verification
+on:
+  workflow_dispatch:
+    inputs:
+      upload_release:
+        description: Upload tested DMG and source to an existing draft release
+        type: boolean
+        default: false
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare and validate source
+        run: |
+          npm ci
+          python3 scripts/fetch-models.py
+          node scripts/prepare-runtime.cjs
+          npm test
+          npm run check
+          python3 scripts/package-source.py
+          npm run compliance:check
+      - name: Build and test Apple Silicon package
+        run: |
+          npm run desktop:mac -- --config.directories.output=release/v1.5.1
+          node scripts/test-release.cjs 'release/v1.5.1/mac-arm64/象棋屏幕助手.app/Contents/MacOS/象棋屏幕助手'
+          hdiutil verify 'release/v1.5.1/象棋屏幕助手-1.5.1-arm64.dmg'
+          cp 'release/v1.5.1/象棋屏幕助手-1.5.1-arm64.dmg' release/v1.5.1/xiangqi-screen-assistant-1.5.1-mac-arm64.dmg
+          cp dist/source.zip release/v1.5.1/xiangqi-screen-assistant-1.5.1-source.zip
+      - name: Upload tested package and source to draft release
+        if: inputs.upload_release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload v1.5.1 release/v1.5.1/xiangqi-screen-assistant-1.5.1-mac-arm64.dmg release/v1.5.1/xiangqi-screen-assistant-1.5.1-source.zip --clobber
+      - uses: actions/upload-artifact@v4
+        if: ${{ !inputs.upload_release }}
+        with:
+          name: xiangqi-1.5.1-macos-arm64
+          retention-days: 1
+          path: |
+            release/v1.5.1/xiangqi-screen-assistant-1.5.1-mac-arm64.dmg
+            release/v1.5.1/xiangqi-screen-assistant-1.5.1-source.zip

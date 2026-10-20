@@ -37,7 +37,7 @@ evaluation/
 scripts/native-cpu/build/
 ort-source/
 ort-cpu/
-native-cpu/
+/native-cpu/
 
 # These reviewed upstream packages form part of the GPL source delivery
 !dist/compliance/sources/*.tgz
