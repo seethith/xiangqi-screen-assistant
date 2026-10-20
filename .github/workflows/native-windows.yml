@@ -1,0 +1,43 @@
+name: Native Windows CPU runtime
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fetch fixed upstream source and CPU runtime
+        shell: pwsh
+        run: |
+          git clone --filter=blob:none --no-checkout https://github.com/microsoft/onnxruntime.git ort-source
+          git -C ort-source sparse-checkout init --cone
+          git -C ort-source sparse-checkout set js/node/src include/onnxruntime
+          git -C ort-source checkout f2c39fe2f838cf35ce7da92824f5a5e3ee6e88a7
+          Invoke-WebRequest https://github.com/microsoft/onnxruntime/releases/download/v1.30.0/onnxruntime-win-x64-1.30.0.zip -OutFile ort-cpu.zip
+          if ((Get-FileHash ort-cpu.zip -Algorithm SHA256).Hash.ToLower() -ne 'c6ba983baf5681af108599675d2a89c2d145512d02de28aed0bff177cd0ba949') { throw 'CPU runtime checksum mismatch' }
+          Expand-Archive ort-cpu.zip -DestinationPath ort-cpu
+      - name: Compile CPU-only Node binding
+        shell: pwsh
+        run: |
+          Set-Location scripts/native-cpu
+          npm install --no-save --ignore-scripts cmake-js@8.0.0 node-addon-api@6.1.0
+          npx cmake-js compile --arch=x64 --config=Release "--CDORT_SOURCE=$env:GITHUB_WORKSPACE/ort-source" "--CDORT_CPU=$env:GITHUB_WORKSPACE/ort-cpu/onnxruntime-win-x64-1.30.0"
+          if ($LASTEXITCODE -ne 0) { throw 'Native binding build failed' }
+      - name: Collect runtime and notices
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory native-cpu
+          Copy-Item scripts/native-cpu/build/Release/onnxruntime_binding.node native-cpu/
+          Copy-Item ort-cpu/onnxruntime-win-x64-1.30.0/lib/*.dll native-cpu/
+          Copy-Item ort-cpu/onnxruntime-win-x64-1.30.0/LICENSE native-cpu/LICENSE.onnxruntime.txt
+          Copy-Item ort-cpu/onnxruntime-win-x64-1.30.0/ThirdPartyNotices.txt native-cpu/
+          (Get-ChildItem native-cpu | Get-FileHash -Algorithm SHA256 | Select-Object Hash,Path | ConvertTo-Json) | Set-Content native-cpu/hashes.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: onnxruntime-node-cpu-win32-x64-1.30.0
+          path: native-cpu/

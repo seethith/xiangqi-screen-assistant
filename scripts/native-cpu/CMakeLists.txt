@@ -1,0 +1,13 @@
+# GPL-3.0-or-later. Build the unmodified MIT ONNX Runtime Node binding without GPU providers.
+cmake_minimum_required(VERSION 3.20)
+project(ort_node_cpu LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 20)
+file(GLOB binding_sources "${ORT_SOURCE}/js/node/src/*.cc")
+add_library(onnxruntime_binding SHARED ${binding_sources} ${CMAKE_JS_SRC})
+target_compile_definitions(onnxruntime_binding PRIVATE NAPI_VERSION=6 ORT_API_MANUAL_INIT)
+target_include_directories(onnxruntime_binding PRIVATE ${CMAKE_JS_INC} "${CMAKE_SOURCE_DIR}/node_modules/node-addon-api" "${ORT_SOURCE}/include/onnxruntime/core/session" "${ORT_SOURCE}/include/onnxruntime" "${ORT_SOURCE}/onnxruntime")
+target_link_libraries(onnxruntime_binding PRIVATE ${CMAKE_JS_LIB} "${ORT_CPU}/lib/onnxruntime.lib")
+set_target_properties(onnxruntime_binding PROPERTIES PREFIX "" SUFFIX ".node")
+if(MSVC AND CMAKE_JS_NODELIB_DEF AND CMAKE_JS_NODELIB_TARGET)
+  execute_process(COMMAND ${CMAKE_AR} /def:${CMAKE_JS_NODELIB_DEF} /out:${CMAKE_JS_NODELIB_TARGET} ${CMAKE_STATIC_LINKER_FLAGS})
+endif()
