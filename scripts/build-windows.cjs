@@ -15,7 +15,7 @@ async function main(){
  const install=files.map(f=>{const rel=path.relative(appDir,f),dir=path.dirname(rel);return 'SetOutPath "$INSTDIR'+(dir==='.'?'':'\\'+quote(dir.replaceAll(path.sep,'\\')))+'"\nFile "'+quote(f)+'"';}).join('\n');
  const remove=files.map(f=>'Delete "$INSTDIR\\'+quote(path.relative(appDir,f).replaceAll(path.sep,'\\'))+'"').concat(dirs.map(d=>'RMDir "$INSTDIR\\'+quote(d.replaceAll(path.sep,'\\'))+'"')).join('\n');
  const template=fs.readFileSync(path.join(root,'desktop/installer.nsi'),'utf8');
- const substitutions={VERSION:pkg.version,VERSION_QUAD:pkg.version+'.0',OUTPUT:quote(path.join(output,pkg.build.productName+' Setup '+pkg.version+'.exe')),ROOT:quote(root),INSTALL_FILES:install,REMOVE_FILES:remove};
+ const substitutions={VERSION:pkg.version,VERSION_QUAD:pkg.version.split('-')[0].split('+')[0]+'.0',OUTPUT:quote(path.join(output,pkg.build.productName+' Setup '+pkg.version+'.exe')),ROOT:quote(root),INSTALL_FILES:install,REMOVE_FILES:remove};
  const script=template.replace(/@@([A-Z_]+)@@/g,(_,key)=>substitutions[key]);
  fs.mkdirSync(output,{recursive:true});const generated=path.join(output,'installer-generated.nsi');fs.writeFileSync(generated,'\uFEFF'+script,'utf8');
  const tool=await require('app-builder-lib/out/toolsets/windows').getMakeNsisPath(null);

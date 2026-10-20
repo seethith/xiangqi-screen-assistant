@@ -2,9 +2,9 @@
 
 中国象棋摆盘、本地分析与桌面屏幕助手。支持手动摆局、FEN、截图识别、实时走棋跟踪、悬浮局势和游戏棋盘上的走法箭头。分析和屏幕识别均在本机完成，无需账号或付费 API。
 
-[下载安装包](https://github.com/seethith/xiangqi-screen-assistant/releases/tag/v1.5.1) · [构建说明](dist/compliance/BUILDING.md) · [许可说明](dist/compliance/NOTICE.txt)
+[下载新版 1.5.3-beta.3](https://github.com/seethith/xiangqi-screen-assistant/releases/tag/v1.5.3-beta.3) · [1.5.1 正式版](https://github.com/seethith/xiangqi-screen-assistant/releases/tag/v1.5.1) · [构建说明](dist/compliance/BUILDING.md) · [许可说明](dist/compliance/NOTICE.txt)
 
-## 1.5.3-beta.3 本地预览
+## 1.5.3-beta.3 预览版
 
 修复屏幕跟踪时行棋方与推荐走法未更新的问题：定期复核棋子，使用连续不同视频帧确认合法走子；可根据唯一的一步走法校正错误的初始行棋方，正常跟踪保留走棋历史。对手回合继续评估双方局势，但只在我方回合显示走法箭头。首次接入静止中局仍需确认先走方。
 
@@ -12,7 +12,7 @@
 
 桌面默认进入“屏幕助手”，显示当前行棋方、最近一步和我方建议；截图、摆盘、保存与试走集中到“手动分析”，频率和重新定位放入“更多”。原识别模型、原生 CPU 推理与棋力引擎不变。
 
-`npm run desktop:tracking-test` 使用真实 canvas 视频流、原生模型、规则库、引擎和悬浮窗口 IPC 验证连续换边、漏过两步、错误先走方纠正以及暂停恢复。需自行提供有权使用的本地截图样例，路径和限制见构建说明；不是对所有游戏或 Windows 实机的验证。此预览没有替换 GitHub 上的 1.5.1 正式 Release。
+`npm run desktop:tracking-test` 使用真实 canvas 视频流、原生模型、规则库、引擎和悬浮窗口 IPC 验证连续换边、漏过两步、错误先走方纠正以及暂停恢复。需自行提供有权使用的本地截图样例，路径和限制见构建说明；不是对所有游戏或 Windows 实机的验证。此版作为 GitHub 预览 Release 发布 Mac arm64 和 Windows x64 安装包，保留 1.5.1 正式 Release；构建与安装验证范围见各版本发布说明。
 
 ## 1.5.1 公开发布
 
@@ -56,7 +56,7 @@ npm run desktop
 
 模型约 40 MiB，下载地址、固定提交与 SHA-256 在 `desktop/models/manifest.json`；安装包已内置模型，无需用户下载。原生运行库及精确清单随源码提供。Windows CPU 接口的可复现编译入口见 `.github/workflows/native-windows.yml` 与 `scripts/native-cpu/`。
 
-打包：`npm run desktop:mac -- --config.directories.output=release/v1.5.1`；`npm run desktop:win`。构建前须重新生成清单、source.zip 并完成检查。更多引擎 C++、Emscripten 与安装器构建方法见 [BUILDING.md](dist/compliance/BUILDING.md)。
+打包：`npm run desktop:mac -- --config.directories.output=release/v1.5.3-beta.3`；`npm run desktop:win`（输出目录随 `package.json` 版本变化）。构建前须重新生成清单、source.zip 并完成检查。GitHub 的 Mac、Windows 验证工作流同样读取当前版本号；上传目标必须是草稿 Release。更多引擎 C++、Emscripten 与安装器构建方法见 [BUILDING.md](dist/compliance/BUILDING.md)。
 
 Windows 原生库需要微软 Visual C++ v14 x64 运行库；缺少时由用户从 [微软官方说明](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist) 安装。安装器不会静默安装或代为接受其许可。
 
