@@ -15,3 +15,20 @@ module.exports.sanitizeArrow=sanitizeArrow;
 
 function sourceViewport(display,bounds,width,height){const sx=display.width/width,sy=display.height/height;return {x:(bounds.x-display.x)/sx,y:(bounds.y-display.y)/sy,width:bounds.width/sx,height:bounds.height/sy};}
 module.exports.sourceViewport=sourceViewport;
+
+const MINI_DEFAULT={width:360,height:360};
+const MINI_LIMITS={minWidth:300,minHeight:260,maxWidth:600,maxHeight:680};
+// Desktop coordinates are DIP, including Retina and displays left of the primary.
+function constrainMini(bounds,area){
+ const width=Math.round(Math.min(area.width,Math.max(MINI_LIMITS.minWidth,Math.min(MINI_LIMITS.maxWidth,bounds.width))));
+ const height=Math.round(Math.min(area.height,Math.max(MINI_LIMITS.minHeight,Math.min(MINI_LIMITS.maxHeight,bounds.height))));
+ return {x:Math.round(Math.max(area.x,Math.min(bounds.x,area.x+area.width-width))),y:Math.round(Math.max(area.y,Math.min(bounds.y,area.y+area.height-height))),width,height};
+}
+function gestureBounds(start,origin,cursor,mode,area){
+ const dx=cursor.x-origin.x,dy=cursor.y-origin.y;
+ return constrainMini(mode==='move'?{...start,x:start.x+dx,y:start.y+dy}:{...start,width:Math.min(start.width+dx,area.x+area.width-start.x),height:Math.min(start.height+dy,area.y+area.height-start.y)},area);
+}
+module.exports.MINI_DEFAULT=MINI_DEFAULT;
+module.exports.MINI_LIMITS=MINI_LIMITS;
+module.exports.constrainMini=constrainMini;
+module.exports.gestureBounds=gestureBounds;

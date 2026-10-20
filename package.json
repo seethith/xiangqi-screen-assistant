@@ -1,6 +1,6 @@
 {
   "name": "xiangqi-position-assistant",
-  "version": "1.5.3-beta.1",
+  "version": "1.5.3-beta.2",
   "private": true,
   "description": "中国象棋中途局面助手",
   "scripts": {
@@ -15,7 +15,8 @@
     "desktop:capture-smoke": "electron . --capture-smoke",
     "compliance:check": "python3 scripts/check-compliance.py",
     "predesktop:mac": "node scripts/prepare-electron-notices.cjs",
-    "desktop:tracking-test": "electron . --tracking-smoke"
+    "desktop:tracking-test": "electron . --tracking-smoke",
+    "desktop:overlay-test": "electron . --overlay-smoke"
   },
   "license": "GPL-3.0-or-later",
   "devDependencies": {

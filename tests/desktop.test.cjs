@@ -62,3 +62,13 @@ test('clean capture waits for two delivered video frames and rejects a stalled s
  callback();await Promise.resolve();assert.equal(done,false);callback();assert.equal(await fresh,true);
  assert.equal(await waitForCaptureFrame(video,5),false);assert.equal(cancelled,3);assert.equal(await waitForCaptureFrame({}),false);
 });
+
+test('mini movement and resizing stay usable across negative-coordinate screens',()=>{
+ const {gestureBounds,constrainMini}=require('../desktop/overlay-layout.cjs');
+ const area={x:-1920,y:30,width:1920,height:1050},start={x:-1700,y:150,width:360,height:360};
+ assert.deepEqual(gestureBounds(start,{x:-1600,y:170},{x:-1500,y:270},'move',area),{x:-1600,y:250,width:360,height:360});
+ assert.deepEqual(gestureBounds(start,{x:-1340,y:510},{x:-1240,y:610},'resize',area),{...start,width:460,height:460});
+ const small=gestureBounds(start,{x:0,y:0},{x:-1000,y:-1000},'resize',area);assert.equal(small.width,300);assert.equal(small.height,260);
+ const restored=constrainMini({x:4000,y:4000,width:500,height:500},area);assert.equal(restored.x,-500);assert.equal(restored.y,580);
+ const tiny=constrainMini(start,{x:0,y:0,width:280,height:240});assert.deepEqual(tiny,{x:0,y:0,width:280,height:240});
+});
