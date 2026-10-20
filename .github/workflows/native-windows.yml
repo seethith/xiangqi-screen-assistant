@@ -36,6 +36,8 @@ jobs:
           Copy-Item ort-cpu/onnxruntime-win-x64-1.30.0/lib/*.dll native-cpu/
           Copy-Item ort-cpu/onnxruntime-win-x64-1.30.0/LICENSE native-cpu/LICENSE.onnxruntime.txt
           Copy-Item ort-cpu/onnxruntime-win-x64-1.30.0/ThirdPartyNotices.txt native-cpu/
+          Copy-Item scripts/native-cpu/node_modules/node-addon-api/LICENSE.md native-cpu/LICENSE.node-addon-api.md
+          Copy-Item scripts/native-cpu/node_modules/cmake-js/LICENSE native-cpu/LICENSE.cmake-js.txt
           (Get-ChildItem native-cpu | Get-FileHash -Algorithm SHA256 | Select-Object Hash,Path | ConvertTo-Json) | Set-Content native-cpu/hashes.json
       - uses: actions/upload-artifact@v4
         with:

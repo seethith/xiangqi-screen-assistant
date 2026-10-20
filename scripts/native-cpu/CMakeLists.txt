@@ -2,6 +2,8 @@
 cmake_minimum_required(VERSION 3.20)
 project(ort_node_cpu LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
+file(TO_CMAKE_PATH "${ORT_SOURCE}" ORT_SOURCE)
+file(TO_CMAKE_PATH "${ORT_CPU}" ORT_CPU)
 file(GLOB binding_sources "${ORT_SOURCE}/js/node/src/*.cc")
 add_library(onnxruntime_binding SHARED ${binding_sources} ${CMAKE_JS_SRC})
 target_compile_definitions(onnxruntime_binding PRIVATE NAPI_VERSION=6 ORT_API_MANUAL_INIT)
