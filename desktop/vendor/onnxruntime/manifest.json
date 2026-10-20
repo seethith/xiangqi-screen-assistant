@@ -1,0 +1,299 @@
+{
+  "version": "1.30.0",
+  "license": "MIT",
+  "executionProviders": [
+    "cpu"
+  ],
+  "files": [
+    {
+      "file": "common/LICENSE",
+      "bytes": 1073,
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+    },
+    {
+      "file": "common/dist/cjs/backend-impl.js",
+      "bytes": 5608,
+      "sha256": "3d25321895995f7e9480570b9a88f121049adf152e1829d0ecb11218da02d487"
+    },
+    {
+      "file": "common/dist/cjs/backend.js",
+      "bytes": 433,
+      "sha256": "325aaee7a2649ea27629666f3ca01c0d80b9751e704ce502e43a8352390749b4"
+    },
+    {
+      "file": "common/dist/cjs/env-impl.js",
+      "bytes": 969,
+      "sha256": "35cd8cac33973538eab471b68622c86c35a6896f4307d1a74c9ca0eda7abbac6"
+    },
+    {
+      "file": "common/dist/cjs/env.js",
+      "bytes": 366,
+      "sha256": "22c7647f8ca1c1b83b437a92b95fee1457fcb72866fa029616b8f146dc609be8"
+    },
+    {
+      "file": "common/dist/cjs/index.js",
+      "bytes": 1955,
+      "sha256": "d7dd6cc9790e87299099fcd1b0ccb4969c01591d7eec0383a1c64dbea133dd1a"
+    },
+    {
+      "file": "common/dist/cjs/inference-session-impl.js",
+      "bytes": 8996,
+      "sha256": "88d90723a169297855ad3b564b134c6b685b2661316c81f71fc80da1e203bae0"
+    },
+    {
+      "file": "common/dist/cjs/inference-session.js",
+      "bytes": 467,
+      "sha256": "458be26f316c5068d32a56ddbc30ca0aa687c636e079b3d161a69f0f14a683f1"
+    },
+    {
+      "file": "common/dist/cjs/onnx-model.js",
+      "bytes": 211,
+      "sha256": "667f5fdac4b6df25e17f8a864d4dc619507f541f9fa0aafb6d3572fcca1e25e5"
+    },
+    {
+      "file": "common/dist/cjs/onnx-value.js",
+      "bytes": 211,
+      "sha256": "8446854766f4955ce438a7338216f49223767ecc508bb502b73a3dc1a1f1998e"
+    },
+    {
+      "file": "common/dist/cjs/package.json",
+      "bytes": 20,
+      "sha256": "091a04fa67c7907b98e106fcff8b964e13129754fce72d24f3025b97c4887fa3"
+    },
+    {
+      "file": "common/dist/cjs/tensor-conversion-impl.js",
+      "bytes": 8067,
+      "sha256": "9815e72c0bb91896035de93b3113a2256a1a998bc53c7b5e6bf5fb4e93714766"
+    },
+    {
+      "file": "common/dist/cjs/tensor-conversion.js",
+      "bytes": 218,
+      "sha256": "28cc462d4a9ea556ecc86c0e6d16a51d61b58d5bc5b4b7b48976b14bc8035bdc"
+    },
+    {
+      "file": "common/dist/cjs/tensor-factory-impl.js",
+      "bytes": 11656,
+      "sha256": "a3204838a2c14416e4e61c968dc17c663ab3c9b8b2c4a8b7f2a1c5b06e3e5173"
+    },
+    {
+      "file": "common/dist/cjs/tensor-factory.js",
+      "bytes": 215,
+      "sha256": "13b8d735350b828a49bda8aeec50b1dac888cf42268006efc4312f50a88b6906"
+    },
+    {
+      "file": "common/dist/cjs/tensor-impl-type-mapping.js",
+      "bytes": 2995,
+      "sha256": "333110edbbffdb7575ea340cb341bcaf691862d6594a649db28097f7d8cb19b7"
+    },
+    {
+      "file": "common/dist/cjs/tensor-impl.js",
+      "bytes": 16458,
+      "sha256": "11645352ba5d08971344717d3339f86aac560f84f29229b2ebe07f1ec8aa8905"
+    },
+    {
+      "file": "common/dist/cjs/tensor-utils-impl.js",
+      "bytes": 2213,
+      "sha256": "e7b1db989d33d54bdd1807b080a0989ff0b10d5f7dd8c93b92bbf293103aa4d5"
+    },
+    {
+      "file": "common/dist/cjs/tensor-utils.js",
+      "bytes": 213,
+      "sha256": "d3f577e90dc2257c72ac728e5e6355c34af0342d971158d9f22b69d22aa97b8d"
+    },
+    {
+      "file": "common/dist/cjs/tensor.js",
+      "bytes": 393,
+      "sha256": "9097114de356750f36f28776fa6ccd08d13694f0f9aac9e7669c30b6c43153f7"
+    },
+    {
+      "file": "common/dist/cjs/trace.js",
+      "bytes": 2496,
+      "sha256": "faecd0df94998d786e2085d56aa6003449f1ac3b35c350e0d2762498604e5d72"
+    },
+    {
+      "file": "common/dist/cjs/type-helper.js",
+      "bytes": 212,
+      "sha256": "7f786da8d2a611ad751c70a74edf4d9acfccd26be8e5c6b1cb730f982892bf32"
+    },
+    {
+      "file": "common/dist/cjs/version.js",
+      "bytes": 361,
+      "sha256": "0a1a7f532f4455ead0678966815c3114730150aa4368ebb5ebd9727425e9003b"
+    },
+    {
+      "file": "common/dist/esm/backend-impl.js",
+      "bytes": 5339,
+      "sha256": "97dd81b055a06f61120f09468fe59f046a9262b7b87bf5d05bceb085bf4f5558"
+    },
+    {
+      "file": "common/dist/esm/backend.js",
+      "bytes": 184,
+      "sha256": "017ce2ec9dc2021ebc1ef2c4f04e1bc74276c65921b0297e7ed8cc16e640495b"
+    },
+    {
+      "file": "common/dist/esm/env-impl.js",
+      "bytes": 848,
+      "sha256": "0da4c562a49fe147e19320a64cbb456184eb0e6242b1fe69c65c8368c55f3d97"
+    },
+    {
+      "file": "common/dist/esm/env.js",
+      "bytes": 262,
+      "sha256": "b2bbd3d3b00a95765713c57cd0f5ef73718ae5b8322e07cb47a43e2accb21f15"
+    },
+    {
+      "file": "common/dist/esm/index.js",
+      "bytes": 1036,
+      "sha256": "ad23f6d6ce2c99c449031f24a5181f259516c64a9a67428c98a8539b857729bd"
+    },
+    {
+      "file": "common/dist/esm/inference-session-impl.js",
+      "bytes": 8703,
+      "sha256": "0446814a392c147b5c38ba242d9911ee54002b5d01a8e19fb4895fb8f8a0cdd3"
+    },
+    {
+      "file": "common/dist/esm/inference-session.js",
+      "bytes": 348,
+      "sha256": "3ad4271a88edb3d242dc1e0e7bbf66510f9a56eff874c433b3b37f900ac007b1"
+    },
+    {
+      "file": "common/dist/esm/onnx-model.js",
+      "bytes": 145,
+      "sha256": "9e9dc8678be0ea04575a542894508db355a4f9f2155ac7f4c17a697c5f843382"
+    },
+    {
+      "file": "common/dist/esm/onnx-value.js",
+      "bytes": 145,
+      "sha256": "33dc232498753fc9026dfa44c99440cb1a6d29f3e53e1ad2fb8b696705158f06"
+    },
+    {
+      "file": "common/dist/esm/package.json",
+      "bytes": 18,
+      "sha256": "e3d5a4a2d8551aa52c5a01d2a0efb2e06a2d9711b4f5c5f1d20de6e21807e2cd"
+    },
+    {
+      "file": "common/dist/esm/tensor-conversion-impl.js",
+      "bytes": 7852,
+      "sha256": "df6fa3cd1813c2d3e588cc07973cfe5ea2ab8647c957168200caa58e51440161"
+    },
+    {
+      "file": "common/dist/esm/tensor-conversion.js",
+      "bytes": 152,
+      "sha256": "8c43ec1d061ab71032a1b28f45d85ef95f8d7bd2d4cd71d059e96d83e3a8f422"
+    },
+    {
+      "file": "common/dist/esm/tensor-factory-impl.js",
+      "bytes": 11002,
+      "sha256": "cf5606fe23461e01bff59c2d72ac47d74e652548718f1e5fab07a22b441379b4"
+    },
+    {
+      "file": "common/dist/esm/tensor-factory.js",
+      "bytes": 149,
+      "sha256": "68b9f4f4573f25012ce8a4f73c9a2cee3a28db91de8bbb0a20ddb08bcba33c4b"
+    },
+    {
+      "file": "common/dist/esm/tensor-impl-type-mapping.js",
+      "bytes": 2706,
+      "sha256": "20bd5ddb858954cf071bace6c7a6628c8e311433798ec172f4c778bebd81d407"
+    },
+    {
+      "file": "common/dist/esm/tensor-impl.js",
+      "bytes": 16091,
+      "sha256": "6a749be63055f9d21069566b1515412484a3a03448ca20427c8f8d29328a2843"
+    },
+    {
+      "file": "common/dist/esm/tensor-utils-impl.js",
+      "bytes": 1920,
+      "sha256": "87d3e07c153616138c2f57846545eea9c47957c714d50c0264696bdc293e6732"
+    },
+    {
+      "file": "common/dist/esm/tensor-utils.js",
+      "bytes": 147,
+      "sha256": "7acfdb2f8403ae84b7ae62d55d6eeb01519108be8874337b317b911ed60190cd"
+    },
+    {
+      "file": "common/dist/esm/tensor.js",
+      "bytes": 286,
+      "sha256": "721d24a538de5333057bfc423bc00c3453a1c483f4495c857d0a6f9b8f2d330e"
+    },
+    {
+      "file": "common/dist/esm/trace.js",
+      "bytes": 1891,
+      "sha256": "9b87e6309a1c502b03558aa94b0a65c8ea1e8eb59cb46090f54f6eacd191b841"
+    },
+    {
+      "file": "common/dist/esm/type-helper.js",
+      "bytes": 146,
+      "sha256": "3e2588c6a5ee7b9755e199eef10c6aa2e777d0366ea47d27953657a5638deeae"
+    },
+    {
+      "file": "common/dist/esm/version.js",
+      "bytes": 263,
+      "sha256": "71c36bdc106472438d3f6c865c0e7ffd0f957524dceb0750738c451098c5ef13"
+    },
+    {
+      "file": "common/package.json",
+      "bytes": 357,
+      "sha256": "a2eec70151231366e3e7fbd77e8ce0ee5ff2a72c0d8646f0aed5e2a00a6878d2"
+    },
+    {
+      "file": "node/LICENSE",
+      "bytes": 1073,
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+    },
+    {
+      "file": "node/bin/napi-v6/darwin/arm64/libonnxruntime.1.dylib",
+      "bytes": 44589928,
+      "sha256": "685d2be5dba1309c89d3a5324b7fd06a5c42f1a61bfea32d14c4cc28d072121d"
+    },
+    {
+      "file": "node/bin/napi-v6/darwin/arm64/onnxruntime_binding.node",
+      "bytes": 266840,
+      "sha256": "a3f993357759b06ae2411f70af60f5e041d04521ea7f0d12cb7546e411a527dd"
+    },
+    {
+      "file": "node/bin/napi-v6/win32/x64/onnxruntime.dll",
+      "bytes": 16462648,
+      "sha256": "7e39e2bdbba836d98071ef28620735ba36a47c554cf794585269aecc50fab0da"
+    },
+    {
+      "file": "node/bin/napi-v6/win32/x64/onnxruntime_binding.node",
+      "bytes": 364544,
+      "sha256": "0532aaf18400e0b2877b771c2b09b57bca2e99ac9154fbac3dbcaf9f8a428cac"
+    },
+    {
+      "file": "node/bin/napi-v6/win32/x64/onnxruntime_providers_shared.dll",
+      "bytes": 21816,
+      "sha256": "b9b7ab9e2a8b08ee7ae4a7ac1c8bfd44a741f17ad8d0f764953140a57de0b796"
+    },
+    {
+      "file": "node/dist/backend.js",
+      "bytes": 6289,
+      "sha256": "a79e8019e7276a282987023f9d38d41063a99e563e5e1a6f38a73a7d39ea83ab"
+    },
+    {
+      "file": "node/dist/binding.js",
+      "bytes": 1584,
+      "sha256": "d84ef3962f30a76c09f0169cb3032b97eb8139fe14d9d129ed48b97743cb4cc6"
+    },
+    {
+      "file": "node/dist/index.js",
+      "bytes": 1590,
+      "sha256": "cfac3a32f92a01adb26236a5053e08ec6bd34fc397a3b754f8652e3cd19d1980"
+    },
+    {
+      "file": "node/dist/version.js",
+      "bytes": 361,
+      "sha256": "0a1a7f532f4455ead0678966815c3114730150aa4368ebb5ebd9727425e9003b"
+    },
+    {
+      "file": "node/package.json",
+      "bytes": 464,
+      "sha256": "6c36173cb02ac8436d80cf1b5c717726558c5956aeda2ffda4aed4a1e97fb04f"
+    },
+    {
+      "file": "provenance.json",
+      "bytes": 1573,
+      "sha256": "3c5c056e6d2d89866a5016efbfc27377c20ef442813f38cafe68f5014d3e6fda"
+    }
+  ]
+}

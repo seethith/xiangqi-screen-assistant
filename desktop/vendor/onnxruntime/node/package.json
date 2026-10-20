@@ -1,0 +1,23 @@
+{
+  "license": "MIT",
+  "name": "onnxruntime-node",
+  "repository": {
+    "url": "https://github.com/Microsoft/onnxruntime.git",
+    "type": "git"
+  },
+  "author": "fs-eire",
+  "binary": {
+    "napi_versions": [
+      6
+    ]
+  },
+  "version": "1.30.0",
+  "main": "dist/index.js",
+  "os": [
+    "win32",
+    "darwin",
+    "linux"
+  ],
+  "types": "dist/index.d.ts",
+  "description": "ONNXRuntime Node.js binding (curated local runtime; JS imports made relative)"
+}

@@ -1,0 +1,29 @@
+{
+  "project": "TheOne1006/chinese-chess-recognition",
+  "projectCommit": "142c78a1cc494ff4f4b6758210c8043eb04c08ae",
+  "modelSource": "https://huggingface.co/spaces/yolo12138/Chinese_Chess_Recognition",
+  "modelRevision": "4bcaf91777effa645040ee76d008d45c2ffc03f3",
+  "modelCardLicense": "MIT",
+  "projectCodeLicense": "Apache-2.0 declared in pyproject.toml; adapters reference the MIT-declared Space implementation",
+  "referenceFiles": [
+    "core/runonnx/rtmpose.py",
+    "core/runonnx/full_classifier.py",
+    "core/helper_4_kpt.py"
+  ],
+  "models": [
+    {
+      "file": "pose.onnx",
+      "upstreamPath": "onnx/pose/4_v6-0301.onnx",
+      "url": "https://huggingface.co/spaces/yolo12138/Chinese_Chess_Recognition/resolve/4bcaf91777effa645040ee76d008d45c2ffc03f3/onnx/pose/4_v6-0301.onnx",
+      "sha256": "fbd895d40ab81b41b8188f881866485678b7871775821aa50cfe74004a1dc796",
+      "bytes": 10704184
+    },
+    {
+      "file": "layout.onnx",
+      "upstreamPath": "onnx/layout_recognition/nano_v3-0319.onnx",
+      "url": "https://huggingface.co/spaces/yolo12138/Chinese_Chess_Recognition/resolve/4bcaf91777effa645040ee76d008d45c2ffc03f3/onnx/layout_recognition/nano_v3-0319.onnx",
+      "sha256": "da66ba9809f15127f8ae729b1755e42ee61c100c4f9979ce0ef13602ac471298",
+      "bytes": 31101356
+    }
+  ]
+}

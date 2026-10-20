@@ -1,0 +1,13 @@
+* text=auto eol=lf
+*.onnx binary
+*.wasm binary
+*.nnue binary
+*.dll binary
+*.node binary
+*.dylib binary
+*.gz binary
+*.tgz binary
+*.png binary
+*.ico binary
+*.woff binary
+*.zip binary

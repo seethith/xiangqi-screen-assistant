@@ -1,0 +1,27 @@
+MIT License
+
+Attribution: TheOne / yolo12138 and contributors to Chinese_Chess_Recognition.
+The upstream Hugging Face Space model card declares the MIT license.
+Source: https://huggingface.co/spaces/yolo12138/Chinese_Chess_Recognition
+Pinned revision: 4bcaf91777effa645040ee76d008d45c2ffc03f3.
+This notice reproduces the MIT terms accompanying the model-card declaration;
+it is not represented as an upstream standalone LICENSE file. The upstream
+reference Python files contain no separate copyright notice to replace.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

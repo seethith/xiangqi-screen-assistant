@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+ <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="theme-color" content="#205c4b"><meta name="description" content="自由摆出中国象棋中途局面，在浏览器本地分析推荐走法，试走变化并继续跟进。">
+ <title>中途局面助手</title><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/manifest.webmanifest"><link rel="stylesheet" href="/styles.css">
+ <script>window.rulesReady=new Promise((resolve,reject)=>{window.Module={locateFile:f=>'/rules/'+f,onRuntimeInitialized:()=>resolve(window.Module),onAbort:e=>reject(Error(String(e)))};});</script>
+ <script defer src="/rules/ffish.js"></script><script type="module" src="/app.js"></script>
+</head>
+<body>
+ <header class="app-header"><div class="brand"><span class="brand-mark" aria-hidden="true">棋</span><div><h1>中途局面助手</h1><span class="subtle">摆出眼前这一局，找到下一步</span></div></div><div class="header-actions"><span class="local-label">本机计算</span><button id="help-btn" class="icon-button" aria-label="使用说明">?</button></div></header>
+ <main class="workspace">
+  <section class="board-panel" aria-label="象棋棋盘与摆盘工具">
+   <div class="board-toolbar"><div class="segment" aria-label="棋盘模式"><button data-mode="edit" aria-pressed="true">摆盘</button><button data-mode="play" aria-pressed="false">走棋</button></div><div class="toolbar-actions"><button id="undo-btn">撤销</button><button id="flip-btn">翻转</button><button id="more-btn" aria-haspopup="true" aria-expanded="false">更多</button></div></div>
+   <div id="more-menu" class="more-menu" hidden><button id="start-btn">初始局面</button><button id="sample-btn">中局示例</button><button id="clear-btn">清空棋盘</button><button id="fen-btn">导入 / 导出局面</button></div>
+   <div id="preview-banner" class="preview-banner" hidden><span>正在试走，不影响实际棋盘</span><button id="return-btn">返回实际局面</button><button id="adopt-btn">采用此局面</button></div>
+   <div class="board-wrap"><div id="board" class="board">
+    <svg class="board-lines" viewBox="0 0 900 1000" aria-hidden="true"><defs><marker id="move-tip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="currentColor"/></marker></defs><g fill="none" stroke="currentColor" stroke-width="2"><path d="M50 50H850V950H50Z M50 150H850 M50 250H850 M50 350H850 M50 450H850 M50 550H850 M50 650H850 M50 750H850 M50 850H850"/><path d="M150 50V450M250 50V450M350 50V450M450 50V450M550 50V450M650 50V450M750 50V450M150 550V950M250 550V950M350 550V950M450 550V950M550 550V950M650 550V950M750 550V950"/><path d="M350 50L550 250M550 50L350 250M350 750L550 950M550 750L350 950"/></g><g class="river" fill="currentColor"><text x="245" y="515">楚 河</text><text x="570" y="515">汉 界</text></g></svg>
+    <div id="squares" class="squares" role="group" aria-label="棋盘交叉点"></div>
+    <svg id="arrows" class="arrows" viewBox="0 0 900 1000" aria-hidden="true"></svg>
+   </div><div id="file-labels" class="file-labels" aria-hidden="true"></div></div>
+   <div id="board-status" class="board-status" aria-live="polite">正在准备棋盘…</div>
+   <div id="tray-area"><div class="tray-heading"><span>选一种棋子，可连续放置</span><button id="erase-btn" aria-pressed="false">橡皮擦</button></div><div id="red-tray" class="piece-tray red" aria-label="红方棋子"></div><div id="black-tray" class="piece-tray black" aria-label="黑方棋子"></div></div>
+   <div id="move-strip" class="move-strip" hidden aria-label="录入后的走棋记录"></div>
+  </section>
+  <aside class="analysis-panel" aria-label="局面输入与分析">
+   <div class="entry-row"><button id="image-btn" class="image-button"><span aria-hidden="true">▧</span> 导入棋盘截图</button><button id="save-btn">保存</button><button id="library-btn">已存局面</button><input id="image-file" type="file" accept="image/png,image/jpeg,image/webp" hidden></div>
+   <section class="controls-section"><div class="control-heading"><h2>轮到哪方走？</h2><span id="side-note" class="subtle"></span></div><div class="side-picker"><button data-side="w" aria-pressed="true"><span class="side-piece red-text">帅</span>红方走</button><button data-side="b" aria-pressed="false"><span class="side-piece">将</span>黑方走</button></div>
+    <div class="analysis-options"><label>思考时间<select id="time-select"><option value="1000">1 秒 · 快速</option><option value="3000" selected>3 秒 · 默认</option><option value="10000">10 秒 · 深入</option><option value="30000">30 秒 · 深算</option></select></label><label>搜索缓存<select id="hash-select"><option value="16" selected>16 MB · 默认</option><option value="32">32 MB · 更多缓存</option><option value="64">64 MB · 电脑</option></select></label></div>
+    <label class="strength-option">分析模式<select id="strength-select"><option value="standard">轻量 · 默认</option><option value="enhanced">神经网络增强 · 电脑推荐</option></select></label><p id="resource-note" class="subtle resource-note">单线程计算，增强模式需约 500 MB 引擎内存。</p><label class="check-option"><input id="multi-check" type="checkbox">同时比较前三个候选走法</label>
+    <button id="analyze-btn" class="primary analyze-button" disabled>准备棋规中…</button><div id="validation" class="validation" role="alert" hidden></div>
+    <div class="engine-status"><span id="engine-status">引擎在开始分析时加载</span><button id="retry-btn" hidden>重试</button></div>
+   </section>
+   <section id="result-panel" class="result-panel"><div class="result-header"><h2 id="result-heading">下一步建议</h2><span id="result-state" class="subtle">等待分析</span></div><div id="empty-result" class="empty-result"><div class="empty-symbol" aria-hidden="true">车</div><p>摆好局面，点击分析</p><span class="subtle">用箭头查看走法，再试走后续变化</span></div><div id="results" hidden></div><div id="search-detail" class="search-detail" hidden></div></section>
+   <div id="trial-controls" class="trial-controls" hidden><button id="trial-prev">上一步</button><span id="trial-progress"></span><button id="trial-next">下一步</button></div>
+   <div class="privacy-note">棋盘与截图在本机处理 · 保存仅限当前设备</div>
+  </aside>
+ <p class="subtle" style="text-align:center;margin:16px"><a href="/licenses.html" target="_blank" rel="noopener">开源许可与完整源码 · 1.5.2</a></p></main>
+ <div id="toast" class="toast" role="status" hidden></div>
+ <dialog id="fen-dialog"><form method="dialog" class="dialog-heading"><h2>导入 / 导出局面</h2><button aria-label="关闭">×</button></form><label for="fen-input">局面代码（FEN）</label><textarea id="fen-input" rows="4" spellcheck="false"></textarea><p class="subtle">可粘贴其他象棋软件导出的局面。</p><div class="dialog-actions"><button id="copy-fen">复制当前局面</button><button id="export-file">导出文件</button><button id="import-fen" class="primary">载入局面</button></div><div id="fen-error" class="validation" role="alert" hidden></div></dialog>
+ <dialog id="library-dialog"><form method="dialog" class="dialog-heading"><h2>已存局面</h2><button aria-label="关闭">×</button></form><div id="library-list"></div></dialog>
+ <dialog id="save-dialog"><form method="dialog" class="dialog-heading"><h2>保存当前局面</h2><button aria-label="关闭">×</button></form><label for="save-name">名称</label><input id="save-name" type="text" maxlength="60"><div class="dialog-actions"><button id="confirm-save" class="primary">保存到此设备</button></div></dialog>
+ <dialog id="image-dialog" class="image-dialog"><form method="dialog" class="dialog-heading"><h2>截图转为棋盘</h2><button aria-label="关闭">×</button></form><p class="image-instruction">先标记棋盘的左上、右下交叉点，再识别棋子。</p><div class="calibration-tools"><button id="corner-top" aria-pressed="true">标记左上交叉点</button><button id="corner-bottom" aria-pressed="false">标记右下交叉点</button><label class="check-option"><input id="image-flip" type="checkbox">截图中红方在上</label></div><canvas id="image-canvas" aria-label="点击标记棋盘角点"></canvas><div id="image-progress" class="image-progress" aria-live="polite">请选择棋盘交叉点范围。</div><div class="dialog-actions"><button id="image-reference">仅作为摆盘对照</button><button id="recognize-btn" class="primary">本地识别并载入</button></div><p class="subtle">首次识别需下载约 6 MB 识别资源。载入后请核对棋子、颜色和先走方。</p></dialog>
+ <dialog id="reference-dialog"><form method="dialog" class="dialog-heading"><h2>截图对照</h2><button aria-label="关闭">×</button></form><img id="reference-image" alt="导入的棋盘截图"><button id="resume-reference">返回摆盘</button></dialog>
+ <dialog id="help-dialog"><form method="dialog" class="dialog-heading"><h2>使用说明</h2><button aria-label="关闭">×</button></form><ol><li>在“摆盘”里选择棋子，再点棋盘放置；点已有棋子，再点目标位置可移动。</li><li>确认“轮到哪方走”，点击分析；默认计算 3 秒。</li><li>“试走”只推演变化；点击“返回实际局面”恢复你的棋盘。</li><li>切换“走棋”后录入双方实际走法，继续分析，无需重新摆盘。</li><li>截图识别前标记两个角点，载入后检查识别结果。保存只在当前设备有效，可导出文件备份。</li></ol><p>分析使用 Fairy-Stockfish；默认轻量模式，电脑可选择中国象棋神经网络增强模式。较旧浏览器自动使用兼容分析，棋力较低。有限时间内的推荐不保证每个局面都已完全算透。</p><p class="subtle">循环局面按引擎规则处理。当前棋盘之前的历史未知；录入后的历史会保留。</p><a href="/licenses.html" target="_blank" rel="noopener">开源许可与源码</a></dialog>
+ <script type="module">if(!window.desktopAPI&&'serviceWorker' in navigator){navigator.serviceWorker.addEventListener('controllerchange',()=>{if(!crossOriginIsolated&&!sessionStorage.getItem('xq-isolation-reload')){sessionStorage.setItem('xq-isolation-reload','1');location.reload();}});navigator.serviceWorker.register('/sw.js').catch(()=>{});}</script>
+</body></html>

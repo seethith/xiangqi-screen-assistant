@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+
+
+
+
+<html
+ dir="ltr"
+ lang="en"
+ class="has-navbar-fixed-top">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content=#ffffff>
+    <link rel="stylesheet" href="/assets/css/app.css">
+    <link rel="shortcut icon" type="image/png"
+           href="/assets/images/fairyfish2-192x192.png" 
+    />
+    <script defer src="https://unpkg.com/alpinejs@3.9.0/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-social@1/bin/bulma-social.min.css">
+    
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Download NNUE | Fairy-Stockfish</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Download NNUE" />
+<meta name="author" content="Fabian Fichter" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Open Source Chess Variant Engine" />
+<meta property="og:description" content="Open Source Chess Variant Engine" />
+<link rel="canonical" href="/nnue/" />
+<meta property="og:url" content="/nnue/" />
+<meta property="og:site_name" content="Fairy-Stockfish" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Download NNUE" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Fabian Fichter"},"description":"Open Source Chess Variant Engine","headline":"Download NNUE","url":"/nnue/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- head scripts --></head>
+
+  <body>
+    <nav class="navbar is-primary  is-fixed-top " x-data="{ openNav: false }">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" class="navbar-item">
+                Fairy-Stockfish
+            </a>
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu" :class="{ 'is-active': openNav }" x-on:click="openNav = !openNav">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-menu" id="navMenu" :class="{ 'is-active': openNav }">
+            <div class="navbar-start">
+                <a href="/" class="navbar-item ">Home</a>
+                
+                
+                    
+                    <a href="/download/" class="navbar-item ">Download</a>
+                    
+                
+                    
+                    <div class="navbar-item has-dropdown is-hoverable ">
+                        <a href="/nnue/" class="navbar-link is-active">NNUE</a>
+                        <div class="navbar-dropdown">
+                            
+                            <a href="/about-nnue/" class="navbar-item ">About NNUE</a>
+                            
+                            <a href="/nnue/" class="navbar-item is-active">Download NNUE</a>
+                            
+                        </div>
+                    </div>
+                    
+                
+                    
+                    <div class="navbar-item has-dropdown is-hoverable ">
+                        <a href="/variants/" class="navbar-link ">Variants</a>
+                        <div class="navbar-dropdown">
+                            
+                            <a href="/variants/" class="navbar-item ">Built-in variants</a>
+                            
+                            <a href="/custom-variants/" class="navbar-item ">Custom variants</a>
+                            
+                        </div>
+                    </div>
+                    
+                
+                    
+                    <div class="navbar-item has-dropdown is-hoverable ">
+                        <a href="/gui/" class="navbar-link ">GUIs</a>
+                        <div class="navbar-dropdown">
+                            
+                            <a href="/gui/" class="navbar-item ">Offline</a>
+                            
+                            <a href="/online/" class="navbar-item ">Online</a>
+                            
+                        </div>
+                    </div>
+                    
+                
+                    
+                    <a href="/get-involved/" class="navbar-item ">Get Involved</a>
+                    
+                
+                    
+                    <a href="/blog/" class="navbar-item ">Blog</a>
+                    
+                
+                    
+                    <a href="/about/" class="navbar-item ">About</a>
+                    
+                
+                
+            </div>
+
+            <div class="navbar-end">
+                
+                <a class="navbar-item" href="https://github.com/sponsors/ianfab">
+                    <span class="icon gh-sponsor"><i class="fas fa-heart"></i></span>
+                    <span>Sponsor</span>
+                </a>
+                
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+    
+        <section class="hero  is-fullwidth  is-bold is-primary"  style="background: url('/assets/images/blue_board.svg') no-repeat left center; background-size: cover;" >
+    <div class="hero-body "  style="background: url('/assets/images/fairyfish2_nobg_hq_small.png') no-repeat right bottom; background-size: contain;" >
+        <div class="container">
+            <h1 class="title is-2">Download NNUE</h1>
+            <p class="subtitle is-3"></p>
+            
+            
+        </div>
+    </div>
+</section>
+
+    
+    
+
+
+    <section class="section">
+        <div class="container">
+            <div class="columns is-multiline">
+                
+                <div class="column is-12">
+                    
+                    
+
+                    
+                    
+                    
+<div class="content">
+    <p>By default Fairy-Stockfish uses a handcrafted evaluation function in order to evaluate chess variant positions. Variant-specific NNUE (efficiently updatable neural network) evaluation files can be used to improve playing strength compared to the handcrafted evaluation. If you want to learn more about NNUE, see the <a href="/about-nnue/">NNUE introduction</a>, otherwise see the downloads below.</p>
+
+<h3 id="current-best-nnue-networks">Current best NNUE networks</h3>
+
+<p>This is an alphabetical list of current best variant NNUE networks available at <a href="https://drive.google.com/drive/folders/1m5PpiI3Kjzk_ow7F5RkwKnbO0Td-qb9J?usp=sharing">this google drive folder</a> that are compatible with the latest Fairy-Stockfish release and development version. The listed Elo difference is the improvement of the respective NNUE network over the built-in handcrafted/classical evaluation function, i.e., the one that is used when not loading an NNUE file.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>variant</th>
+      <th>network</th>
+      <th>Elo vs. classical</th>
+      <th>date</th>
+      <th>author</th>
+      <th>comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3check</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1z5oUQbqiE0ZIoQ8Z64y2lF91Rz1rUoWP&amp;export=download">3check-cb5f517c228b.nnue</a></td>
+      <td>+200</td>
+      <td>2024/09/18</td>
+      <td>nishibuya in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>5check</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Compatible with 3check networks</td>
+    </tr>
+    <tr>
+      <td>active</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=10hbC8MNAvWWX8GJOhXiOkmqVX5XM-hSa&amp;export=download">active-41937adf950a.nnue</a></td>
+      <td>+273</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>ai-wok</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1x0Yk__LJEU91D0kjyCmdJc0qcf_nYDYU&amp;export=download">ai-wok-530fdd028e59.nnue</a></td>
+      <td>+352</td>
+      <td>2022/04/15</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>ajax-orthodox</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1ESSYMP5IjBV980_KLSK3rR4tUsOt_NBs&amp;export=download">ajax-orthodox-8755d3f59603.nnue</a></td>
+      <td>+113</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>alapo</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1Ggp5wAfRpoGLSac__snd_mzSRW6pZ9up&amp;export=download">alapo-d77bda8b533d.nnue</a></td>
+      <td>+559</td>
+      <td>2023/09/04</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>allwayspawns</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1qiwQL2lOVqbgTIsqjcePr5ixGJgMxiPL&amp;export=download">allwayspawns-14b62a6ed6ab.nnue</a></td>
+      <td>+804</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>almost</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1icb5PxWDOtz4wQ1LCCXBPfn1lA2Hgp-5&amp;export=download">almost-39e5d547319b.nnue</a></td>
+      <td>+120</td>
+      <td>2022/04/24</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>amazon</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1lY_V49wnvDQUrS_dRzLaNdmuhCNPbe2K&amp;export=download">amazon-f87549144bf8.nnue</a></td>
+      <td>+138</td>
+      <td>2022/04/24</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>anti-losalamos</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=17qJg1YXf02pYKT47VqYZ5v0zq3hCDter&amp;export=download">anti-losalamos-dc7f04e74c1d.nnue</a></td>
+      <td>+7</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>antiantichess</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=14yzPGY93Ci5e2ptOiumN2X5dSQa3lD7I&amp;export=download">antiantichess-bf153de922a8.nnue</a></td>
+      <td>+1309</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>antiatomic</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1G62LG5j88GsnNKLqaCaPbVNXrUUywbAn&amp;export=download">antiatomic-b2484472d286.nnue</a></td>
+      <td>+812</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>antichess</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1a6j61utWpCTADQ8k6BBqYMcKjJ5ESdbl&amp;export=download">antichess-dd3cbe53cd4e.nnue</a></td>
+      <td>+200</td>
+      <td>2024/09/17</td>
+      <td>Fabian Fichter</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>antihouse</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1Dfgvp6M4D55aLL1vD8Oeps7jAG_CeQ36&amp;export=download">antihouse-66adada8e7bb.nnue</a></td>
+      <td>+382</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>antimak</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1_FHCLhl_4g6fgjzecGydQMQhrdG8VELV&amp;export=download">antimak-c3fc2452a2eb.nnue</a></td>
+      <td>+55</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>asean</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=123GKcbRkAEdOSi6q6tg-qYTuv1dIwEue&amp;export=download">asean-47ebb2f6be7b.nnue</a></td>
+      <td>+505</td>
+      <td>2022/09/12</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>ataxx</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1RxG06786uZYuY7wCQ6AX5xM4M8SS90p9&amp;export=download">ataxx-e631fe1b1b6d.nnue</a></td>
+      <td>+202</td>
+      <td>2022/05/30</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>atomar</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1ieWTXzdOYHsBWPVdl6_ZFwhsieLyhYgV&amp;export=download">atomar-31ef8e2fb4b6.nnue</a></td>
+      <td>+407</td>
+      <td>2023/08/28</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>atomic</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1bC7T3iDft8Kbuxlu3Vm2fERxk7cOSoDy&amp;export=download">atomic-2cf13ff256cc.nnue</a></td>
+      <td>+719</td>
+      <td>2022/08/24</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>atomicduck</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1z1nR7OxDk9ARPcKj8Jth4SdPpVVJoHHA&amp;export=download">atomicduck-ae91b2797135.nnue</a></td>
+      <td>+419</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>atomic-giveaway</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1igPqGVwnWK2XXXEEI8dMGmWbAb5e33XO&amp;export=download">atomic-giveaway-cc0bb95265b4.nnue</a></td>
+      <td>+478</td>
+      <td>2025/09/23</td>
+      <td>Fabian Fichter</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>backrank</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1xF02gcBh7OJLiAy4apUXdNfgmswsl_7H&amp;export=download">backrank-db95f88c50c9.nnue</a></td>
+      <td>+1165</td>
+      <td>2022/05/03</td>
+      <td>belzedar_ in discord</td>
+      <td><a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Variant-configuration#backrank">Custom defined variant</a></td>
+    </tr>
+    <tr>
+      <td>berolina</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1lEq4igofllbj1DbfHAy5RM1sn2lUhGaX&amp;export=download">berolina-b7130416b32e.nnue</a></td>
+      <td>+1069</td>
+      <td>2023/04/02</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>blackletter</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1GoXZrl8XDwJjQZLCpn9fLWx-PLXD4m7i&amp;export=download">blackletter-ec42c02c7ebf.nnue</a></td>
+      <td>+726</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>breakthrough</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1n78zlt3UqWcn-X9Av6-iW8Ld1AreaKqm&amp;export=download">breakthrough-b0305d859ae9.nnue</a></td>
+      <td>+1522</td>
+      <td>2022/05/27</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>breakthrough6</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1i1yrvaEApCC_ymcOb8FWnXJeFf5uD4Uu&amp;export=download">breakthrough6-c20c60a05bfd.nnue</a></td>
+      <td>+355</td>
+      <td>2022/04/24</td>
+      <td>mtaktikos#8757</td>
+      <td><a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Variant-configuration#6x6-breakthrough">6x6 version of Breakthrough</a></td>
+    </tr>
+    <tr>
+      <td>breakthrough7</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1zTFMBrM_zrZNBiGHdg7y3hBqA1s6QMN2&amp;export=download">breakthrough7-814165729d80.nnue</a></td>
+      <td>+604</td>
+      <td>2022/04/24</td>
+      <td>mtaktikos#8757</td>
+      <td><a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Variant-configuration#7x7-breakthrough">7x7 version of Breakthrough</a></td>
+    </tr>
+    <tr>
+      <td>buffalo</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1nPmdTyC5Qqqm0mnaKMitu-yNeAcxeOfd&amp;export=download">buffalo-cfb43daa99e2.nnue</a></td>
+      <td>+493</td>
+      <td>2023/05/04</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>bughouse</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1qZVSzm5G_KRc33YCqmsPM6Ayxo3CI4ME&amp;export=download">bughouse-cd8cceab93fe.nnue</a></td>
+      <td>+403</td>
+      <td>2023/01/24</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>cambodian</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Compatible with makruk networks</td>
+    </tr>
+    <tr>
+      <td>cannonshogi</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1cs3_NXD75SzJDBRzNQoF_TFpOhjpx_kc&amp;export=download">cannonshogi-b9b7fc49f641.nnue</a></td>
+      <td>+400</td>
+      <td>2024/03/24</td>
+      <td>autocorr in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>capablanca</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1FbTMVSE8MA_0hrTTcTm5edYXTH8PItHR&amp;export=download">capablanca-bb644ef32758.nnue</a></td>
+      <td>+354</td>
+      <td>2022/05/10</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>capahouse</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1J1iLiDppvfE-5jGxUSitwFRsEsj4jYvI&amp;export=download">capahouse-727f2d6c8654.nnue</a></td>
+      <td>+484</td>
+      <td>2023/01/24</td>
+      <td>belzedar_ in discord</td>
+      <td>Capablanca + Crazyhouse</td>
+    </tr>
+    <tr>
+      <td>caparandom</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Compatible with capablanca networks</td>
+    </tr>
+    <tr>
+      <td>capture</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1DxWtldVM0TSniPAKzlhAMGYHuZSqpYH7&amp;export=download">capture-d1dc2e97a3d8.nnue</a></td>
+      <td>+603</td>
+      <td>2022/07/29</td>
+      <td>belzedar_ in discord</td>
+      <td><a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Variant-configuration#capture-chess">Custom defined variant</a></td>
+    </tr>
+    <tr>
+      <td>captureall</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1hOmgBNrByjXndmgCAA_48_AKwdoeDAHK&amp;export=download">captureall-319f16ac33aa.nnue</a></td>
+      <td>+154</td>
+      <td>2022/04/24</td>
+      <td>belzedar_ in discord</td>
+      <td><a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Variant-configuration#capture-all">Custom defined variant</a></td>
+    </tr>
+    <tr>
+      <td>capturethequeen</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=12DMB8tZgttNNarvno8X96Cm4v7w6Zphz&amp;export=download">capturethequeen-f37e2a20b279.nnue</a></td>
+      <td>+182</td>
+      <td>2023/09/04</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>castle</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1PKh3V93NgLy9Ek8W9orKkLSGrGbzU0uy&amp;export=download">castle-6f8f06963acb.nnue</a></td>
+      <td>+264</td>
+      <td>2023/09/19</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>caught-in-a-snag</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1Tomv61uh5ujDjDitJPPrsexW_8yCwUbC&amp;export=download">caught-in-a-snag-5a34075cdce3.nnue</a></td>
+      <td>+1058</td>
+      <td>2023/09/19</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>chak</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1E5JTwSNBOEKvFQyUg4PKl8fCvw94fWpd&amp;export=download">chak-068cc47e57f2.nnue</a></td>
+      <td>+2062</td>
+      <td>2022/08/23</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>chaturanga</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1kqqsa-sY-Azrqe0pFMPNPN2ztIYpg0OA&amp;export=download">chaturanga-1889e98f8d54.nnue</a></td>
+      <td>+156</td>
+      <td>2022/04/20</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>checkmateless</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=128mxvT10mjNsafggVYL2EyTrQOLLXCv6&amp;export=download">checkmateless-e0e30dd72801.nnue</a></td>
+      <td>+735</td>
+      <td>2022/06/03</td>
+      <td>belzedar_ in discord</td>
+      <td><a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Variant-configuration#checkmateless-chess">Custom defined variant</a></td>
+    </tr>
+    <tr>
+      <td>checkshogi</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=182JxVnEY0q_bUybwtEbMEWRJwNjJUx0f&amp;export=download">checkshogi-63b3bd1987bd.nnue</a></td>
+      <td>+700</td>
+      <td>2024/09/10</td>
+      <td>Fabian Fichter</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>chennis</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1Ybv8Y8xqMJUkgIDjsGibEzNtdp8p_rkM&amp;export=download">chennis-a800b7f12a4e.nnue</a></td>
+      <td>+471</td>
+      <td>2022/07/21</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>chess</td>
+      <td><a href="https://tests.stockfishchess.org/api/nn/nn-46832cfbead3.nnue">nn-46832cfbead3.nnue</a></td>
+      <td>+300</td>
+      <td> </td>
+      <td> </td>
+      <td>Net from official SF</td>
+    </tr>
+    <tr>
+      <td>chessgi</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Compatible with crazyhouse networks</td>
+    </tr>
+    <tr>
+      <td>chessvshp</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1QoOw0_KTNt1p2J0KaTDAK741od_H_uwK&amp;export=download">chessvshp-ab6490858f72.nnue</a></td>
+      <td>+174</td>
+      <td>2022/05/27</td>
+      <td>belzedar_ in discord</td>
+      <td><a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Variant-configuration#chess-vs-hoppel-poppel">Custom defined variant</a></td>
+    </tr>
+    <tr>
+      <td>chigorin</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1gSMdaXpe8vv8HkN0Qc6EW1NGrBLXHLIe&amp;export=download">chigorin-f17ca2b80015.nnue</a></td>
+      <td>+104</td>
+      <td>2025/09/23</td>
+      <td>Fabian Fichter</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>clobber</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=11X7EXpcdAx_FUQh--jPaqNCT5jMGxhT0&amp;export=download">clobber-7b4cb431501a.nnue</a></td>
+      <td>+246</td>
+      <td>2025/09/11</td>
+      <td>Fabian Fichter</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>clobber10</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1YTRE-dYhRkDaGKCfzFJDjWXgxq-7DQot&amp;export=download">clobber10-331c3272f048.nnue</a></td>
+      <td>+173</td>
+      <td>2025/09/12</td>
+      <td>Fabian Fichter</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>codrus</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1zu3cTovsSJAjB7uQBc6MDAYzZO0rfeuv&amp;export=download">codrus-b3e612313a2f.nnue</a></td>
+      <td>+90</td>
+      <td>2025/09/22</td>
+      <td>Fabian Fichter</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>coffeehouse</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1DU8lI6V5kC_CKPUIgZSjNiq0ij6MnilK&amp;export=download">coffeehouse-382a268a1ce4.nnue</a></td>
+      <td>+345</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>coffeethreecheck</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=145v9OgzN2uPgsDU_WJokwzkwkSU36uBQ&amp;export=download">coffeethreecheck-8701c021f6e4.nnue</a></td>
+      <td>+62</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>coregal</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1n0NMAj18LLVVB53hn19XPmc07d8a6aPR&amp;export=download">coregal-ad18884bdd3d.nnue</a></td>
+      <td>+265</td>
+      <td>2022/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>courier</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1fL4VOp1n8RH-S3xU63rYbVCgo-oJ-XCm&amp;export=download">courier-dd4bd1b77c17.nnue</a></td>
+      <td>+756</td>
+      <td>2022/09/09</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>crazyhouse</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1nieguR4yCb0BlME-AUhcrFYkmyIOGvqs&amp;export=download">crazyhouse-8ebf84784ad2.nnue</a></td>
+      <td>+1136</td>
+      <td>2022/09/05</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>crossderby</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1O__7xgCG-JguxMyE_hp-9VzaV_4N4SQu&amp;export=download">crossderby-41174b43b913.nnue</a></td>
+      <td>+1186</td>
+      <td>2023/04/11</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>crossing</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1nenleVt6iuwLV-BNCcMRGY9YPo286X6O&amp;export=download">crossing-796ff991bbb5.nnue</a></td>
+      <td>+571</td>
+      <td>2022/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td><a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Variant-configuration#crossing">Custom defined variant</a></td>
+    </tr>
+    <tr>
+      <td>crusade</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1eXM2Yn-1xYDkBveMvH078TrPpPElMRkm&amp;export=download">crusade-d3410e9d8190.nnue</a></td>
+      <td>+947</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>dobutsu</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=114WfouTyr05gbvraeqzRpg5axwQu77A6&amp;export=download">dobutsu-9b0989c28462.nnue</a></td>
+      <td>+30</td>
+      <td>2024/09/17</td>
+      <td>Fabian Fichter</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>doublearmy</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1oLMMqAYPYyFVBbdnpwmACEuJcncdHEUh&amp;export=download">doublearmy-ec096e17b49b.nnue</a></td>
+      <td>+392</td>
+      <td>2022/08/01</td>
+      <td>belzedar_ in discord</td>
+      <td><a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Variant-configuration#double-army">Custom defined variant</a></td>
+    </tr>
+    <tr>
+      <td>dragon</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1o1ikZ08AKFiu7Gc2hsDA2kxhVI8VUX_e&amp;export=download">dragon-38de1d1ced8a.nnue</a></td>
+      <td>+139</td>
+      <td>2022/09/12</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>dragon-chess</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1ZrxEmFD4j13j6okp0gCYhx6HBJokLmOT&amp;export=download">dragon-chess-ca99c8d3853b.nnue</a></td>
+      <td>+367</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>dragonfly</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1qaFibACiHYaM9ExdqAr-Y_RGb6HI5zoC&amp;export=download">dragonfly-f810e661ca8b.nnue</a></td>
+      <td>+424</td>
+      <td>2022/04/12</td>
+      <td>belzedar_ in discord</td>
+      <td><a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Variant-configuration#dragonfly-chess">Custom defined variant</a></td>
+    </tr>
+    <tr>
+      <td>duck</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=18OCEAX2BiioIlW4Eg-YrJxbrujfMUCm7&amp;export=download">duck-ba21f91f5d81.nnue</a></td>
+      <td>+468</td>
+      <td>2023/01/24</td>
+      <td>Mtaktikos#8757 &amp; belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>elimination</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1DW8OI50EEqGCbZUI7J6x6KxbHgkohC0c&amp;export=download">elimination-1c109379396c.nnue</a></td>
+      <td>+1303</td>
+      <td>2023/04/21</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>embassy</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Compatible with capablanca networks</td>
+    </tr>
+    <tr>
+      <td>empire</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=17CvRd9jxeZ21uop8DHhtHnw08hbz-sBI&amp;export=download">empire-751feb44316d.nnue</a></td>
+      <td>+635</td>
+      <td>2022/05/24</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>euroshogi</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1YUVgQ_hhtld9SamUnv2dW8nG6iGiyVMW&amp;export=download">euroshogi-bf3218dec3c8.nnue</a></td>
+      <td>+601</td>
+      <td>2022/07/23</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>extinction</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1a4a45Q4V4sXHPJz0pe0r-kAqAmqzDvJr&amp;export=download">extinction-4c75a5e2850a.nnue</a></td>
+      <td>+699</td>
+      <td>2024/09/10</td>
+      <td>nishibuya in discord</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1CSaOnPi0Gfo3t9GqC1XTLoXHBG_G8wvK&amp;export=download">14.0 version +863 by belzedar_</a></td>
+    </tr>
+    <tr>
+      <td>fischerandom</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Compatible with chess (<code class="language-plaintext highlighter-rouge">nn-...</code>) networks</td>
+    </tr>
+    <tr>
+      <td>flipello</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1elo97JNczmeQSyK_YMxw3xmOD9_fWP-C&amp;export=download">flipello-aed1bd5d741b.nnue</a></td>
+      <td>+354</td>
+      <td>2022/06/10</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>forward</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1llOHXGNpeQUa-6ccyU3GJK8ZuXqZbw8F&amp;export=download">forward-656da5c89014.nnue</a></td>
+      <td>+870</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>gethenian</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1tPW4lF9GJPs3EbZirv73VJYbnkZvnLWQ&amp;export=download">gethenian-04577cdae549.nnue</a></td>
+      <td>+293</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>giveaway</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Compatible with antichess networks</td>
+    </tr>
+    <tr>
+      <td>gorogoroplus</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1-k87I3fKHrpfbZwEgqDzYVlZivL4emcE&amp;export=download">gorogoroplus-7bc64726c1c1.nnue</a></td>
+      <td>+230</td>
+      <td>2022/04/15</td>
+      <td>belzedar_ in discord</td>
+      <td><a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Variant-configuration#goro-goro-plus">Custom defined variant</a></td>
+    </tr>
+    <tr>
+      <td>gothic</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Compatible with capablanca networks</td>
+    </tr>
+    <tr>
+      <td>grand</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1Q84y9M93IQG3GUr-ibY8NGjJSEnpV3zy&amp;export=download">grand-9e13c7b0ed97.nnue</a></td>
+      <td>+390</td>
+      <td>2022/05/17</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>grandhouse</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1f9_y4atKvoyj18ofsmutN6bF3uuyEAjq&amp;export=download">grandhouse-dd70cad78bc1.nnue</a></td>
+      <td>+760</td>
+      <td>2023/08/28</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>grasshopper</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1dE7NiNapQ8T3-D4kaak-LxqIjXUWRcaa&amp;export=download">grasshopper-2bb252371adf.nnue</a></td>
+      <td>+2574</td>
+      <td>2022/06/13</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>gustav3</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1ByHVgVRGRUOln7ddHuesGqv-GiNdfHMr&amp;export=download">gustav3-66e1afdd3bfc.nnue</a></td>
+      <td>+408</td>
+      <td>2023/02/03</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>hoppelpoppel</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1k0rWMdzh4KL2jdrMcmkV7H4rgaFT-ggU&amp;export=download">hoppelpoppel-b4f82c3d6e25.nnue</a></td>
+      <td>+444</td>
+      <td>2022/08/05</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>horde</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=16BQztGqFIS1n_dYtmdfFVE2EexF-KagX&amp;export=download">horde-28173ddccabe.nnue</a></td>
+      <td>+490</td>
+      <td> </td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>isolation</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1lXXhjTJnxTv4PWCSpjzr-0YdXoATsT14&amp;export=download">isolation-e89caf35dd7a.nnue</a></td>
+      <td>+1040</td>
+      <td>2023/02/03</td>
+      <td>Mtaktikos#8757 &amp; belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>janggi</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1dAEzbK1rOm8UGm_-CLdDEgeopFDcAtQP&amp;export=download">janggi-9991472750de.nnue</a></td>
+      <td>+1128</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td>also available as <a href="https://github.com/fairy-stockfish/Fairy-Stockfish-NNUE/releases/tag/janggi-9991472750de">release with built-in NNUE</a></td>
+    </tr>
+    <tr>
+      <td>janggicasual</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Compatible with janggi networks</td>
+    </tr>
+    <tr>
+      <td>janggimodern</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Compatible with janggi networks</td>
+    </tr>
+    <tr>
+      <td>janggitraditional</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Compatible with janggi networks</td>
+    </tr>
+    <tr>
+      <td>jesonmor</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1aYmDWcIG9xmlHKTM6WMI8IKmOSF1hYO6&amp;export=download">jesonmor-4211b8d73412.nnue</a></td>
+      <td>+100</td>
+      <td>2022/08/08</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>judkins</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1GRsNc1rhes1y7KVHOPrNcj9EVKidugGM&amp;export=download">judkins-7af07e4338cb.nnue</a></td>
+      <td>+70</td>
+      <td>2024/03/29</td>
+      <td>autocorr in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>kamikazerooks</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1pohX_24grssrnp1zHjKgWRQAEOWNuzOD&amp;export=download">kamikazerooks-bd2283cb720a.nnue</a></td>
+      <td>+1570</td>
+      <td>2022/05/02</td>
+      <td>belzedar_ in discord</td>
+      <td><a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Variant-configuration#kamikaze-rooks">Custom defined variant</a></td>
+    </tr>
+    <tr>
+      <td>karouk</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1SIbElgATJE_2xUvt6iJN-Xm7lN7pDzsU&amp;export=download">karouk-b32b2113c722.nnue</a></td>
+      <td>+349</td>
+      <td>2022/04/15</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>khans</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1YMkEeisAq3Fms_cIjnkZWvxW7XrYxeQj&amp;export=download">khans-466a7f4a78f8.nnue</a></td>
+      <td>+510</td>
+      <td>2024/03/25</td>
+      <td>autocorr in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>kinglet</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1GjWdEKcl1gJbXslZF4i14HauwSlZt6qa&amp;export=download">kinglet-05fb6b8b928e.nnue</a></td>
+      <td>+1007</td>
+      <td>2022/09/15</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>kingofthehill</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1x25r_1PgB5XqttkfR494M4rseiIm0BAV&amp;export=download">kingofthehill-978b86d0e6a4.nnue</a></td>
+      <td>+644</td>
+      <td>2022/04/19</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>knightmate</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1Z3fAjS5Ea7bzCzUYgsp8Fox-wjZDl3kN&amp;export=download">knightmate-cd61f8401526.nnue</a></td>
+      <td>+488</td>
+      <td>2022/07/26</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>kyotoshogi</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1vj829y8S_MHJF3YPuJ28O_2o7oSU_yaz&amp;export=download">kyotoshogi-bd1003a29d89.nnue</a></td>
+      <td>+127</td>
+      <td>2022/05/24</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>la-mancha-squeez</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1Q3Wju7-I4EMhaw-CzgGGDugO2hAIlLhO&amp;export=download">la-mancha-squeez-15935698fea8.nnue</a></td>
+      <td>+565</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>legan</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=18fozU8LfNP-5LCbBlMv13UN8iC7ww20h&amp;export=download">legan-70f73b6fda50.nnue</a></td>
+      <td>+576</td>
+      <td>2023/04/24</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>losalamos</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1qeCQINcVbJkXn7eEbHuFKXdpVL-qpzMY&amp;export=download">losalamos-4bee7c4fb6d3.nnue</a></td>
+      <td>+84</td>
+      <td>2022/08/08</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>losers</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1DgqWen6CkkU6kdyRt4cGfNrUOkP02Bzk&amp;export=download">losers-3ea1d7d4a61f.nnue</a></td>
+      <td>+368</td>
+      <td>2022/09/19</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>loop</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Compatible with crazyhouse networks</td>
+    </tr>
+    <tr>
+      <td>mak3check</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=16R_VjNILIgwwEgSCoEeO5ULquQaXQukK&amp;export=download">mak3check-dc48bc89fa8a.nnue</a></td>
+      <td>+55</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>makhill</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1_JYYudxs9l3JvBEEgivCRPcjXawR-pKd&amp;export=download">makhill-c5654a148675.nnue</a></td>
+      <td>+426</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>makpong</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1iIbHaTLDvJLF2HGMEkXs4b_mi2ajqJUU&amp;export=download">makpong-eae03bc9dbf8.nnue</a></td>
+      <td>+931</td>
+      <td>2022/04/28</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>makruk</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1jOhdVe1VBZjBaPWO2IYR1_iscyMA0ylW&amp;export=download">makruk-a8c621e24a8c.nnue</a></td>
+      <td>+248</td>
+      <td>2022/09/19</td>
+      <td>belzedar_ in discord</td>
+      <td>also available as <a href="https://github.com/fairy-stockfish/Fairy-Stockfish-NNUE/releases/tag/makruk-a8c621e24a8c">release with built-in NNUE</a></td>
+    </tr>
+    <tr>
+      <td>makrukhouse</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1C0e8hhhbNzYs1epvKozKOO063wtCdvWI&amp;export=download">makrukhouse-3b28cf864f23.nnue</a></td>
+      <td>+600</td>
+      <td>2022/09/19</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>maktomic</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=12vGahyxo1nPNw4iCGnvCmOyjYlREUGNF&amp;export=download">maktomic-49caa011bef4.nnue</a></td>
+      <td>+77</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>manchu</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1_Mym0W84WXliuRBD2m0sFx3BFat4-5a6&amp;export=download">manchu-5a3a9e80c0eb.nnue</a></td>
+      <td>+437</td>
+      <td>2025/09/27</td>
+      <td>Fabian Fichter</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>mansindam</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1Q_H1rh-1gaYoT1nE7C16FzVm3abJIggl&amp;export=download">mansindam-dc396c59a74b.nnue</a></td>
+      <td>+441</td>
+      <td>2023/04/21</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>massacre</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1u1cPi0ffvNe06IPWzQ6vC6DOZJIk88Sq&amp;export=download">massacre-06c1f5400bba.nnue</a></td>
+      <td>+284</td>
+      <td>2022/04/18</td>
+      <td>mtaktikos#8757</td>
+      <td><a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Variant-configuration#massacre-chess">Custom defined variant</a></td>
+    </tr>
+    <tr>
+      <td>minihouse</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=19gz3KKtbZuIJfvnWFS99GLamzXW1Pk9N&amp;export=download">minihouse-d415b4dbfe2c.nnue</a></td>
+      <td>+176</td>
+      <td>2023/09/19</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>minishogi</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1JEKzbNfLfq47y7lM9uNqCkGqeRrvfFhh&amp;export=download">minishogi-a8c76af35580.nnue</a></td>
+      <td>+147</td>
+      <td>2023/07/03</td>
+      <td>autocorr &amp; belzedar_ in discord</td>
+      <td>1st place in <a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Tournament-results#14th-uec-cup-minishogi-2022">14th UEC cup</a></td>
+    </tr>
+    <tr>
+      <td>minixiangqi</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1olNzEqMDtqLC7lnt7Rsst39ar1tzsv86&amp;export=download">minixiangqi-12c45d5da817.nnue</a></td>
+      <td>+604</td>
+      <td>2022/04/26</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>misere</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=169eSjDw_Q-9YplVyDZMCqOFyzy8y2rvN&amp;export=download">misere-c488fb592f7b.nnue</a></td>
+      <td>+9</td>
+      <td>2022/06/26</td>
+      <td>belzedar_ in discord</td>
+      <td><a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Variant-configuration#misere-chess">Custom defined variant</a></td>
+    </tr>
+    <tr>
+      <td>mounted</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1xjLRsSP0io5yaXS8yY9oANML7o4wA-Ut&amp;export=download">mounted-7a5dfe301eaf.nnue</a></td>
+      <td>+297</td>
+      <td>2022/04/15</td>
+      <td>belzedar_ in discord</td>
+      <td><a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Variant-configuration#mounted">Custom defined variant</a></td>
+    </tr>
+    <tr>
+      <td>newzealand</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=11TC1irKBewo25nbqpX2o0tdgQuyrWjMx&amp;export=download">newzealand-464a42989876.nnue</a></td>
+      <td>+359</td>
+      <td>2022/09/20</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>nightrider</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1YEEuEjhzCBEXMw0NPgNxWak7q_35OKSZ&amp;export=download">nightrider-5086efb80097.nnue</a></td>
+      <td>+420</td>
+      <td>2022/06/26</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>nocheckatomic</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Compatible with atomic networks</td>
+    </tr>
+    <tr>
+      <td>normal</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Compatible with chess (<code class="language-plaintext highlighter-rouge">nn-...</code>) networks</td>
+    </tr>
+    <tr>
+      <td>nuclear</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1SxWxugvlOiw_Fz2gQ-XywGp6QO3zXTpw&amp;export=download">nuclear-1c14657d0d4f.nnue</a></td>
+      <td>+156</td>
+      <td>2023/09/04</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>omicron</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=15jyKkfyyCzedwc0qZTjeJgdSiGHiId9Z&amp;export=download">omicron-01e515951a2d.nnue</a></td>
+      <td>+338</td>
+      <td>2023/02/03</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>orda</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1jqvVVfxLBklECx14N6aLPnMVf5CZ8iXI&amp;export=download">orda-ac0af819f3a3.nnue</a></td>
+      <td>+815</td>
+      <td>2022/09/23</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>ordamirror</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1Fn1D5bUvgig0kj3xN_T20xKA9aauKQQ0&amp;export=download">ordamirror-b432a42e3738.nnue</a></td>
+      <td>+473</td>
+      <td> </td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>pawnback</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1y-S_us8RRxBf09I_NB5ErutZ5IdXGQ6o&amp;export=download">pawnback-856713dd34cc.nnue</a></td>
+      <td>+637</td>
+      <td>2023/04/14</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>pawnsideways</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1AvP9VBjZbU02AEcOCqeAy3hJ-Ye3jCt3&amp;export=download">pawnsideways-68b37e5c25b0.nnue</a></td>
+      <td>+1021</td>
+      <td>2023/04/07</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>pawnsking</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1bSHkRswM6l--oUYA7J48znUsQNO0dZlA&amp;export=download">pawnsking-3ff6ca784355.nnue</a></td>
+      <td>+786</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>perfect</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1-GYa8EBCaHbYWlaUSVJWzH6nKjeBDZmW&amp;export=download">perfect-2f1fa62897b6.nnue</a></td>
+      <td>+371</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>petrified</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1AQvihbxa30tQmUxX_0DDWci7AzoAyeja&amp;export=download">petrified-fa7e5810f172.nnue</a></td>
+      <td>+1029</td>
+      <td>2023/09/19</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>placement</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Compatible with chess (<code class="language-plaintext highlighter-rouge">nn-...</code>) networks</td>
+    </tr>
+    <tr>
+      <td>racingchess</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1_bm2ZzDBWaCToXyrDhFDyAQ7xvXQPhZw&amp;export=download">racingchess-2d84b5d38001.nnue</a></td>
+      <td>+492</td>
+      <td>2022/04/12</td>
+      <td>belzedar_ in discord</td>
+      <td><a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Variant-configuration#racing-chess">Custom defined variant</a></td>
+    </tr>
+    <tr>
+      <td>racingkings</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1Tiq8FqSu7eiekE2iaWQzSdJPg-mhvLzJ&amp;export=download">racingkings-636b95f085e3.nnue</a></td>
+      <td>+374</td>
+      <td>2022/06/13</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>rookmate</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1EClau9_R2Z7W2SyM1iGmXr2dWHcZWGlx&amp;export=download">rookmate-628a294ef446.nnue</a></td>
+      <td>+634</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>seirawan</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1vZfLrkKdO1Sdo__jRPpuvrvvQD_mYsZX&amp;export=download">seirawan-432c65fe71fc.nnue</a></td>
+      <td>+359</td>
+      <td>2022/05/24</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>shaolinking</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1Wny8-rirEPar2F2KCXOXyxLmH0gSFSnc&amp;export=download">shaolinking-ad85d8c73ff6.nnue</a></td>
+      <td>+500</td>
+      <td>2024/08/30</td>
+      <td>nishibuya in discord</td>
+      <td><a href="https://github.com/autocorr/pychess-variants/blob/050cbca8a517c6ef50b1a6953e2a231adb06c7ed/variants.ini#L677">Custom defined variant</a></td>
+    </tr>
+    <tr>
+      <td>shako</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1WbV0E5ruRpNQfmLm6m-ue8iP9wb8MZLD&amp;export=download">shako-132828f9a311.nnue</a></td>
+      <td>+355</td>
+      <td>2022/06/26</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>shatar</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=10DF_Rj8DcGkYjtylbZ4VnHwj8slth0CU&amp;export=download">shatar-9798d8353f1e.nnue</a></td>
+      <td>+228</td>
+      <td>2022/04/20</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>shatranj</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1rexLnBvGkdJYqzhFGQZQ1T8LTbmx0PIV&amp;export=download">shatranj-2859a2411c29.nnue</a></td>
+      <td>+278</td>
+      <td>2024/09/17</td>
+      <td>Fabian Fichter</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>shinobi</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1Gvwkxs_aMP57RDYndxtwNpytyf4xHEAi&amp;export=download">shinobi-5136c71b83bf.nnue</a></td>
+      <td>+790</td>
+      <td>2022/05/10</td>
+      <td>belzedar_ in discord</td>
+      <td>Only compatible with Largeboards binary.</td>
+    </tr>
+    <tr>
+      <td>shinobiplus</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1L5gwtoWyJVJDSRLlqhqxxEmUD2JgqVCb&amp;export=download">shinobiplus-3f956bad5d14.nnue</a></td>
+      <td>+696</td>
+      <td>2023/06/07</td>
+      <td>GemOfLife#3419</td>
+      <td>Only compatible with Largeboards binary.</td>
+    </tr>
+    <tr>
+      <td>shogi</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1RA0mstKWi_tH98DVdLGBamEdE8FXiSgB&amp;export=download">shogi-878ca61334a7.nnue</a></td>
+      <td>&gt;+1000</td>
+      <td> </td>
+      <td>Fabian Fichter</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>shogun</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=185Z5IY6qE3Mssolj1lKK0cvPR6HZEwXJ&amp;export=download">shogun-52c778c11e79.nnue</a></td>
+      <td>+609</td>
+      <td>2022/05/10</td>
+      <td>belzedar_ in discord</td>
+      <td>Only compatible with Largeboards binary.</td>
+    </tr>
+    <tr>
+      <td>shouse</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1tG1seU2zmLKIlF8IkcAdkejY7aQ_Iad4&amp;export=download">shouse-a9ca0fc73863.nnue</a></td>
+      <td>+372</td>
+      <td>2022/04/18</td>
+      <td>belzedar_ in discord</td>
+      <td>Seirawan + Crazyhouse</td>
+    </tr>
+    <tr>
+      <td>shoshogi</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1PzOJ-8xSoUB1L8cMGdUGAQjFauOv1l1D&amp;export=download">shoshogi-38e67889f097.nnue</a></td>
+      <td>+800</td>
+      <td>2025/09/26</td>
+      <td>Fabian Fichter</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>sittuyin</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1eDRLpEZ53kJnycfvNVqdr6KIrPpeBUO1&amp;export=download">sittuyin-04ade227fe43.nnue</a></td>
+      <td>+202</td>
+      <td>2022/09/29</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>sixthrank</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1Wb4hX4OxHlSbBXSCKL06YVMt2ODnI1lu&amp;export=download">sixthrank-a4350d92b723.nnue</a></td>
+      <td>+420</td>
+      <td>2022/04/19</td>
+      <td>belzedar_ in discord</td>
+      <td><a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Variant-configuration#sixth-rank-chess">Custom defined variant</a></td>
+    </tr>
+    <tr>
+      <td>snailtrail</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1C3MdAvvn-5WxuJbDd0N6m7xjhnLYpoyp&amp;export=download">snailtrail-bab057618363.nnue</a></td>
+      <td>+445</td>
+      <td>2023/02/03</td>
+      <td>Mtaktikos#8757 &amp; belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>spartan</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1jgLPLnW0-reBFmS2oZJXTh-3loYTMLsd&amp;export=download">spartan-9dc484a393db.nnue</a></td>
+      <td>+1266</td>
+      <td>2023/03/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>squatter</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1PAZJ8ZYQmfkiZfJWLRSqtwWqirnKe5CD&amp;export=download">squatter-598de979f200.nnue</a></td>
+      <td>+1065</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>stardust</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1VFwp2OxmdGjgEJw2TrYLuDdzms7PP5Lb&amp;export=download">stardust-54dc7419ec9e.nnue</a></td>
+      <td>+460</td>
+      <td>2022/06/13</td>
+      <td>belzedar_ in discord</td>
+      <td><a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Variant-configuration#stardust">Custom defined variant</a></td>
+    </tr>
+    <tr>
+      <td>suicide</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Compatible with antichess networks</td>
+    </tr>
+    <tr>
+      <td>synochess</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1yt6KEx3goaPm3W_OTaUjEPpgJXqIg0A4&amp;export=download">synochess-33c625f8ad3e.nnue</a></td>
+      <td>+352</td>
+      <td>2022/04/22</td>
+      <td>Untitled_Entity#5718</td>
+      <td>Only compatible with Largeboards binary.</td>
+    </tr>
+    <tr>
+      <td>threekings</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1ulE-FrtedYmTabwOHhGx60ag1UbmC6lm&amp;export=download">threekings-c429a67a6578.nnue</a></td>
+      <td>+536</td>
+      <td>2022/09/26</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>torishogi</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1fMJi2IJqSpE4w3qnIdtE3bidBy4sfRc4&amp;export=download">torishogi-436578ceef5b.nnue</a></td>
+      <td>+834</td>
+      <td>2022/08/08</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>torpedo</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1GQHE3efeHFeu8OqQw98v6md17P_aOXpO&amp;export=download">torpedo-25da2c94c6cb.nnue</a></td>
+      <td>+339</td>
+      <td>2023/04/07</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>troitzky</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1LV9qDhkYbNu26anpX1oYNPJa1H_21Bvx&amp;export=download">troitzky-3afb0b22136c.nnue</a></td>
+      <td>+573</td>
+      <td>2023/05/04</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>twokings2</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1ES6d6zkOip--hjDqQxfvgX41W0CfS0Ay&amp;export=download">twokings2-7a85df6f13ff.nnue</a></td>
+      <td>+244</td>
+      <td>2022/04/20</td>
+      <td>belzedar_ in discord</td>
+      <td><a href="https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Variant-configuration#two-kings-2">Custom defined variant</a></td>
+    </tr>
+    <tr>
+      <td>whaleshogi</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1Fku88BNzmjJ0RfG058FdFJdwr7Ln5QVk&amp;export=download">whaleshogi-df305d40a63f.nnue</a></td>
+      <td>+147</td>
+      <td>2025/07/31</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>wolf</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1fL6lL45duRBGXTR4yFmIx_qvun0tSXn7&amp;export=download">wolf-b80c9ac0422f.nnue</a></td>
+      <td>+1827</td>
+      <td>2023/04/28</td>
+      <td>belzedar_ in discord</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>xiangfu</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1lUt1UlF2Le-1kD-UFzIKhYUuhlVkTLyG&amp;export=download">xiangfu-7afc0398f659.nnue</a></td>
+      <td>+1102</td>
+      <td>2025/10/28</td>
+      <td>gbtami</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>xiangqi</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=18-zDt7z4H9_IQVvcWIvndnKjC5LZhAfm&amp;export=download">xiangqi-c07e94a5c7cb.nnue</a></td>
+      <td>+914</td>
+      <td>2025/10/31</td>
+      <td>the Pikafish developers</td>
+      <td>also available as <a href="https://github.com/fairy-stockfish/Fairy-Stockfish-NNUE/releases/tag/xiangqi-c07e94a5c7cb">release with built-in NNUE</a></td>
+    </tr>
+    <tr>
+      <td>xiangqihouse</td>
+      <td><a href="https://drive.google.com/u/0/uc?id=1DkyasRcxpt9D5kE8MH4JsZGUDmaS6s44&amp;export=download">xiangqihouse-dc5b4560e41c.nnue</a></td>
+      <td>+535</td>
+      <td>2022/06/13</td>
+      <td>belzedar_ in discord</td>
+      <td>Xiangqi + Crazyhouse hybrid variant</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>When a variant is specified as compatible to networks of a different variant, such as cambodian-&gt;makruk, the NNUE network can simply be used with the current name, it does <strong>not</strong> need to be renamed. E.g., <code class="language-plaintext highlighter-rouge">makruk-....nnue</code> can be directly used for cambodian as well as makruk.</p>
+
+<p>All networks with a date in 2026 or later are published under CC0 license.</p>
+
+</div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+        <footer class="footer">
+    <div class="container">
+
+        
+
+        <div class="columns is-multiline is-centered">
+            <div class="column is-12">
+                <div class="has-text-centered">
+                    <div class="buttons is-centered">
+                        <a href="https://github.com/fairy-stockfish/Fairy-Stockfish" class="button is-light" target="_blank">
+                            <i class="fab fa-github fa-lg has-text-link"></i>
+                        </a>
+                        <a href="https://discord.gg/FYUGgmCFB4" class="button is-light" target="_blank">
+                            <i class="fab fa-discord fa-lg has-text-link"></i>
+                        </a>
+                    </div>
+
+                    <p class="">Theme available on <a href="https://github.com/ianfab/bulma-simple-theme">Github</a></p>
+                    <p>&copy; 2022<script>new Date().getFullYear()>2022&&document.write("-"+new Date().getFullYear());</script> Fabian Fichter</p>
+                    <p><a href="/impressum/">Impressum</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+    <script src="/assets/js/app.js" type="text/javascript"></script><!-- footer scripts --></body>
+</html>

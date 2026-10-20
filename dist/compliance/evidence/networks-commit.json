@@ -1,0 +1,97 @@
+{
+  "sha": "a238f8da2df269c28fec0e2bd2ca0ffd241f83fe",
+  "node_id": "C_kwDOJ35Xy9oAKGEyMzhmOGRhMmRmMjY5YzI4ZmVjMGUyYmQyY2EwZmZkMjQxZjgzZmU",
+  "commit": {
+    "author": {
+      "name": "PikaCat",
+      "email": "73384062+PikaCat-OuO@users.noreply.github.com",
+      "date": "2025-10-31T16:41:57Z"
+    },
+    "committer": {
+      "name": "PikaCat",
+      "email": "Pika-Cat@qq.com",
+      "date": "2025-11-01T02:43:00Z"
+    },
+    "message": "Enhance README with links and licensing details\n\nUpdated the README to include a link to the Fairy-stockfish repository and further clarified licensing information for nnue weights.",
+    "tree": {
+      "sha": "41d55360456e3fec8f0ae04c001d49aad063daf2",
+      "url": "https://api.github.com/repos/official-pikafish/Networks/git/trees/41d55360456e3fec8f0ae04c001d49aad063daf2"
+    },
+    "url": "https://api.github.com/repos/official-pikafish/Networks/git/commits/a238f8da2df269c28fec0e2bd2ca0ffd241f83fe",
+    "comment_count": 0,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAZcAAAAHc3NoLXJzYQAAAAMBAAEAAAGBANJ66WbXBv9TmgaXZBOF1W\nKTyGh2pTlEYvpA6t4W70obBs3FIawo/a/XkghNUECWwslmlxNFuhIiz5BSrrJud0T4bYWz\n58r8oDqMZSEWwWtCOZCzKAMGh/jUzTANoZr0+hppzafHCt9LR+sIPVX0PzDAQq3tU5vIqb\n0wImFjcnKY1/inOgX3+O2SULrZR76604rkU9rSCBvqLf/Sx3Gl6Lyc94ySuevJrTHNuOfZ\n4SGWYjVGwR0fcV8s4VlGj1R/WlLOUH2XYdEK9+LCea2cZRMxD1PDPB6R0/QMWQYGjzcaEm\nwhplT9l1DyxJxPecO5bVDbncW/BDzD5P/aGYC0uISK8JZxDo2C9c6kqJTKCRIgHnNSpeZH\n6rbhIs8cl2FLGOdh4LsEN6Ay9mw+3dmUCgO+2N/CeRjJKgo+9x01GCiiUZu3em0V1XYyfM\nwlfP0HMuWTvu1Mfrx78jm5I2qvio1A90ChWNLx2+whR+LpVtKsWhxb5X0CYRjrlXsHFPo6\neQAAAANnaXQAAAAAAAAABnNoYTUxMgAAAZQAAAAMcnNhLXNoYTItNTEyAAABgCRSp2wyue\nMN4D877okxs5gJ7jUXyIDW8SqR0NRZjv7BRBudMRAq0ur8Uh/3RF8heiYcdAUn3ktVuXWb\nvvfFU+xJGfd+2f5DK5PfMcHaedY6viruPucaV0TlLwXHyM6VOCDSbrWbr654LGrk9IAYQR\nWZOQgeijwd7S/WQYiRPHrfPckiwp8M6SonO5m+PYzcbNW6Cu/42lldOAY9okrTTATkCiYx\nhbmdjk6UOLAoGb2OssNOWWfbpWnd4j9Upe/wvHX2H0k7iBNyx05/VBCqZJcjcK4qqELnwL\n3KQkMTW20YzWQTf5JEU85fZmZd8TuSvZJ6nt0bsrkKbI+6bBVjtgLzcI658T+kQQm51f3j\n8j1SLMvjWq1s0ZzrFluk6SB85+or0VJH3d7u8QVqtbGv8is2YPnaK7KbQnhqFA6d1c/dyb\ngI4kxrlqxbuqGjpeVbGfW/xHZO18MbTIKy7dc0cr4aNvJB3bhfBNnku132SkurkojD0bZ5\nw28FFkAdyubSkw==\n-----END SSH SIGNATURE-----",
+      "payload": "tree 41d55360456e3fec8f0ae04c001d49aad063daf2\nauthor PikaCat <73384062+PikaCat-OuO@users.noreply.github.com> 1761928917 +0800\ncommitter PikaCat <Pika-Cat@qq.com> 1761964980 +0800\n\nEnhance README with links and licensing details\n\nUpdated the README to include a link to the Fairy-stockfish repository and further clarified licensing information for nnue weights.\n",
+      "verified_at": "2025-11-01T02:43:05Z"
+    }
+  },
+  "url": "https://api.github.com/repos/official-pikafish/Networks/commits/a238f8da2df269c28fec0e2bd2ca0ffd241f83fe",
+  "html_url": "https://github.com/official-pikafish/Networks/commit/a238f8da2df269c28fec0e2bd2ca0ffd241f83fe",
+  "comments_url": "https://api.github.com/repos/official-pikafish/Networks/commits/a238f8da2df269c28fec0e2bd2ca0ffd241f83fe/comments",
+  "author": {
+    "login": "PikaCat-OuO",
+    "id": 73384062,
+    "node_id": "MDQ6VXNlcjczMzg0MDYy",
+    "avatar_url": "https://avatars.githubusercontent.com/u/73384062?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/PikaCat-OuO",
+    "html_url": "https://github.com/PikaCat-OuO",
+    "followers_url": "https://api.github.com/users/PikaCat-OuO/followers",
+    "following_url": "https://api.github.com/users/PikaCat-OuO/following{/other_user}",
+    "gists_url": "https://api.github.com/users/PikaCat-OuO/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/PikaCat-OuO/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/PikaCat-OuO/subscriptions",
+    "organizations_url": "https://api.github.com/users/PikaCat-OuO/orgs",
+    "repos_url": "https://api.github.com/users/PikaCat-OuO/repos",
+    "events_url": "https://api.github.com/users/PikaCat-OuO/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/PikaCat-OuO/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "PikaCat-OuO",
+    "id": 73384062,
+    "node_id": "MDQ6VXNlcjczMzg0MDYy",
+    "avatar_url": "https://avatars.githubusercontent.com/u/73384062?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/PikaCat-OuO",
+    "html_url": "https://github.com/PikaCat-OuO",
+    "followers_url": "https://api.github.com/users/PikaCat-OuO/followers",
+    "following_url": "https://api.github.com/users/PikaCat-OuO/following{/other_user}",
+    "gists_url": "https://api.github.com/users/PikaCat-OuO/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/PikaCat-OuO/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/PikaCat-OuO/subscriptions",
+    "organizations_url": "https://api.github.com/users/PikaCat-OuO/orgs",
+    "repos_url": "https://api.github.com/users/PikaCat-OuO/repos",
+    "events_url": "https://api.github.com/users/PikaCat-OuO/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/PikaCat-OuO/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+
+  ],
+  "stats": {
+    "total": 15,
+    "additions": 15,
+    "deletions": 0
+  },
+  "files": [
+    {
+      "sha": "20dec7121f66c9afc0b2fbc9bf90a3ac3370f43e",
+      "filename": "README.md",
+      "status": "added",
+      "additions": 15,
+      "deletions": 0,
+      "changes": 15,
+      "blob_url": "https://github.com/official-pikafish/Networks/blob/a238f8da2df269c28fec0e2bd2ca0ffd241f83fe/README.md",
+      "raw_url": "https://github.com/official-pikafish/Networks/raw/a238f8da2df269c28fec0e2bd2ca0ffd241f83fe/README.md",
+      "contents_url": "https://api.github.com/repos/official-pikafish/Networks/contents/README.md?ref=a238f8da2df269c28fec0e2bd2ca0ffd241f83fe",
+      "patch": "@@ -0,0 +1,15 @@\n+# Networks\n+\n+This repository contains the networks as required by the NNUE evaluation in [Pikafish](https://github.com/official-pikafish/Pikafish).\n+\n+### NNUE-License\n+\n+Any usage of the Pikafish weights constitutes agreement to this License.\n+\n+The weights file (pikafish.nnue) released with the Pikafish and the weights file further derived from them are:\n+1. Only for legal use, any consequences caused by any use beyond the legal scope (e.g. online cheating) shall be borne by the user.\n+2. No commercial use without permission.\n+\n+The use of nnue weights for commercial purposes by [these individuals and organizations](https://pikafish.org/list.html) is permitted.\n+\n+However, the weights we train for the xiangqi variant of the [Fairy-Stockfish](https://github.com/fairy-stockfish/Fairy-Stockfish) are licensed under [CC0 license](https://github.com/official-stockfish/networks/blob/master/LICENSE). Even though they are derived from the Pikafish training data and follow the same training procedure, they are not constrained by this license."
+    }
+  ]
+}

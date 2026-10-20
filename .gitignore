@@ -1,0 +1,43 @@
+*.tgz
+release-metadata.json
+node_modules/
+.sites-runtime/
+*.zip
+*.traineddata.gz
+__pycache__/
+
+!dist/ocr/lang/*.traineddata.gz
+
+*-metadata.json
+
+release/
+artifacts/
+
+# Downloaded evaluation sources, runtimes, models and private screen captures
+evaluation/upstream/
+evaluation/models/
+evaluation/wheels/
+evaluation/.venv/
+evaluation/private/
+evaluation/metadata/
+evaluation/*.log
+
+# Pretrained weights are fetched and verified by scripts/fetch-models.py
+desktop/models/*.onnx
+
+# Local provenance download workspace; curated public notices live under dist/compliance
+compliance/upstream/
+compliance/evidence/
+.DS_Store
+
+# Additional native build workspaces and private diagnostics
+evaluation/
+.openai/
+.codex/
+scripts/native-cpu/build/
+ort-source/
+ort-cpu/
+native-cpu/
+
+# These reviewed upstream packages form part of the GPL source delivery
+!dist/compliance/sources/*.tgz

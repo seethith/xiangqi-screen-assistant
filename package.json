@@ -1,0 +1,144 @@
+{
+  "name": "xiangqi-position-assistant",
+  "version": "1.5.1",
+  "private": true,
+  "description": "中国象棋中途局面助手",
+  "scripts": {
+    "dev": "python3 scripts/serve.py",
+    "test": "node --test tests/*.test.cjs",
+    "check": "node scripts/check.mjs",
+    "desktop": "electron .",
+    "desktop:smoke": "electron . --smoke",
+    "desktop:mac": "electron-builder --mac dmg --arm64",
+    "desktop:win": "node scripts/build-windows.cjs",
+    "desktop:pack": "electron-builder --dir",
+    "desktop:capture-smoke": "electron . --capture-smoke",
+    "compliance:check": "python3 scripts/check-compliance.py"
+  },
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "electron": "44.5.1",
+    "electron-builder": "26.15.3"
+  },
+  "main": "desktop/main.cjs",
+  "build": {
+    "appId": "org.xiangqi.positionassistant",
+    "productName": "象棋屏幕助手",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "desktop/main.cjs",
+      "desktop/preload.cjs",
+      "desktop/overlay-layout.cjs",
+      "package.json",
+      "LICENSE",
+      "desktop/model-runtime.cjs",
+      "desktop/models/**/*",
+      "desktop/model-worker.cjs",
+      "desktop/vendor/**/*",
+      "!dist/source.zip",
+      "!dist/compliance/legacy/**/*"
+    ],
+    "asar": true,
+    "mac": {
+      "category": "public.app-category.board-games",
+      "target": [
+        "dmg"
+      ],
+      "extendInfo": {
+        "NSScreenCaptureUsageDescription": "读取您选择的屏幕，识别象棋局面并在本机分析。"
+      },
+      "icon": "desktop/icon.png",
+      "files": [
+        "dist/**/*",
+        "desktop/main.cjs",
+        "desktop/preload.cjs",
+        "desktop/overlay-layout.cjs",
+        "package.json",
+        "LICENSE",
+        "desktop/model-runtime.cjs",
+        "desktop/models/**/*",
+        "!evaluation/**/*",
+        "!artifacts/**/*",
+        "!release/**/*",
+        "desktop/model-worker.cjs",
+        "desktop/vendor/**/*",
+        "!dist/source.zip",
+        "!dist/compliance/legacy/**/*"
+      ],
+      "extraResources": [
+        {
+          "from": "node_modules/electron/dist/LICENSE",
+          "to": "LICENSE.electron.txt"
+        },
+        {
+          "from": "node_modules/electron/dist/LICENSES.chromium.html",
+          "to": "LICENSES.chromium.html"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "desktop/icon.png",
+      "files": [
+        "dist/**/*",
+        "desktop/main.cjs",
+        "desktop/preload.cjs",
+        "desktop/overlay-layout.cjs",
+        "package.json",
+        "LICENSE",
+        "desktop/model-runtime.cjs",
+        "desktop/models/**/*",
+        "!evaluation/**/*",
+        "!artifacts/**/*",
+        "!release/**/*",
+        "desktop/model-worker.cjs",
+        "desktop/vendor/**/*",
+        "!dist/source.zip",
+        "!dist/compliance/legacy/**/*"
+      ],
+      "signExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    },
+    "asarUnpack": [
+      "desktop/models/*.onnx",
+      "desktop/vendor/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "dist/compliance",
+        "to": "compliance",
+        "filter": [
+          "**/*",
+          "!legacy/**/*"
+        ]
+      },
+      {
+        "from": "dist/source.zip",
+        "to": "source.zip"
+      },
+      {
+        "from": "dist/licenses",
+        "to": "licenses"
+      }
+    ],
+    "copyright": "Copyright (C) 2026 象棋中途局面助手 contributors"
+  },
+  "dependencies": {},
+  "author": {
+    "name": "象棋中途局面助手 contributors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seethith/xiangqi-screen-assistant.git"
+  },
+  "homepage": "https://github.com/seethith/xiangqi-screen-assistant"
+}

@@ -1,0 +1,19 @@
+const $=s=>document.querySelector(s);
+let image=null,url=null,points=[],corner=0,onImport=null,onReference=null,running=false,cancelled=false,recognized=null,currentFile=null;
+const canvas=$('#image-canvas'),ctx=canvas.getContext('2d');
+function message(text){$('#image-progress').textContent=text;}
+function redraw(){ctx.clearRect(0,0,canvas.width,canvas.height);ctx.drawImage(image,0,0);if(points.length===2){const [a,b]=points;ctx.strokeStyle='#1b8e70';ctx.lineWidth=Math.max(2,canvas.width/400);ctx.beginPath();for(let i=0;i<9;i++){const x=a.x+(b.x-a.x)*i/8;ctx.moveTo(x,a.y);ctx.lineTo(x,b.y);}for(let i=0;i<10;i++){const y=a.y+(b.y-a.y)*i/9;ctx.moveTo(a.x,y);ctx.lineTo(b.x,y);}ctx.stroke();}points.forEach((p,i)=>{ctx.beginPath();ctx.arc(p.x,p.y,Math.max(7,canvas.width/70),0,Math.PI*2);ctx.fillStyle=i===0?'#207858':'#c44830';ctx.fill();ctx.strokeStyle='white';ctx.lineWidth=2;ctx.stroke();});$('#recognize-btn').disabled=points.length!==2||running;}
+function choose(n){corner=n;$('#corner-top').setAttribute('aria-pressed',n===0);$('#corner-bottom').setAttribute('aria-pressed',n===1);}
+export async function openImage(file,importCallback,referenceCallback){if(running)throw Error('正在识别，请等本次识别结束。');if(file.size>20*1048576)throw Error('图片过大，请使用 20 MB 以内的截图。');if(url)URL.revokeObjectURL(url);url=URL.createObjectURL(file);const decoded=new Image();await new Promise((resolve,reject)=>{decoded.onload=resolve;decoded.onerror=()=>reject(Error('无法读取图片，请使用 PNG、JPEG 或 WebP。'));decoded.src=url;});if(decoded.naturalWidth*decoded.naturalHeight>30000000)throw Error('图片尺寸过大，请裁剪到棋盘区域。');image=decoded;canvas.width=decoded.naturalWidth;canvas.height=decoded.naturalHeight;points=[];choose(0);cancelled=false;recognized=null;currentFile=file;$('#recognize-btn').textContent='本地识别并载入';onImport=importCallback;onReference=referenceCallback;$('#image-flip').checked=false;message('请点击左上角的棋盘交叉点（不是图片边缘）。');redraw();$('#image-dialog').showModal();}
+canvas.onclick=e=>{if(running)return;recognized=null;$('#recognize-btn').textContent='本地识别并载入';const r=canvas.getBoundingClientRect();points[corner]={x:(e.clientX-r.left)*canvas.width/r.width,y:(e.clientY-r.top)*canvas.height/r.height};if(!points[0]){points=[];message('请先标记左上交叉点。');choose(0);return;}if(points.length===2&&(points[1].x<=points[0].x+40||points[1].y<=points[0].y+45)){points.splice(1);message('右下交叉点必须在左上交叉点的右下方，请重新标记。');choose(1);}else if(points.length<2){choose(1);message('再点击右下角交叉点。');}else {if(corner===0)choose(1);message('绿线应与截图棋盘重合。确认红方朝向后，开始识别。');}redraw();};
+$('#corner-top').onclick=()=>choose(0);$('#corner-bottom').onclick=()=>choose(1);
+$('#image-reference').onclick=()=>onReference?.(URL.createObjectURL(currentFile));$('#image-flip').onchange=()=>{recognized=null;$('#recognize-btn').textContent='本地识别并载入';};
+$('#image-dialog').addEventListener('close',()=>{cancelled=true;});
+$('#recognize-btn').onclick=async()=>{
+ if(running||points.length!==2)return;if(recognized){onReference?.(URL.createObjectURL(currentFile));onImport?.(recognized);$('#image-dialog').close();return;}
+ running=true;cancelled=false;redraw();$('#image-reference').disabled=true;
+ try{const {recognizeBoard}=await import('./vision.js');const result=await recognizeBoard(image,points,{flip:$('#image-flip').checked,onProgress:message,isCancelled:()=>cancelled});if(cancelled)return;
+ const count=result.board.filter(Boolean).length;if(!count){message('没有识别到棋子，请检查角点或用截图对照手动摆盘。');return;}
+ message(`识别到 ${count} 枚棋子，${result.missing.length} 个位置待补齐，${result.uncertain.length} 枚需重点核对（颜色不确定 ${result.sideUncertain.length} 枚）。载入后橙色虚线圈标出待核对位置，请检查全部棋子。`);recognized={board:result.board,uncertain:result.uncertain,missing:result.missing};$('#recognize-btn').textContent=`确认载入 ${count} 枚棋子`;
+ }catch(e){if(!cancelled)message('识别未完成：'+e.message);}finally{const {releaseRecognition}=await import('./vision.js');await releaseRecognition();running=false;$('#image-reference').disabled=false;redraw();}
+};

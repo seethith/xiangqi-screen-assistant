@@ -1,0 +1,885 @@
+{
+  "schemaVersion": 1,
+  "application": "xiangqi-position-assistant",
+  "version": "1.5.1",
+  "reviewDate": "2026-10-20",
+  "applicationLicense": "GPL-3.0-or-later",
+  "components": [
+    {
+      "name": "Fairy-Stockfish WASM",
+      "version": "1.1.12",
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/fairy-stockfish/fairy-stockfish.wasm/tree/b2e693ef1e111233ce3fb40685921708b3276ed6",
+      "licenseFiles": [
+        "dist/engine/Copying.txt",
+        "dist/engine/AUTHORS"
+      ],
+      "files": [
+        {
+          "path": "dist/engine/AUTHORS",
+          "bytes": 4950,
+          "sha256": "55a0a4599358308af8349344d79176469f04119558e85595efe0a39b583cdf00"
+        },
+        {
+          "path": "dist/engine/Copying.txt",
+          "bytes": 35821,
+          "sha256": "0b383d5a63da644f628d99c33976ea6487ed89aaa59f0b3257992deac1171e6b"
+        },
+        {
+          "path": "dist/engine/package.json",
+          "bytes": 536,
+          "sha256": "9be78cadc261eebd9638e37c7cb5465efb91477a4b6249cf06d8d5a90b0a376a"
+        },
+        {
+          "path": "dist/engine/stockfish.js",
+          "bytes": 64273,
+          "sha256": "9080a62e3133e50da0c47b88b186d9c29ed37cc5129401bdeed8bffb5b9a4ca9"
+        },
+        {
+          "path": "dist/engine/stockfish.wasm",
+          "bytes": 1636293,
+          "sha256": "7cea742b8ca1a324fbc500f89112f168134cf68eb49475df23be6c42336255c6"
+        },
+        {
+          "path": "dist/engine/stockfish.worker.js",
+          "bytes": 3321,
+          "sha256": "067be484ac62f728b0dad28496997e5862f3c61f9091f59bb35d9d1b1ed14573"
+        },
+        {
+          "path": "dist/engine/uci.js",
+          "bytes": 1117,
+          "sha256": "3fb02eea10e75bdb3db8f7c3ca46dc54f2f7d3a88fd63b8b3e34708af5ff28bf"
+        }
+      ],
+      "correspondingSource": "dist/compliance/sources/fairy-stockfish-nnue.wasm-1.1.12-source.tar.gz",
+      "modified": false
+    },
+    {
+      "name": "ffish",
+      "version": "0.7.10",
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/ianfab/Fairy-Stockfish/tree/43b66c8abfebfcab893a3a4c349aa790d18df148",
+      "licenseFiles": [
+        "dist/rules/Copying.txt",
+        "dist/rules/AUTHORS"
+      ],
+      "files": [
+        {
+          "path": "dist/rules/AUTHORS",
+          "bytes": 4950,
+          "sha256": "55a0a4599358308af8349344d79176469f04119558e85595efe0a39b583cdf00"
+        },
+        {
+          "path": "dist/rules/Copying.txt",
+          "bytes": 35821,
+          "sha256": "0b383d5a63da644f628d99c33976ea6487ed89aaa59f0b3257992deac1171e6b"
+        },
+        {
+          "path": "dist/rules/ffish.js",
+          "bytes": 126261,
+          "sha256": "655aae3906b64a28a01029b304c5b26ac5d79731d46d60b3fe3d97022d90a1f1"
+        },
+        {
+          "path": "dist/rules/ffish.wasm",
+          "bytes": 921975,
+          "sha256": "260b052e0b63150528c947c666675912be45126e227a07edce34360b39bf6483"
+        },
+        {
+          "path": "dist/rules/package.json",
+          "bytes": 1004,
+          "sha256": "7b497319f327895521402eb8759c42121132b12ee7a629724da6556f55335f72"
+        }
+      ],
+      "correspondingSource": "dist/compliance/sources/ffish-0.7.10-source.tar.gz",
+      "modified": false
+    },
+    {
+      "name": "Fairy-Stockfish Xiangqi NNUE (Pikafish developers)",
+      "version": "c07e94a5c7cb",
+      "license": "CC0-1.0",
+      "source": "https://fairy-stockfish.github.io/nnue/",
+      "licenseFiles": [
+        "dist/licenses/CC0-1.0.txt",
+        "dist/compliance/evidence/fairy-xiangqi-CC0-declaration.md"
+      ],
+      "files": [
+        {
+          "path": "dist/engine/xiangqi-c07e94a5c7cb.nnue",
+          "bytes": 11261932,
+          "sha256": "c07e94a5c7cbeae443ed79a8fa412875d833a7f8e04333815e39729c59d52e11"
+        }
+      ],
+      "download": "https://drive.google.com/uc?export=download&id=18-zDt7z4H9_IQVvcWIvndnKjC5LZhAfm",
+      "licenseDeclaration": "https://github.com/official-pikafish/Networks/blob/a238f8da2df269c28fec0e2bd2ca0ffd241f83fe/README.md",
+      "modified": false
+    },
+    {
+      "name": "Tesseract.js",
+      "version": "7.0.0",
+      "license": "Apache-2.0",
+      "source": "https://github.com/naptha/tesseract.js",
+      "licenseFiles": [
+        "dist/licenses/tesseract-js.txt",
+        "dist/compliance/ocr-notices.txt"
+      ],
+      "files": [
+        {
+          "path": "dist/ocr/tesseract.min.js",
+          "bytes": 62961,
+          "sha256": "000c27d9cd0def655f77b36c72a389c0ab13793aa31cb4d7aab56d09c0afbc7e"
+        },
+        {
+          "path": "dist/ocr/tesseract.min.js.LICENSE.txt",
+          "bytes": 149,
+          "sha256": "cdf963ced7d25a0f98901a547647b4d6e2dbe0197fd78c87a059a87b0e542fe2"
+        },
+        {
+          "path": "dist/ocr/worker.min.js",
+          "bytes": 111307,
+          "sha256": "576b7df7e3393e137e51849357c9adb53fe7ac1bb69bfa06cf3d61520f182c6d"
+        },
+        {
+          "path": "dist/ocr/worker.min.js.LICENSE.txt",
+          "bytes": 466,
+          "sha256": "45f54171aeaa1d10c0c1a66f374b7bba1f02472b1487fbe892eec04f840002ac"
+        }
+      ],
+      "modified": false
+    },
+    {
+      "name": "Tesseract.js Core",
+      "version": "7.0.0",
+      "license": "Apache-2.0",
+      "source": "https://github.com/naptha/tesseract.js-core",
+      "licenseFiles": [
+        "dist/licenses/tesseract-core.txt",
+        "dist/compliance/ocr-notices.txt"
+      ],
+      "files": [
+        {
+          "path": "dist/ocr/core/tesseract-core-lstm.wasm.js",
+          "bytes": 3896484,
+          "sha256": "eef5f8b2f8e20e150680b20adaec4a60babafee3adbe8a94583c81fee46e8680"
+        },
+        {
+          "path": "dist/ocr/core/tesseract-core-relaxedsimd-lstm.wasm.js",
+          "bytes": 3905767,
+          "sha256": "861a536cf9ef8e63cb644d57bab39c388f37f7d6b6f60024b741c5f6b39a59b3"
+        },
+        {
+          "path": "dist/ocr/core/tesseract-core-simd-lstm.wasm.js",
+          "bytes": 3899472,
+          "sha256": "c58b46a4c796c0b8afccf77591d5b875b6896b45d402bbce8caa6f5362447b38"
+        }
+      ],
+      "modified": false
+    },
+    {
+      "name": "lang/chi_sim.traineddata.gz",
+      "version": "sha256:b8a23f10c7de500891eb458a8adc9cc58ab7f242f08b7d149f5e9aea4ad5db7c",
+      "license": "Apache-2.0",
+      "source": "https://raw.githubusercontent.com/naptha/tessdata/gh-pages/4.0.0_best_int/chi_sim.traineddata.gz",
+      "licenseFiles": [
+        "dist/licenses/tessdata-apache-2.0.txt"
+      ],
+      "files": [
+        {
+          "path": "dist/ocr/lang/chi_sim.traineddata.gz",
+          "bytes": 1718768,
+          "sha256": "b8a23f10c7de500891eb458a8adc9cc58ab7f242f08b7d149f5e9aea4ad5db7c"
+        }
+      ],
+      "modified": false,
+      "changes": "Unmodified gzip data"
+    },
+    {
+      "name": "lang/chi_tra.traineddata.gz",
+      "version": "sha256:11fe2610dab05d8a880d02f193ce70203f4c4bbe061b987d5529a2c038a22743",
+      "license": "Apache-2.0",
+      "source": "https://raw.githubusercontent.com/naptha/tessdata/gh-pages/4.0.0_best_int/chi_tra.traineddata.gz",
+      "licenseFiles": [
+        "dist/licenses/tessdata-apache-2.0.txt"
+      ],
+      "files": [
+        {
+          "path": "dist/ocr/lang/chi_tra.traineddata.gz",
+          "bytes": 1656239,
+          "sha256": "11fe2610dab05d8a880d02f193ce70203f4c4bbe061b987d5529a2c038a22743"
+        }
+      ],
+      "modified": false,
+      "changes": "Unmodified gzip data"
+    },
+    {
+      "name": "XQ Recognition (LXGW WenKai subset)",
+      "version": "sha256:fab4a971fd34fe25cd94aaa024a9d9f2074fc6f7ecc0a9d70fd2070eaae52770",
+      "license": "OFL-1.1",
+      "source": "https://raw.githubusercontent.com/lxgw/LxgwWenKai/main/fonts/TTF/LXGWWenKai-Regular.ttf",
+      "licenseFiles": [
+        "dist/licenses/wenkai-ofl.txt"
+      ],
+      "files": [
+        {
+          "path": "dist/ocr/xq-recognition.woff",
+          "bytes": 6016,
+          "sha256": "fab4a971fd34fe25cd94aaa024a9d9f2074fc6f7ecc0a9d70fd2070eaae52770"
+        }
+      ],
+      "modified": true,
+      "changes": "Subset to Xiangqi characters and renamed XQ Recognition"
+    },
+    {
+      "name": "Chinese_Chess_Recognition pose and layout models",
+      "version": "4bcaf91777effa645040ee76d008d45c2ffc03f3",
+      "license": "MIT",
+      "source": "https://huggingface.co/spaces/yolo12138/Chinese_Chess_Recognition/tree/4bcaf91777effa645040ee76d008d45c2ffc03f3",
+      "licenseFiles": [
+        "dist/licenses/recognition-models-mit.txt",
+        "dist/compliance/evidence/recognition-model-card.md"
+      ],
+      "files": [
+        {
+          "path": "desktop/models/layout.onnx",
+          "bytes": 31101356,
+          "sha256": "da66ba9809f15127f8ae729b1755e42ee61c100c4f9979ce0ef13602ac471298"
+        },
+        {
+          "path": "desktop/models/pose.onnx",
+          "bytes": 10704184,
+          "sha256": "fbd895d40ab81b41b8188f881866485678b7871775821aa50cfe74004a1dc796"
+        }
+      ],
+      "modified": false,
+      "licenseEvidence": "MIT declaration in fixed HF repository README; no independent training-dataset rights assessment is claimed"
+    },
+    {
+      "name": "FFmpeg in Electron",
+      "version": "Chromium 152 / 2b68d2babae73714846961fb0ee47e3b3d2e39a9",
+      "license": "LGPL-2.1-or-later",
+      "source": "https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/2b68d2babae73714846961fb0ee47e3b3d2e39a9",
+      "licenseFiles": [
+        "dist/licenses/ffmpeg-LGPL-2.1.txt"
+      ],
+      "files": [
+        {
+          "path": "dist/compliance/sources/electron-44.5.1-ffmpeg.patch",
+          "bytes": 1219,
+          "sha256": "bc6cdc29ad4ec2641dd59b4c3a25375b9166c35e202e5122cb73190885ec647d"
+        },
+        {
+          "path": "dist/compliance/sources/ffmpeg-2b68d2babae-source.tar.gz",
+          "bytes": 18820178,
+          "sha256": "3361b1c3b6502c7259396926dd660576f23f97b3353c41ddc5f39043326421ac"
+        }
+      ],
+      "correspondingSource": "dist/compliance/sources/ffmpeg-2b68d2babae-source.tar.gz",
+      "modified": false,
+      "scope": "Library bundled unchanged inside Electron; original Chromium source and Electron loader-path patch supplied"
+    },
+    {
+      "name": "ONNX Runtime native CPU (Node/Common + CPU runtime)",
+      "version": "1.30.0",
+      "license": "MIT",
+      "source": "https://github.com/microsoft/onnxruntime/tree/v1.30.0",
+      "licenseFiles": [
+        "dist/licenses/onnxruntime-mit.txt",
+        "dist/licenses/onnxruntime-third-party.txt",
+        "dist/licenses/onnxruntime-windows-third-party.txt",
+        "dist/licenses/node-addon-api-mit.txt",
+        "dist/licenses/cmake-js-mit.txt"
+      ],
+      "files": [
+        {
+          "path": "desktop/vendor/onnxruntime/common/LICENSE",
+          "bytes": 1073,
+          "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/backend-impl.js",
+          "bytes": 5608,
+          "sha256": "3d25321895995f7e9480570b9a88f121049adf152e1829d0ecb11218da02d487"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/backend.js",
+          "bytes": 433,
+          "sha256": "325aaee7a2649ea27629666f3ca01c0d80b9751e704ce502e43a8352390749b4"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/env-impl.js",
+          "bytes": 969,
+          "sha256": "35cd8cac33973538eab471b68622c86c35a6896f4307d1a74c9ca0eda7abbac6"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/env.js",
+          "bytes": 366,
+          "sha256": "22c7647f8ca1c1b83b437a92b95fee1457fcb72866fa029616b8f146dc609be8"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/index.js",
+          "bytes": 1955,
+          "sha256": "d7dd6cc9790e87299099fcd1b0ccb4969c01591d7eec0383a1c64dbea133dd1a"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/inference-session-impl.js",
+          "bytes": 8996,
+          "sha256": "88d90723a169297855ad3b564b134c6b685b2661316c81f71fc80da1e203bae0"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/inference-session.js",
+          "bytes": 467,
+          "sha256": "458be26f316c5068d32a56ddbc30ca0aa687c636e079b3d161a69f0f14a683f1"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/onnx-model.js",
+          "bytes": 211,
+          "sha256": "667f5fdac4b6df25e17f8a864d4dc619507f541f9fa0aafb6d3572fcca1e25e5"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/onnx-value.js",
+          "bytes": 211,
+          "sha256": "8446854766f4955ce438a7338216f49223767ecc508bb502b73a3dc1a1f1998e"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/package.json",
+          "bytes": 20,
+          "sha256": "091a04fa67c7907b98e106fcff8b964e13129754fce72d24f3025b97c4887fa3"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/tensor-conversion-impl.js",
+          "bytes": 8067,
+          "sha256": "9815e72c0bb91896035de93b3113a2256a1a998bc53c7b5e6bf5fb4e93714766"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/tensor-conversion.js",
+          "bytes": 218,
+          "sha256": "28cc462d4a9ea556ecc86c0e6d16a51d61b58d5bc5b4b7b48976b14bc8035bdc"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/tensor-factory-impl.js",
+          "bytes": 11656,
+          "sha256": "a3204838a2c14416e4e61c968dc17c663ab3c9b8b2c4a8b7f2a1c5b06e3e5173"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/tensor-factory.js",
+          "bytes": 215,
+          "sha256": "13b8d735350b828a49bda8aeec50b1dac888cf42268006efc4312f50a88b6906"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/tensor-impl-type-mapping.js",
+          "bytes": 2995,
+          "sha256": "333110edbbffdb7575ea340cb341bcaf691862d6594a649db28097f7d8cb19b7"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/tensor-impl.js",
+          "bytes": 16458,
+          "sha256": "11645352ba5d08971344717d3339f86aac560f84f29229b2ebe07f1ec8aa8905"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/tensor-utils-impl.js",
+          "bytes": 2213,
+          "sha256": "e7b1db989d33d54bdd1807b080a0989ff0b10d5f7dd8c93b92bbf293103aa4d5"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/tensor-utils.js",
+          "bytes": 213,
+          "sha256": "d3f577e90dc2257c72ac728e5e6355c34af0342d971158d9f22b69d22aa97b8d"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/tensor.js",
+          "bytes": 393,
+          "sha256": "9097114de356750f36f28776fa6ccd08d13694f0f9aac9e7669c30b6c43153f7"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/trace.js",
+          "bytes": 2496,
+          "sha256": "faecd0df94998d786e2085d56aa6003449f1ac3b35c350e0d2762498604e5d72"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/type-helper.js",
+          "bytes": 212,
+          "sha256": "7f786da8d2a611ad751c70a74edf4d9acfccd26be8e5c6b1cb730f982892bf32"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/cjs/version.js",
+          "bytes": 361,
+          "sha256": "0a1a7f532f4455ead0678966815c3114730150aa4368ebb5ebd9727425e9003b"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/backend-impl.js",
+          "bytes": 5339,
+          "sha256": "97dd81b055a06f61120f09468fe59f046a9262b7b87bf5d05bceb085bf4f5558"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/backend.js",
+          "bytes": 184,
+          "sha256": "017ce2ec9dc2021ebc1ef2c4f04e1bc74276c65921b0297e7ed8cc16e640495b"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/env-impl.js",
+          "bytes": 848,
+          "sha256": "0da4c562a49fe147e19320a64cbb456184eb0e6242b1fe69c65c8368c55f3d97"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/env.js",
+          "bytes": 262,
+          "sha256": "b2bbd3d3b00a95765713c57cd0f5ef73718ae5b8322e07cb47a43e2accb21f15"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/index.js",
+          "bytes": 1036,
+          "sha256": "ad23f6d6ce2c99c449031f24a5181f259516c64a9a67428c98a8539b857729bd"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/inference-session-impl.js",
+          "bytes": 8703,
+          "sha256": "0446814a392c147b5c38ba242d9911ee54002b5d01a8e19fb4895fb8f8a0cdd3"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/inference-session.js",
+          "bytes": 348,
+          "sha256": "3ad4271a88edb3d242dc1e0e7bbf66510f9a56eff874c433b3b37f900ac007b1"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/onnx-model.js",
+          "bytes": 145,
+          "sha256": "9e9dc8678be0ea04575a542894508db355a4f9f2155ac7f4c17a697c5f843382"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/onnx-value.js",
+          "bytes": 145,
+          "sha256": "33dc232498753fc9026dfa44c99440cb1a6d29f3e53e1ad2fb8b696705158f06"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/package.json",
+          "bytes": 18,
+          "sha256": "e3d5a4a2d8551aa52c5a01d2a0efb2e06a2d9711b4f5c5f1d20de6e21807e2cd"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/tensor-conversion-impl.js",
+          "bytes": 7852,
+          "sha256": "df6fa3cd1813c2d3e588cc07973cfe5ea2ab8647c957168200caa58e51440161"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/tensor-conversion.js",
+          "bytes": 152,
+          "sha256": "8c43ec1d061ab71032a1b28f45d85ef95f8d7bd2d4cd71d059e96d83e3a8f422"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/tensor-factory-impl.js",
+          "bytes": 11002,
+          "sha256": "cf5606fe23461e01bff59c2d72ac47d74e652548718f1e5fab07a22b441379b4"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/tensor-factory.js",
+          "bytes": 149,
+          "sha256": "68b9f4f4573f25012ce8a4f73c9a2cee3a28db91de8bbb0a20ddb08bcba33c4b"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/tensor-impl-type-mapping.js",
+          "bytes": 2706,
+          "sha256": "20bd5ddb858954cf071bace6c7a6628c8e311433798ec172f4c778bebd81d407"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/tensor-impl.js",
+          "bytes": 16091,
+          "sha256": "6a749be63055f9d21069566b1515412484a3a03448ca20427c8f8d29328a2843"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/tensor-utils-impl.js",
+          "bytes": 1920,
+          "sha256": "87d3e07c153616138c2f57846545eea9c47957c714d50c0264696bdc293e6732"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/tensor-utils.js",
+          "bytes": 147,
+          "sha256": "7acfdb2f8403ae84b7ae62d55d6eeb01519108be8874337b317b911ed60190cd"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/tensor.js",
+          "bytes": 286,
+          "sha256": "721d24a538de5333057bfc423bc00c3453a1c483f4495c857d0a6f9b8f2d330e"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/trace.js",
+          "bytes": 1891,
+          "sha256": "9b87e6309a1c502b03558aa94b0a65c8ea1e8eb59cb46090f54f6eacd191b841"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/type-helper.js",
+          "bytes": 146,
+          "sha256": "3e2588c6a5ee7b9755e199eef10c6aa2e777d0366ea47d27953657a5638deeae"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/dist/esm/version.js",
+          "bytes": 263,
+          "sha256": "71c36bdc106472438d3f6c865c0e7ffd0f957524dceb0750738c451098c5ef13"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/common/package.json",
+          "bytes": 357,
+          "sha256": "a2eec70151231366e3e7fbd77e8ce0ee5ff2a72c0d8646f0aed5e2a00a6878d2"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/manifest.json",
+          "bytes": 9705,
+          "sha256": "5ac2467bcc333e0bd60f3315a9826b05cbdd13a6874b82a8171d2853b31af1e1"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/node/LICENSE",
+          "bytes": 1073,
+          "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/node/bin/napi-v6/darwin/arm64/libonnxruntime.1.dylib",
+          "bytes": 44589928,
+          "sha256": "685d2be5dba1309c89d3a5324b7fd06a5c42f1a61bfea32d14c4cc28d072121d"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/node/bin/napi-v6/darwin/arm64/onnxruntime_binding.node",
+          "bytes": 266840,
+          "sha256": "a3f993357759b06ae2411f70af60f5e041d04521ea7f0d12cb7546e411a527dd"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/node/bin/napi-v6/win32/x64/onnxruntime.dll",
+          "bytes": 16462648,
+          "sha256": "7e39e2bdbba836d98071ef28620735ba36a47c554cf794585269aecc50fab0da"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/node/bin/napi-v6/win32/x64/onnxruntime_binding.node",
+          "bytes": 364544,
+          "sha256": "0532aaf18400e0b2877b771c2b09b57bca2e99ac9154fbac3dbcaf9f8a428cac"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/node/bin/napi-v6/win32/x64/onnxruntime_providers_shared.dll",
+          "bytes": 21816,
+          "sha256": "b9b7ab9e2a8b08ee7ae4a7ac1c8bfd44a741f17ad8d0f764953140a57de0b796"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/node/dist/backend.js",
+          "bytes": 6289,
+          "sha256": "a79e8019e7276a282987023f9d38d41063a99e563e5e1a6f38a73a7d39ea83ab"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/node/dist/binding.js",
+          "bytes": 1584,
+          "sha256": "d84ef3962f30a76c09f0169cb3032b97eb8139fe14d9d129ed48b97743cb4cc6"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/node/dist/index.js",
+          "bytes": 1590,
+          "sha256": "cfac3a32f92a01adb26236a5053e08ec6bd34fc397a3b754f8652e3cd19d1980"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/node/dist/version.js",
+          "bytes": 361,
+          "sha256": "0a1a7f532f4455ead0678966815c3114730150aa4368ebb5ebd9727425e9003b"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/node/package.json",
+          "bytes": 464,
+          "sha256": "6c36173cb02ac8436d80cf1b5c717726558c5956aeda2ffda4aed4a1e97fb04f"
+        },
+        {
+          "path": "desktop/vendor/onnxruntime/provenance.json",
+          "bytes": 1573,
+          "sha256": "3c5c056e6d2d89866a5016efbfc27377c20ef442813f38cafe68f5014d3e6fda"
+        }
+      ],
+      "modified": true,
+      "distribution": "Node/Common JS imports made relative; Mac official native arm64; Windows binding rebuilt without GPU flags against official CPU DLL; no DirectML/GPU providers"
+    },
+    {
+      "name": "leptonica",
+      "version": "4af068b56a9674da915debea4ed7e1b9885b17e8",
+      "license": "BSD-2-Clause",
+      "source": "https://raw.githubusercontent.com/DanBloomberg/leptonica/4af068b56a9674da915debea4ed7e1b9885b17e8/leptonica-license.txt",
+      "licenseFiles": [
+        "dist/licenses/ocr-third-party/leptonica.txt"
+      ],
+      "files": [],
+      "scope": "Embedded OCR dependency",
+      "modified": false
+    },
+    {
+      "name": "tesseract",
+      "version": "2a9c1c49c360462733c386d2a44fcd22c4e21411",
+      "license": "Apache-2.0",
+      "source": "https://raw.githubusercontent.com/Balearica/tesseract/2a9c1c49c360462733c386d2a44fcd22c4e21411/LICENSE",
+      "licenseFiles": [
+        "dist/licenses/ocr-third-party/tesseract.txt"
+      ],
+      "files": [],
+      "scope": "Embedded OCR dependency",
+      "modified": false
+    },
+    {
+      "name": "giflib",
+      "version": "fa37672085ce4b3d62c51627ab3c8cf2dda8009a",
+      "license": "MIT",
+      "source": "https://raw.githubusercontent.com/mirrorer/giflib/fa37672085ce4b3d62c51627ab3c8cf2dda8009a/COPYING",
+      "licenseFiles": [
+        "dist/licenses/ocr-third-party/giflib.txt"
+      ],
+      "files": [],
+      "scope": "Embedded OCR dependency",
+      "modified": false
+    },
+    {
+      "name": "libjpeg",
+      "version": "6c0fcb8ddee365e7abc4d332662b06900612e923",
+      "license": "IJG",
+      "source": "https://raw.githubusercontent.com/LuaDist/libjpeg/6c0fcb8ddee365e7abc4d332662b06900612e923/README",
+      "licenseFiles": [
+        "dist/licenses/ocr-third-party/libjpeg.txt"
+      ],
+      "files": [],
+      "scope": "Embedded OCR dependency",
+      "modified": false
+    },
+    {
+      "name": "libpng",
+      "version": "a37d4836519517bdce6cb9d956092321eca3e73b",
+      "license": "Libpng",
+      "source": "https://raw.githubusercontent.com/glennrp/libpng/a37d4836519517bdce6cb9d956092321eca3e73b/LICENSE",
+      "licenseFiles": [
+        "dist/licenses/ocr-third-party/libpng.txt"
+      ],
+      "files": [],
+      "scope": "Embedded OCR dependency",
+      "modified": false
+    },
+    {
+      "name": "libtiff",
+      "version": "b51bb157123264e26d34c09cc673d213aea61fc7",
+      "license": "libtiff",
+      "source": "https://raw.githubusercontent.com/libsdl-org/libtiff/b51bb157123264e26d34c09cc673d213aea61fc7/COPYRIGHT",
+      "licenseFiles": [
+        "dist/licenses/ocr-third-party/libtiff.txt"
+      ],
+      "files": [],
+      "scope": "Embedded OCR dependency",
+      "modified": false
+    },
+    {
+      "name": "libwebp",
+      "version": "20ef03ee351d4ff03fc5ff3ec4804a879d1b9d5c",
+      "license": "BSD-3-Clause",
+      "source": "https://raw.githubusercontent.com/webmproject/libwebp/20ef03ee351d4ff03fc5ff3ec4804a879d1b9d5c/COPYING",
+      "licenseFiles": [
+        "dist/licenses/ocr-third-party/libwebp.txt"
+      ],
+      "files": [],
+      "scope": "Embedded OCR dependency",
+      "modified": false
+    },
+    {
+      "name": "zlib",
+      "version": "21767c654d31d2dccdde4330529775c6c5fd5389",
+      "license": "Zlib",
+      "source": "https://raw.githubusercontent.com/madler/zlib/21767c654d31d2dccdde4330529775c6c5fd5389/README",
+      "licenseFiles": [
+        "dist/licenses/ocr-third-party/zlib.txt"
+      ],
+      "files": [],
+      "scope": "Embedded OCR dependency",
+      "modified": false
+    },
+    {
+      "name": "openlibm",
+      "version": "ae2d91698508701c83cab83714d42a1146dccf85",
+      "license": "MIT AND BSD-2-Clause AND ISC AND LicenseRef-SunPro",
+      "source": "https://raw.githubusercontent.com/JuliaMath/openlibm/ae2d91698508701c83cab83714d42a1146dccf85/LICENSE.md",
+      "licenseFiles": [
+        "dist/licenses/ocr-third-party/openlibm.txt"
+      ],
+      "files": [],
+      "scope": "Embedded in unchanged OCR distribution; OpenLibm test sources are not runtime components",
+      "modified": false
+    },
+    {
+      "name": "base64-js",
+      "version": "1.5.1",
+      "license": "MIT",
+      "source": "https://registry.npmjs.org/base64-js/-/base64-js-1.5.1.tgz",
+      "licenseFiles": [
+        "dist/licenses/ocr-bundled/base64-js-LICENSE.txt"
+      ],
+      "files": [],
+      "scope": "Embedded OCR dependency",
+      "modified": false
+    },
+    {
+      "name": "bmp-js",
+      "version": "0.1.0",
+      "license": "MIT",
+      "source": "https://registry.npmjs.org/bmp-js/-/bmp-js-0.1.0.tgz",
+      "licenseFiles": [
+        "dist/licenses/ocr-bundled/bmp-js-LICENSE.txt"
+      ],
+      "files": [],
+      "scope": "Embedded OCR dependency",
+      "modified": false
+    },
+    {
+      "name": "buffer",
+      "version": "6.0.3",
+      "license": "MIT",
+      "source": "https://registry.npmjs.org/buffer/-/buffer-6.0.3.tgz",
+      "licenseFiles": [
+        "dist/licenses/ocr-bundled/buffer-LICENSE.txt"
+      ],
+      "files": [],
+      "scope": "Embedded OCR dependency",
+      "modified": false
+    },
+    {
+      "name": "idb-keyval",
+      "version": "6.2.1",
+      "license": "Apache-2.0",
+      "source": "https://registry.npmjs.org/idb-keyval/-/idb-keyval-6.2.1.tgz",
+      "licenseFiles": [
+        "dist/licenses/ocr-bundled/idb-keyval-LICENCE.txt"
+      ],
+      "files": [],
+      "scope": "Embedded OCR dependency",
+      "modified": false
+    },
+    {
+      "name": "ieee754",
+      "version": "1.2.1",
+      "license": "BSD-3-Clause",
+      "source": "https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz",
+      "licenseFiles": [
+        "dist/licenses/ocr-bundled/ieee754-LICENSE.txt"
+      ],
+      "files": [],
+      "scope": "Embedded OCR dependency",
+      "modified": false
+    },
+    {
+      "name": "is-url",
+      "version": "1.2.4",
+      "license": "MIT",
+      "source": "https://registry.npmjs.org/is-url/-/is-url-1.2.4.tgz",
+      "licenseFiles": [
+        "dist/licenses/ocr-bundled/is-url-LICENSE-MIT.txt"
+      ],
+      "files": [],
+      "scope": "Embedded OCR dependency",
+      "modified": false
+    },
+    {
+      "name": "regenerator-runtime",
+      "version": "0.13.11",
+      "license": "MIT",
+      "source": "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.11.tgz",
+      "licenseFiles": [
+        "dist/licenses/ocr-bundled/regenerator-runtime-LICENSE.txt"
+      ],
+      "files": [],
+      "scope": "Embedded OCR dependency",
+      "modified": false
+    },
+    {
+      "name": "wasm-feature-detect",
+      "version": "1.8.0",
+      "license": "Apache-2.0",
+      "source": "https://registry.npmjs.org/wasm-feature-detect/-/wasm-feature-detect-1.8.0.tgz",
+      "licenseFiles": [
+        "dist/licenses/ocr-bundled/wasm-feature-detect-LICENSE.txt"
+      ],
+      "files": [],
+      "scope": "Embedded OCR dependency",
+      "modified": false
+    },
+    {
+      "name": "zlibjs",
+      "version": "0.3.1",
+      "license": "MIT",
+      "source": "https://registry.npmjs.org/zlibjs/-/zlibjs-0.3.1.tgz",
+      "licenseFiles": [
+        "dist/licenses/ocr-bundled/zlibjs-LICENSE.txt"
+      ],
+      "files": [],
+      "scope": "Embedded OCR dependency",
+      "modified": false
+    },
+    {
+      "name": "Electron",
+      "version": "44.5.1",
+      "license": "MIT",
+      "source": "https://github.com/electron/electron/tree/v44.5.1",
+      "licenseFiles": [
+        "dist/licenses/electron-mit.txt"
+      ],
+      "files": [],
+      "scope": "Desktop runtime; original LICENSES.chromium.html also retained beside app resources"
+    },
+    {
+      "name": "NSIS",
+      "version": "3.0.4.1",
+      "license": "Zlib",
+      "source": "https://github.com/electron-userland/electron-builder-binaries/releases/tag/nsis-3.0.4.1",
+      "licenseFiles": [
+        "dist/licenses/nsis.txt"
+      ],
+      "files": [],
+      "scope": "Windows installer core and zlib compression only; no nsis-resources plug-ins"
+    },
+    {
+      "name": "electron-builder",
+      "version": "26.15.3",
+      "license": "MIT",
+      "source": "https://github.com/electron-userland/electron-builder/tree/v26.15.3",
+      "licenseFiles": [
+        "dist/licenses/electron-builder-mit.txt"
+      ],
+      "files": [],
+      "scope": "Build tool only; not an application runtime dependency"
+    }
+  ],
+  "sourceArchives": [
+    {
+      "path": "dist/compliance/sources/electron-44.5.1-ffmpeg.patch",
+      "sha256": "bc6cdc29ad4ec2641dd59b4c3a25375b9166c35e202e5122cb73190885ec647d",
+      "bytes": 1219
+    },
+    {
+      "path": "dist/compliance/sources/fairy-stockfish-nnue.wasm-1.1.12-npm.tgz",
+      "sha256": "4945517be0f7a9d4520b08acadfd736e82b15758935395eb828f8f949b485f41",
+      "bytes": 532807
+    },
+    {
+      "path": "dist/compliance/sources/fairy-stockfish-nnue.wasm-1.1.12-source.tar.gz",
+      "sha256": "5c10e40812e1045cb13677ff84b3cdd3fca5c381df76245cd4d8eb5312a61bea",
+      "bytes": 383237
+    },
+    {
+      "path": "dist/compliance/sources/ffish-0.7.10-npm.tgz",
+      "sha256": "3f8aaffd04c7c7c94161c9dcb4f7b604e9c8238d69aed0b1fdc58398fdfe8b99",
+      "bytes": 356615
+    },
+    {
+      "path": "dist/compliance/sources/ffish-0.7.10-source.tar.gz",
+      "sha256": "7947e4bcc494ead86949e700f528d2417ad12794b982b3d01fabd2a02488562e",
+      "bytes": 375729
+    },
+    {
+      "path": "dist/compliance/sources/ffmpeg-2b68d2babae-source.tar.gz",
+      "sha256": "3361b1c3b6502c7259396926dd660576f23f97b3353c41ddc5f39043326421ac",
+      "bytes": 18820178
+    }
+  ],
+  "sourceBundle": "source.zip",
+  "buildInstructions": "compliance/BUILDING.md",
+  "scope": "Web assets, packaged desktop models/runtime, Electron supplied notices and Windows installer. Build-only node_modules are not redistributed.",
+  "excluded": [
+    "evaluation/private/",
+    "all user screen captures and logs",
+    "third-party game skin test images",
+    "DirectML and GPU providers",
+    "WinShell and all nsis-resources plug-ins",
+    "old xiangqi-83f16c17fe26.nnue"
+  ],
+  "limitations": "Upstream published license declarations are the evidence; this is not a legal opinion or a warranty of upstream ownership/patent clearance."
+}

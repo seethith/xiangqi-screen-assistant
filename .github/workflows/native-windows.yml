@@ -25,7 +25,7 @@ jobs:
         shell: pwsh
         run: |
           Set-Location scripts/native-cpu
-          npm install --no-save --ignore-scripts cmake-js@8.0.0 node-addon-api@6.1.0
+          npm ci --prefix . --ignore-scripts
           npx cmake-js compile --arch=x64 --config=Release "--CDORT_SOURCE=$env:GITHUB_WORKSPACE/ort-source" "--CDORT_CPU=$env:GITHUB_WORKSPACE/ort-cpu/onnxruntime-win-x64-1.30.0"
           if ($LASTEXITCODE -ne 0) { throw 'Native binding build failed' }
       - name: Collect runtime and notices

@@ -1,0 +1,13 @@
+{
+  "license": "MIT",
+  "type": "module",
+  "name": "onnxruntime-common",
+  "version": "1.30.0",
+  "repository": {
+    "url": "https://github.com/Microsoft/onnxruntime.git",
+    "type": "git"
+  },
+  "author": "fs-eire",
+  "main": "dist/cjs/index.js",
+  "description": "ONNXRuntime JavaScript API library (curated local runtime; JS imports made relative)"
+}

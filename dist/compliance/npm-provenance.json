@@ -1,0 +1,106 @@
+[
+  {
+    "name": "fairy-stockfish-nnue.wasm",
+    "version": "1.1.12",
+    "gitHead": "b2e693ef1e111233ce3fb40685921708b3276ed6",
+    "license": "GPL-3.0",
+    "dist": {
+      "shasum": "6215e1649336b0109f3a42dfc75b41ed8ab417fc",
+      "tarball": "https://registry.npmjs.org/fairy-stockfish-nnue.wasm/-/fairy-stockfish-nnue.wasm-1.1.12.tgz",
+      "fileCount": 7,
+      "integrity": "sha512-E0z5fvgZgIK0NoLmI6krWt5g362G4mZguANy8obTXL7EFPzyOyQn9A8OmBcjRe/s4see2s9okfULTGVnCu+1XQ==",
+      "signatures": [
+        {
+          "sig": "MEUCIFnYumjqTHtO+GMEEEJQrz2hfHMHiS1vSmZqy68/YzgwAiEA+ywAI9k+ucg133otgMtSy9tRPq5er3jenswKjndgf/8=",
+          "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+        }
+      ],
+      "attestations": {
+        "url": "https://registry.npmjs.org/-/npm/v1/attestations/fairy-stockfish-nnue.wasm@1.1.12",
+        "provenance": {
+          "predicateType": "https://slsa.dev/provenance/v1"
+        }
+      },
+      "unpackedSize": 1746311
+    },
+    "verifiedTarballIntegrity": "sha512-E0z5fvgZgIK0NoLmI6krWt5g362G4mZguANy8obTXL7EFPzyOyQn9A8OmBcjRe/s4see2s9okfULTGVnCu+1XQ==",
+    "verifiedFiles": [
+      "stockfish.js",
+      "stockfish.wasm",
+      "stockfish.worker.js"
+    ]
+  },
+  {
+    "name": "ffish",
+    "version": "0.7.10",
+    "gitHead": "43b66c8abfebfcab893a3a4c349aa790d18df148",
+    "license": "GPL-3.0",
+    "dist": {
+      "shasum": "10c77f0c7277babf7f9b02205678ab7d84529e70",
+      "tarball": "https://registry.npmjs.org/ffish/-/ffish-0.7.10.tgz",
+      "fileCount": 8,
+      "integrity": "sha512-o1FaxecGP4KWfSQbN6HYBYo0KeTpdJgCILFiaeoE1da3nGhBz80S1lA3z1ul+kG0lPjNQYP6gOdZcaNVP7LHlw==",
+      "signatures": [
+        {
+          "sig": "MEUCIQCTD2UGpbHFj9fPUwKMQb47Ly/4YscJc7+0aFL/CavCLQIgRICqoa3gqoo/24KIIT4Evs6TdBqiY19IGroRNyniCBc=",
+          "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+        }
+      ],
+      "unpackedSize": 1110068
+    },
+    "verifiedTarballIntegrity": "sha512-o1FaxecGP4KWfSQbN6HYBYo0KeTpdJgCILFiaeoE1da3nGhBz80S1lA3z1ul+kG0lPjNQYP6gOdZcaNVP7LHlw==",
+    "verifiedFiles": [
+      "ffish.js",
+      "ffish.wasm"
+    ]
+  },
+  {
+    "name": "tesseract.js",
+    "version": "7.0.0",
+    "gitHead": "42eae669e4b3a66429d8516f078912cc747a89df",
+    "license": "Apache-2.0",
+    "dist": {
+      "shasum": "4106fb6245efab40c57b94bc1798368807526be8",
+      "tarball": "https://registry.npmjs.org/tesseract.js/-/tesseract.js-7.0.0.tgz",
+      "fileCount": 79,
+      "integrity": "sha512-exPBkd+z+wM1BuMkx/Bjv43OeLBxhL5kKWsz/9JY+DXcXdiBjiAch0V49QR3oAJqCaL5qURE0vx9Eo+G5YE7mA==",
+      "signatures": [
+        {
+          "sig": "MEUCIGgQx2/pZtPHH8cok7QDnVw1Clt2Ij4iFhJ3fseCj6H5AiEA1nB+PKYqAEovrqFbiGlol6+XwycIrNTs+27IjVHWqlk=",
+          "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+        }
+      ],
+      "unpackedSize": 1411341
+    },
+    "verifiedTarballIntegrity": "sha512-exPBkd+z+wM1BuMkx/Bjv43OeLBxhL5kKWsz/9JY+DXcXdiBjiAch0V49QR3oAJqCaL5qURE0vx9Eo+G5YE7mA==",
+    "verifiedFiles": [
+      "tesseract.min.js",
+      "worker.min.js"
+    ]
+  },
+  {
+    "name": "tesseract.js-core",
+    "version": "7.0.0",
+    "gitHead": "acffef2b66eb44a31df297e11d905f4b39001068",
+    "license": "Apache-2.0",
+    "dist": {
+      "shasum": "596aa1ab5c130adab12f21059e6aa1a1cecc0bab",
+      "tarball": "https://registry.npmjs.org/tesseract.js-core/-/tesseract.js-core-7.0.0.tgz",
+      "fileCount": 22,
+      "integrity": "sha512-WnNH518NzmbSq9zgTPeoF8c+xmilS8rFIl1YKbk/ptuuc7p6cLNELNuPAzcmsYw450ca6bLa8j3t0VAtq435Vw==",
+      "signatures": [
+        {
+          "sig": "MEUCIA6qJEwYfDBh9jFNrosZVJPBq85KmG+d+rRhU70NCf5uAiEAy0LciDMdViHHCc5zHWrz1RKpMkvYp/eZBHur0EkJCgg=",
+          "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+        }
+      ],
+      "unpackedSize": 45262431
+    },
+    "verifiedTarballIntegrity": "sha512-WnNH518NzmbSq9zgTPeoF8c+xmilS8rFIl1YKbk/ptuuc7p6cLNELNuPAzcmsYw450ca6bLa8j3t0VAtq435Vw==",
+    "verifiedFiles": [
+      "tesseract-core-relaxedsimd-lstm.wasm.js",
+      "tesseract-core-simd-lstm.wasm.js",
+      "tesseract-core-lstm.wasm.js"
+    ]
+  }
+]

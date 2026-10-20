@@ -1,0 +1,52 @@
+name: Windows package verification
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare and validate source
+        shell: pwsh
+        run: |
+          npm ci
+          if ($LASTEXITCODE -ne 0) { throw 'npm ci failed' }
+          python scripts/fetch-models.py
+          if ($LASTEXITCODE -ne 0) { throw 'Model fetch failed' }
+          node scripts/prepare-runtime.cjs
+          npm test
+          if ($LASTEXITCODE -ne 0) { throw 'Tests failed' }
+          npm run check
+          python scripts/package-source.py
+          npm run compliance:check
+          if ($LASTEXITCODE -ne 0) { throw 'Compliance check failed' }
+      - name: Build installer
+        shell: pwsh
+        run: |
+          npm run desktop:win
+          if ($LASTEXITCODE -ne 0) { throw 'Installer build failed' }
+      - name: Test installed application and uninstall
+        shell: pwsh
+        run: |
+          $installer = (Get-ChildItem 'release/v1.5.1/*Setup*.exe').FullName
+          $testDir = "$env:LOCALAPPDATA/Programs/xiangqi-release-test"
+          $process = Start-Process -FilePath $installer -ArgumentList @('/S',"/D=$testDir") -Wait -PassThru
+          if ($process.ExitCode -ne 0) { throw "Installer failed: $($process.ExitCode)" }
+          node scripts/test-release.cjs "$testDir/象棋屏幕助手.exe"
+          if ($LASTEXITCODE -ne 0) { throw 'Installed app self-test failed' }
+          $process = Start-Process -FilePath "$testDir/Uninstall.exe" -ArgumentList '/S' -Wait -PassThru
+          if ($process.ExitCode -ne 0) { throw 'Uninstaller failed' }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xiangqi-1.5.1-windows-x64
+          path: |
+            release/v1.5.1/*Setup*.exe
+            release/v1.5.1/installer-audit.json

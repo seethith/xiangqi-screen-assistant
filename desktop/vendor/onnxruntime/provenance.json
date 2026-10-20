@@ -1,0 +1,35 @@
+{
+  "version": "1.30.0",
+  "upstreamCommit": "f2c39fe2f838cf35ce7da92824f5a5e3ee6e88a7",
+  "nodePackage": {
+    "url": "https://registry.npmjs.org/onnxruntime-node/-/onnxruntime-node-1.30.0.tgz",
+    "integrity": "sha512-twhs1C2C/BFkz1yc5OY0KIU2GUq6DURO7hD4bx5Q2Qy3nAMJwRXW8xU3NVczE29VA9lolLOYepoD8fjTGOfIqw==",
+    "verified": "Mac native files byte-identical; Node JS identical except relative Common imports"
+  },
+  "commonPackage": {
+    "url": "https://registry.npmjs.org/onnxruntime-common/-/onnxruntime-common-1.30.0.tgz",
+    "sha256": "7906c439e0d3e0f4048caa23b64cdfadc0f455c377f579ce1ab2a4b778f07d5f",
+    "verified": "Common CJS byte-identical"
+  },
+  "windowsCpuArchive": {
+    "url": "https://github.com/microsoft/onnxruntime/releases/download/v1.30.0/onnxruntime-win-x64-1.30.0.zip",
+    "sha256": "c6ba983baf5681af108599675d2a89c2d145512d02de28aed0bff177cd0ba949"
+  },
+  "changes": [
+    "Node/Common package metadata reduced to runtime entries",
+    "Node JS imports onnxruntime-common made relative",
+    "Windows binding rebuilt from unmodified upstream source with all GPU flags absent; official CPU runtime",
+    "No DirectML, GPU provider files, install scripts or installer-only npm dependencies"
+  ],
+  "windowsBuild": {
+    "workflow": "https://github.com/seethith/xiangqi-screen-assistant/actions/runs/39358731700",
+    "workflowCommit": "9ef71ad",
+    "platform": "Windows Server 2022 x64",
+    "compiler": "MSVC, C++20, Node-API 6",
+    "dependencies": {
+      "node-addon-api": "6.1.0",
+      "cmake-js": "8.0.0"
+    },
+    "GPUFlags": []
+  }
+}

@@ -1,0 +1,8 @@
+const CACHE='xq-assistant-1.5.1-public-native';
+function isolate(r){if(!r||r.redirected||r.status===0)return r;const h=new Headers(r.headers);h.set('Cross-Origin-Opener-Policy','same-origin');h.set('Cross-Origin-Embedder-Policy','require-corp');h.set('Cross-Origin-Resource-Policy','same-origin');return new Response(r.body,{status:r.status,statusText:r.statusText,headers:h});}
+const SHELL=['/','/index.html','/styles.css','/app.js','/domain.js','/engine-client.js','/analysis-worker.js','/recognition.js','/vision.js','/vision-pixels.js','/vision-learning.js','/arrow-geometry.js','/favicon.svg','/manifest.webmanifest','/rules/ffish.js','/rules/ffish.wasm'];
+self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting())));
+self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('xq-assistant-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
+self.addEventListener('fetch',event=>{const url=new URL(event.request.url);if(url.origin!==self.location.origin||event.request.method!=='GET')return;const allowed=SHELL.includes(url.pathname)||/^\/(engine|ocr)\//.test(url.pathname);if(!allowed)return;
+ event.respondWith((async()=>{const c=await caches.open(CACHE);if(/^\/(engine|ocr)\//.test(url.pathname)){const saved=await c.match(event.request);if(saved)return isolate(saved);}try{const response=await fetch(event.request);if(response.ok&&!response.redirected){await c.put(event.request,response.clone());}return isolate(response);}catch(e){const cached=await c.match(event.request)||((event.request.mode==='navigate')&&await c.match('/'));if(cached)return isolate(cached);throw e;}})());
+});

@@ -1,0 +1,23 @@
+象棋中途局面助手 / 象棋屏幕助手 1.5.1
+Copyright (C) 2026 象棋中途局面助手 contributors.
+自有应用代码：GNU GPL version 3 or (at your option) any later version.
+完整许可：../licenses/GPL-3.0.txt。无任何担保。
+完整对应源码：同一发布中的 /source.zip；构建说明：BUILDING.md。
+
+Third-party attribution (not a claim of authorship by this application):
+Fairy-Stockfish / Stockfish / Glaurung developers: GPL-3.0-or-later, see engine/AUTHORS, rules/AUTHORS and bundled fixed source archives.
+TheOne / yolo12138 and Chinese_Chess_Recognition contributors: MIT-declared HF Space models and referenced preprocessing; original fixed model card preserved.
+Pikafish developers: Fairy-Stockfish xiangqi-c07e94a5c7cb.nnue weights, CC0; this application does not ship pikafish.nnue.
+Tesseract.js contributors / antimatter15 / Jerome Wu and contributors: Apache-2.0.
+Tesseract developers and Google Inc.: Apache-2.0. Leptonica / Dan Bloomberg and contributors: BSD-2-Clause.
+This software is based in part on the work of the Independent JPEG Group.
+libpng, libtiff, libwebp, giflib, zlib, OpenLibm and bundled JS dependencies: individual notices retained in ../licenses/ocr-third-party and ocr-bundled.
+LXGW WenKai / LXGW / Fontworks Klee contributors: SIL OFL 1.1, recognition subset renamed to XQ Recognition.
+Microsoft Corporation / ONNX Runtime contributors: MIT; native CPU runtime and full upstream third-party notices included.
+Electron contributors / GitHub Inc., Chromium, Node.js, V8 and their contributors: original runtime licenses and LICENSES.chromium.html accompany desktop distributions.
+FFmpeg developers: LGPL-2.1-or-later; bundled unchanged with Electron; fixed Chromium FFmpeg source, Electron loader-path patch and build instructions supplied.
+Node-addon-api and cmake-js contributors: MIT; header / delay-load helper notices included for rebuilt Windows binding.
+NSIS contributors: core functionality and zlib compression only, full upstream notices in ../licenses/nsis.txt. No external nsis-resources plug-ins are embedded.
+
+Changes in 1.5.1 (2026-10-20): retain native CPU inference in a background worker; rebuild Windows Node binding without GPU providers against the official CPU runtime; make Node/Common JS imports relative; replace old NNUE with the explicitly CC0 Fairy-Stockfish network; bundle GPL C++ sources, build instructions and notices; remove third-party game screenshots from public source distribution.
+See component-manifest.json for exact versions, hashes, license locations and sources.
