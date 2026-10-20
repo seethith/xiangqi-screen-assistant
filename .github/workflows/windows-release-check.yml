@@ -42,10 +42,12 @@ jobs:
         shell: pwsh
         run: |
           $installer = (Get-ChildItem 'release/v1.5.1/*Setup*.exe').FullName
-          $testDir = "$env:LOCALAPPDATA/Programs/xiangqi-release-test"
+          $testDir = Join-Path $env:LOCALAPPDATA 'Programs\xiangqi-release-test'
           $process = Start-Process -FilePath $installer -ArgumentList @('/S',"/D=$testDir") -Wait -PassThru
           if ($process.ExitCode -ne 0) { throw "Installer failed: $($process.ExitCode)" }
-          node scripts/test-release.cjs "$testDir/象棋屏幕助手.exe"
+          $executable = Join-Path $testDir '象棋屏幕助手.exe'
+          if (!(Test-Path -LiteralPath $executable)) { Get-ItemProperty HKCU:\Software\XiangqiScreenAssistant; throw 'Application missing from chosen installation directory' }
+          node scripts/test-release.cjs $executable
           if ($LASTEXITCODE -ne 0) { throw 'Installed app self-test failed' }
           $process = Start-Process -FilePath "$testDir/Uninstall.exe" -ArgumentList '/S' -Wait -PassThru
           if ($process.ExitCode -ne 0) { throw 'Uninstaller failed' }
