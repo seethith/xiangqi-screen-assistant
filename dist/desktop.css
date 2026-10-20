@@ -5,3 +5,58 @@ body.desktop-mode{height:100vh;display:flex;flex-direction:column;overflow:hidde
 .mini-card{height:390px}.mini-guide{padding:9px 10px;margin:6px 0;background:#edf5ef;border-radius:8px;font-size:11px}.mini-guide>div{display:flex;flex-wrap:wrap;align-items:center;gap:4px}.mini-guide strong{font-size:12px}.mini-guide span,.mini-guide small{color:#637366}.mini-guide p{font-size:14px;margin:6px 0;line-height:1.45;font-weight:600;color:#204a36}.mini-guide small{font-size:10px}.mini-move{font-size:25px}.mini-hint{min-height:24px}.mini-detail{max-height:27px}
 
 .desktop-confirm{flex-wrap:wrap}.capture-learn{font-size:11px;display:flex;align-items:center;gap:4px}.capture-learn input{margin:0}
+
+/* Desktop focuses on screen tracking; manual tools keep a separate workspace. */
+.desktop-tabs{display:flex;gap:4px;margin-right:16px;background:#e9ede7;border-radius:9px;padding:4px}
+.desktop-tabs button{border:0;background:transparent;padding:7px 14px;font-size:13px}
+.desktop-tabs button[aria-pressed=true]{background:#fffdf7;color:#205c4b;box-shadow:0 1px 4px #18332615}
+.desktop-mode .desktop-bar{position:relative;z-index:2}
+.capture-more{position:relative;font-size:13px}
+.capture-more summary,.desktop-analysis-options summary,.desktop-position-tools summary,.mini-more summary{cursor:pointer;color:#456452;padding:8px;user-select:none}
+.capture-more-content{position:absolute;right:0;top:36px;min-width:260px;background:#fffdf7;border:1px solid #cbd8ce;border-radius:12px;padding:12px;box-shadow:0 8px 25px #18332625;display:grid;gap:9px;z-index:5}
+.capture-more-content label{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.capture-more-content select{width:auto}
+.capture-turn-card{padding:22px;background:#fffdf7;border:1px solid #d6dfd5;border-radius:14px;margin-bottom:14px}
+.capture-side-row{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px}
+.capture-side-row label{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.capture-side-row select{width:auto;min-width:85px;padding:7px 10px}
+.capture-turn-card h2{font-size:25px;line-height:1.4;margin:22px 0 7px;color:#205c4b}
+#capture-last-move{font-size:13px;line-height:1.6;color:#697565;min-height:21px;margin:0 0 18px}
+.capture-turn-card .desktop-hint{line-height:1.75;font-size:13px}
+.desktop-analysis-options{border-top:1px solid #dfe4dc;padding-top:4px;margin-top:10px}
+.desktop-analysis-options[open] summary{margin-bottom:12px}
+.desktop-position-tools{margin-bottom:14px}
+.desktop-position-tools .entry-row{margin:8px 0}
+.desktop-mode[data-desktop-view=manual] .desktop-bar,.desktop-mode[data-desktop-view=manual] .capture-turn-card{display:none}
+.desktop-mode[data-desktop-view=manual] .board-wrap{max-width:min(520px,calc((100vh - 285px)*.9))}
+.desktop-mode[data-desktop-view=screen] .desktop-position-tools{display:none}
+.desktop-mode[data-desktop-view=screen] .workspace{grid-template-columns:minmax(420px,1.15fr) minmax(350px,.85fr);gap:32px}
+.desktop-mode[data-desktop-view=screen] .board-wrap{max-width:min(550px,calc((100vh - 265px)*.9))}
+.desktop-mode[data-desktop-view=screen] .board-toolbar,.desktop-mode[data-desktop-view=screen] #tray-area,.desktop-mode[data-desktop-view=screen] .turn-editor,.desktop-mode[data-desktop-view=screen] #more-menu,.desktop-mode[data-desktop-view=screen] .result-actions,.desktop-mode[data-desktop-view=screen] .variation,.desktop-mode[data-desktop-view=screen] .candidates,.desktop-mode[data-desktop-view=screen] #analyze-btn{display:none}
+.desktop-mode[data-desktop-view=screen]:not(.desktop-review) #squares{pointer-events:none}
+.desktop-mode[data-desktop-view=screen]:not(.desktop-review) #board-status{display:none}
+.desktop-mode[data-desktop-view=screen].desktop-review .board-toolbar{display:flex}
+.desktop-mode[data-desktop-view=screen].desktop-review #tray-area:not([hidden]),.desktop-mode[data-desktop-view=screen].desktop-review .turn-editor,.desktop-mode[data-desktop-view=screen].desktop-review #more-menu:not([hidden]){display:block}
+.desktop-mode[data-desktop-view=screen].desktop-review .board-wrap{max-width:min(460px,calc((100vh - 420px)*.9))}
+.desktop-mode[data-desktop-view=screen] #result-panel{margin-top:14px}
+.desktop-mode[data-desktop-view=screen]:not([data-turn=ours]) #result-panel,.desktop-mode[data-desktop-view=screen]:not([data-turn=ours]) #arrows{display:none}
+.desktop-mode .workspace>p{grid-column:1/-1;margin:0!important;font-size:11px;align-self:end}
+.desktop-mode .privacy-note{display:none}
+.mini-card{height:330px;padding:13px 15px}
+.mini-turn{font-size:17px;font-weight:650;color:#205c4b;margin-top:14px;line-height:1.4}
+.mini-eval{margin:7px 0 1px;font-size:12px}
+.mini-move{font-size:24px}
+.mini-guide{margin:5px 0;padding:7px 10px}
+.mini-guide p{margin:0;font-size:13px}
+.mini-coordinates,.mini-guide small{display:none}
+.mini-detail{margin:4px 0;font-size:11px;max-height:32px;line-height:1.45}
+.mini-hint{min-height:17px;font-size:11px}
+.mini-more{position:relative;margin-left:auto}
+.mini-more summary{font-size:11px;padding:5px 8px}
+.mini-more>div{position:absolute;right:0;bottom:27px;display:grid;gap:5px;padding:7px;background:#fffdf7;border:1px solid #cbd8ce;border-radius:8px;box-shadow:0 2px 8px #18332625;white-space:nowrap}
+.mini-lock{margin-top:7px}
+
+.desktop-mode[data-desktop-view=screen] #result-panel{display:none}
+.capture-advice{border-top:1px solid #e1e6df;padding:17px 0 3px;margin-top:6px}
+.capture-advice strong{font-family:'Songti SC',serif;font-size:29px;color:#205c4b}
+.capture-advice p{font-size:14px;line-height:1.6;margin:9px 0 18px;color:#456452}

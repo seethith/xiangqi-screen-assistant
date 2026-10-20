@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "application": "xiangqi-position-assistant",
-  "version": "1.5.1",
+  "version": "1.5.3-beta.1",
   "reviewDate": "2026-10-20",
   "applicationLicense": "GPL-3.0-or-later",
   "components": [

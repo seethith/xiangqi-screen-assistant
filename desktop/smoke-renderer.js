@@ -52,7 +52,7 @@ export async function runUI(sourceId){
  await until(()=>!document.querySelector('#capture-recognize').disabled,'calibration did not locate a board',400);document.querySelector('#capture-recognize').click();
  await until(()=>!document.querySelector('#capture-confirm').hidden,'recognition did not reach confirmation');document.querySelector('#capture-accept').click();
  try{await until(()=>document.querySelector('.desktop-bar').dataset.state==='tracking','tracking did not start: '+document.querySelector('#capture-confirm-text').textContent);}catch(e){throw Error(e.message+' '+JSON.stringify(window.__xqTrackingDiagnostics()));}
- try{await until(()=>document.querySelector('#capture-hint').textContent.includes('红方 ·'),'analysis hint did not arrive',400);}catch(e){throw Error(e.message+' '+JSON.stringify(window.__xqTrackingDiagnostics()));}
+ try{await until(()=>window.__xqTrackingTest.summary().move.includes('红方 ·'),'analysis hint did not arrive',400);}catch(e){throw Error(e.message+' '+JSON.stringify(window.__xqTrackingDiagnostics()));}
  assert(document.querySelector('#capture-learn').disabled,'stale calibration must not remain available for learning');return 'passed: source picker, auto calibration, OCR confirmation, local analysis, stale learning guarded';
 }
 export async function checkLiveMove(){

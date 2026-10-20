@@ -1,10 +1,11 @@
 import {START_FEN,LABELS,color,opposite,square,splitMove,readFen,writeFen,placementErrors,chineseMove,lineNotation,moveBoard,parseInfo} from './domain.js';
 import {AnalysisEngine} from './engine-client.js';
+import {reconcileTrackedPosition} from './model-tracking.js';
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s),clone=o=>JSON.parse(JSON.stringify(o));
 const STORAGE='xq-position-v2',LIBRARY='xq-library-v2';
 let game={...readFen(START_FEN),baseFen:START_FEN,moves:[],names:[]},mode='edit',flipped=false,tool=null,selected=null,legal=[],history=[],trial=null,results=[],chosen=1,lastMove=null,rules=null,ruleBoard=null,busy=false,analysisSide='w',toastTimer=null,referenceUrl=null;
 let recognitionIssues=new Set();
-let engineMode=null,engineMemory=0,renderTimer=null,analysisStarted=0,engineFailed=false;
+let engineMode=null,engineMemory=0,renderTimer=null,analysisStarted=0,engineFailed=false,analysisFen=null;
 function toast(text){clearTimeout(toastTimer);$('#toast').textContent=text;$('#toast').hidden=false;toastTimer=setTimeout(()=>$('#toast').hidden=true,3400);}
 function snapshot(){history.push({game:clone(game),mode,trial:trial?clone(trial):null,lastMove});if(history.length>100)history.shift();}
 function persist(){try{const current=trial?trial.actual:game;localStorage.setItem(STORAGE,JSON.stringify({game:current,mode:trial?'play':mode,flipped,time:$('#time-select').value,hash:$('#hash-select').value,multi:$('#multi-check').checked,strength:$('#strength-select').value}));}catch{toast('此浏览器无法保存，请导出局面文件备份。');}}
@@ -69,14 +70,14 @@ const engine=new AnalysisEngine(event=>{
  if(event.type==='done'){busy=false;engineMemory=event.memory||engineMemory;const match=results.find(r=>r.pv[0]===event.bestmove);if(match)chosen=match.rank;
   if(event.bestmove==='(none)'||event.bestmove==='0000'){toast('此局面没有合法走法，对局已结束。');$('#result-state').textContent='对局结束';}
   else if(!results.length&&splitMove(event.bestmove)){const b=createBoard();try{if(b.legalMoves().split(' ').includes(event.bestmove)){results=[{rank:1,pv:[event.bestmove],depth:0,time:0,nodes:0,score:0,scoreType:'cp',unscored:true}];$('#result-state').textContent='走法已找到 · 评分未返回';}}finally{b.delete();}}
-  else $('#result-state').textContent='分析完成';renderResults();updateButton();for(const listener of analysisListeners)listener({type:'done',fen:currentFen(),side:analysisSide,results:clone(results),mode:engineMode});}
+  else $('#result-state').textContent='分析完成';renderResults();updateButton();for(const listener of analysisListeners)listener({type:'done',fen:analysisFen,side:analysisSide,results:clone(results),mode:engineMode});}
  if(event.type==='error'){for(const listener of analysisListeners)listener({type:'error',text:event.text});busy=false;engineFailed=true;showErrors([event.text]);$('#result-state').textContent='分析中断';$('#retry-btn').hidden=false;updateButton();}
 });
 async function analyze(){if(busy){engine.stop();busy=false;$('#result-state').textContent=results.length?'已停止':'已取消';updateButton();return;}if(!rules)return;
  if(mode==='edit'){game.baseFen=currentFen();game.moves=[];game.names=[];}
  const errors=validate();showErrors(errors);if(errors.length)return;
  updateRules();if(!legal.length||ruleBoard?.isGameOver(true)){toast(ruleBoard?.result(true)==='1/2-1/2'?'当前局面已和棋。':'当前局面已结束，没有可分析的走法。');return;}
- mode='play';tool=null;selected=null;results=[];chosen=1;analysisSide=game.side;busy=true;engineFailed=false;render();renderResults();$('#result-state').textContent=engine.ready?'计算中…':'加载引擎…';
+ mode='play';tool=null;selected=null;results=[];chosen=1;analysisSide=game.side;analysisFen=currentFen();busy=true;engineFailed=false;render();renderResults();$('#result-state').textContent=engine.ready?'计算中…':'加载引擎…';
  try{await engine.analyze({baseFen:game.baseFen,moves:game.moves.slice()},{time:Number($('#time-select').value),hash:Number($('#hash-select').value),multi:$('#multi-check').checked,strength:$('#strength-select').value});}catch(e){busy=false;engineFailed=true;showErrors([e.message]);$('#engine-status').textContent='引擎启动失败';$('#retry-btn').hidden=false;updateButton();}persist();
 }
 function replacePosition(g){recognitionIssues=new Set([...(g.uncertain||[]),...(g.missing||[])]);snapshot();trial=null;const {uncertain,missing,...position}=g;game={...position,baseFen:writeFen(g.board,g.side),moves:[],names:[]};mode='edit';tool=null;changed();}
@@ -116,6 +117,7 @@ if(window.desktopAPI){
   validate:()=>validate(),
   legalMoves:()=>{const b=createBoard(trial?trial.actual:game);try{return b.legalMoves().trim().split(/\s+/).filter(Boolean);}finally{b.delete();}},
   move:m=>{if(trial){game=clone(trial.actual);trial=null;}snapshot();resetResults();applyMove(m);mode='play';persist();render();},
+  syncMoves:match=>{const next=reconcileTrackedPosition(rules,trial?trial.actual:game,match);snapshot();resetResults();trial=null;game=next;lastMove=splitMove(match.moves.at(-1));selected=null;mode='play';updateRules();persist();render();},
   analyze:async()=>{if(trial)return;resetResults();$('#multi-check').checked=true;await analyze();},
   stop:()=>resetResults(),
   subscribe:listener=>{analysisListeners.add(listener);return ()=>analysisListeners.delete(listener);},
