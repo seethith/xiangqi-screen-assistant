@@ -1,6 +1,6 @@
 {
   "name": "xiangqi-position-assistant",
-  "version": "1.5.3-beta.2",
+  "version": "1.5.3-beta.3",
   "private": true,
   "description": "中国象棋中途局面助手",
   "scripts": {

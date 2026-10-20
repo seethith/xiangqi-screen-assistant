@@ -1,9 +1,9 @@
 <!doctype html><html lang="zh-CN"><meta charset="UTF-8"><title>悬浮窗交互测试区</title>
 <style>body{margin:0;background:#e4f0fb;color:#12334e;font:18px system-ui}header{padding:18px;background:#fff;position:relative;z-index:1}button{font:inherit;margin:0 8px;padding:8px}#surface{position:absolute;inset:100px 0 0;display:grid;place-content:center;text-align:center;border:12px dashed #8eacc2;background:repeating-linear-gradient(0deg,transparent 0 39px,#bad0e144 39px 40px)}#count{font-size:72px}p{margin:10px}</style>
-<header>独立测试区 · 不操作棋局 <button id="open">显示悬浮窗</button><button id="unlock">恢复操作</button><button id="close">关闭悬浮窗</button></header>
-<div id="surface"><p>下方窗口收到的真实鼠标点击</p><strong id="count">0</strong><p id="point">在悬浮窗覆盖的位置点击，验证穿透。</p></div>
+<header>独立测试区 · 不操作棋局 <button id="open">显示悬浮窗</button><button id="close">关闭悬浮窗</button></header>
+<div id="surface"><p>下方窗口收到的真实鼠标点击</p><strong id="count">0</strong><p id="point">可在此测试小窗的关闭、移动和缩放。</p></div>
 <script>
 let count=0;const api=window.desktopAPI;
 document.querySelector('#surface').addEventListener('pointerdown',event=>{document.querySelector('#count').textContent=++count;document.querySelector('#point').textContent=`收到点击 ${event.screenX}, ${event.screenY}`;console.log(JSON.stringify({underlyingClick:count,x:event.screenX,y:event.screenY,isTrusted:event.isTrusted}));});
-document.querySelector('#open').onclick=()=>api.openMini();document.querySelector('#unlock').onclick=()=>api.setOverlayLock(false);document.querySelector('#close').onclick=()=>api.closeMini();
+document.querySelector('#open').onclick=()=>api.openMini();document.querySelector('#close').onclick=()=>api.closeMini();
 </script></html>

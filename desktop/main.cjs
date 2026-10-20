@@ -4,7 +4,7 @@ const path=require('node:path');const {pathToFileURL}=require('node:url');const 
 const TRACKING_SMOKE=process.argv.includes('--tracking-smoke'),OVERLAY_SMOKE=process.argv.includes('--overlay-smoke'),OVERLAY_LAB=process.argv.includes('--overlay-lab');
 const LIVE_DEBUG=process.argv.includes('--live-debug'),RELEASE_SELF_TEST=process.argv.includes('--release-self-test');
 const APP_ORIGIN='app://local',ROOT=path.resolve(__dirname,'../dist'),MODEL_SELF_TEST=process.argv.includes('--model-self-test'),CAPTURE_SMOKE=process.argv.includes('--capture-smoke'),SMOKE=process.argv.includes('--smoke')||CAPTURE_SMOKE||TRACKING_SMOKE||OVERLAY_SMOKE||OVERLAY_LAB;
-let captureHold=null,captureSerial=0,overlayLocked=false,overlayLayout=null;
+let captureHold=null,captureSerial=0,overlayLayout=null;
 let miniWanted=null,miniSaved=null,miniGesture=null,miniSaveTimer=null,miniSaveTask=Promise.resolve();
 let mainWindow,miniWindow,arrowWindow,arrowReady,arrowRevision=0,lastSources=[],selectedSource=null,summary={status:'未开始跟踪',move:'—',evaluation:'等待分析',hint:'点击主窗口“读取屏幕”开始跟踪'};
 protocol.registerSchemesAsPrivileged([{scheme:'app',privileges:{standard:true,secure:true,supportFetchAPI:true,stream:true}}]);
@@ -22,7 +22,7 @@ function positionMini(){if(!miniWindow)return;
  if(source?.id.startsWith('screen:')&&overlayLayout?.board){const r=overlayLayout.board,d=display.bounds;board={x:d.x+r.x*d.width,y:d.y+r.y*d.height,width:r.width*d.width,height:r.height*d.height};}
  miniWindow.setBounds(placeOverlay(display.workArea,board,MINI_DEFAULT));
 }
-function miniState(){return {visible:miniWanted===true,locked:overlayLocked};}
+function miniState(){return {visible:miniWanted===true};}
 function publishMiniState(){mainWindow?.webContents.send('desktop:mini-state',miniState());}
 function saveMini(){if(!miniWindow)return;miniSaved=miniWindow.getBounds();const data=JSON.stringify(miniSaved);miniSaveTask=miniSaveTask.then(()=>fs.writeFile(path.join(app.getPath('userData'),'overlay-window.json'),data)).catch(()=>{});}
 function endMiniGesture(){if(!miniGesture)return;if(OVERLAY_LAB)console.log('[gesture] end');clearTimeout(miniGesture.timeout);miniGesture=null;saveMini();}
@@ -37,13 +37,13 @@ function updateMiniGesture(point){
  if(['x','y','width','height'].some(k=>current[k]!==bounds[k]))miniWindow.setBounds(bounds);
 }
 function beginMiniGesture(mode,point){
- if(OVERLAY_LAB)console.log('[gesture] begin',mode,JSON.stringify(point),miniWindow?.isVisible(),overlayLocked);
- if(!miniWindow?.isVisible()||overlayLocked||!['move','resize'].includes(mode)||!validPointer(point))return false;
+ if(OVERLAY_LAB)console.log('[gesture] begin',mode,JSON.stringify(point),miniWindow?.isVisible());
+ if(!miniWindow?.isVisible()||!['move','resize'].includes(mode)||!validPointer(point))return false;
  endMiniGesture();miniGesture={mode,start:miniWindow.getBounds(),origin:point,point};
  miniGesture.timeout=setTimeout(endMiniGesture,30000);return true;
 }
 function resizeMini(width,height){
- if(!miniWindow||overlayLocked)return;
+ if(!miniWindow)return;
  const current=miniWindow.getBounds();miniWindow.setBounds(constrainMini({...current,width,height},screen.getDisplayMatching(current).workArea));saveMini();
 }
 function showMini(){
@@ -60,14 +60,13 @@ function openMini(reposition=false){
  miniWindow.on('blur',endMiniGesture);miniWindow.on('hide',endMiniGesture);
  for(const event of ['will-move','will-resize'])miniWindow.on(event,(_event,bounds)=>{miniSaved=bounds;clearTimeout(miniSaveTimer);miniSaveTimer=setTimeout(saveMini,200);});
  miniWindow.on('close',()=>{endMiniGesture();miniWanted=false;});
- miniWindow.on('closed',()=>{miniWindow=null;overlayLocked=false;publishMiniState();});
+ miniWindow.on('closed',()=>{miniWindow=null;publishMiniState();});
  publishMiniState();
 }
-function toggleOverlayLock(value){endMiniGesture();overlayLocked=miniWanted===true&&(typeof value==='boolean'?value:!overlayLocked);miniWindow?.setMovable(!overlayLocked);miniWindow?.setResizable(!overlayLocked);miniWindow?.setFocusable(!overlayLocked);miniWindow?.setIgnoreMouseEvents(overlayLocked);miniWindow?.webContents.send('desktop:overlay-lock',overlayLocked);publishMiniState();return overlayLocked;}
-function closeMini(){miniWanted=false;endMiniGesture();toggleOverlayLock(false);miniWindow?.hide();publishMiniState();return miniState();}
+function closeMini(){miniWanted=false;endMiniGesture();miniWindow?.hide();publishMiniState();return miniState();}
 function restoreCapture(id){if(!captureHold||captureHold.id!==id)return;clearTimeout(captureHold.timer);const windows=captureHold.windows;captureHold=null;windows.forEach(w=>{if(!w.isDestroyed()&&(w!==miniWindow||miniWanted===true)&&(w!==arrowWindow||summary.status==='跟踪中'&&summary.arrow)){if(w===miniWindow)showMini();else w.showInactive();}});}
 function startViewing(layout){if(layout)overlayLayout=layout;if(captureHold){clearTimeout(captureHold.timer);captureHold=null;}if(miniWanted!==false)openMini(true);mainWindow.hide();}
-function showMain(){if(process.platform==='darwin'&&!mainWindow.isVisibleOnAllWorkspaces())mainWindow.setVisibleOnAllWorkspaces(true,{visibleOnFullScreen:true});mainWindow.webContents.send('desktop:command','review');toggleOverlayLock(false);mainWindow.show();mainWindow.focus();}
+function showMain(){if(process.platform==='darwin'&&!mainWindow.isVisibleOnAllWorkspaces())mainWindow.setVisibleOnAllWorkspaces(true,{visibleOnFullScreen:true});mainWindow.webContents.send('desktop:command','review');mainWindow.show();mainWindow.focus();}
 
 function displayForArrow(value){const source=lastSources.find(s=>s.id===value.arrow?.sourceId),displays=screen.getAllDisplays();return displays.find(d=>String(d.id)===source?.display_id)||(displays.length===1?displays[0]:null);}
 function arrowSummary(value){if(!value.arrow||!arrowWindow)return value;const display=displayForArrow(value);return display?{...value,arrow:{...value.arrow,viewport:sourceViewport(display.bounds,arrowWindow.getBounds(),value.arrow.width,value.arrow.height)}}:{...value,arrow:null};}
@@ -136,18 +135,16 @@ app.whenReady().then(async()=>{
  handle('desktop:restore-frame',(_event,id)=>restoreCapture(id));
  handle('desktop:view',(_event,layout)=>{if(layout){if(!lastSources.some(s=>s.id===layout.sourceId))throw Error('读取来源已失效');const r=layout.board;if(r&&['x','y','width','height'].some(k=>!Number.isFinite(r[k])||r[k]<0||r[k]>1))throw Error('棋盘范围无效');}startViewing(layout);});
  handle('desktop:hide',()=>startViewing());
- handle('desktop:overlay-lock',(_event,value)=>toggleOverlayLock(Boolean(value)));
- handle('desktop:get-overlay-lock',()=>overlayLocked);
  handle('desktop:mini-state',()=>miniState());
  handle('desktop:mini-close',()=>closeMini());
- handle('desktop:mini-toggle',()=>{if(miniWanted===true)return closeMini();openMini();toggleOverlayLock(false);return miniState();});
+ handle('desktop:mini-toggle',()=>{if(miniWanted===true)return closeMini();openMini();return miniState();});
  handle('desktop:mini-gesture',(event,mode,point)=>event.sender===miniWindow?.webContents&&beginMiniGesture(mode,point));
  handle('desktop:mini-move-gesture',(event,point)=>{if(event.sender===miniWindow?.webContents&&validPointer(point))updateMiniGesture(point);});
  handle('desktop:mini-end-gesture',event=>{if(event.sender===miniWindow?.webContents){updateMiniGesture();endMiniGesture();}});
  handle('desktop:mini-reset-size',()=>resizeMini(MINI_DEFAULT.width,MINI_DEFAULT.height));
  handle('desktop:mini-resize-by',(event,dx,dy)=>{if(event.sender!==miniWindow?.webContents||![dx,dy].every(v=>Number.isFinite(v)&&Math.abs(v)<=50))return;const b=miniWindow.getBounds();resizeMini(b.width+dx,b.height+dy);});
  handle('desktop:settings',()=>{if(process.platform==='darwin')shell.openExternal('x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture');});
- handle('desktop:mini',()=>{openMini();toggleOverlayLock(false);});
+ handle('desktop:mini',()=>{openMini();});
  handle('desktop:show',()=>showMain());
  handle('desktop:pause',()=>mainWindow.webContents.send('desktop:command','pause'));
  handle('desktop:stop',()=>mainWindow.webContents.send('desktop:command','stop'));
@@ -173,11 +170,10 @@ app.whenReady().then(async()=>{
   })()`);
   console.log(JSON.stringify({releaseSelfTest:true,version:app.getVersion(),...result}));app.exit(0);
  }catch(e){console.error(e);app.exit(1);}return;}
- globalShortcut.register('CommandOrControl+Shift+O',()=>{if(miniWanted!==true){openMini();toggleOverlayLock(false);}else toggleOverlayLock();});
  globalShortcut.register('CommandOrControl+Shift+X',()=>mainWindow.webContents.send('desktop:command','pause'));
  mainWindow.on('closed',()=>{mainWindow=null;miniWindow?.close();arrowWindow?.close();});
  if(OVERLAY_SMOKE||OVERLAY_LAB){try{
-  const result=await require('./overlay-smoke.cjs').run({mainWindow,openMini,closeMini,startViewing,sendSummary,mini:()=>miniWindow,state:miniState,lock:toggleOverlayLock,resize:resizeMini,save:saveMini,position:positionMini,screen,fs,path,lab:OVERLAY_LAB});
+  const result=await require('./overlay-smoke.cjs').run({mainWindow,openMini,closeMini,startViewing,sendSummary,mini:()=>miniWindow,state:miniState,resize:resizeMini,save:saveMini,position:positionMini,screen,fs,path,lab:OVERLAY_LAB});
   console.log(JSON.stringify({overlaySmoke:true,...result}));if(!OVERLAY_LAB)app.exit(0);
  }catch(e){console.error(e);app.exit(1);}return;}
  if(TRACKING_SMOKE){try{

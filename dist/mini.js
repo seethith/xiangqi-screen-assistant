@@ -1,5 +1,4 @@
 const api=window.desktopAPI,$=s=>document.querySelector(s);
-const shortcut=()=>api.platform==='darwin'?'⌘ + Shift + O':'Ctrl + Shift + O';
 function update(s){
  $('#mini-turn').textContent=s.turn||'等待棋盘同步';$('#mini-status').textContent=s.status;
  $('#mini-eval').textContent=s.evaluation;$('#mini-move').textContent=s.move;
@@ -10,18 +9,13 @@ function update(s){
  $('#mini-pause').textContent=['跟踪中','等候棋盘','切回棋局'].includes(s.status)?'暂停':'继续看棋';
  $('#mini-stop').disabled=s.status.includes('未开始');
 }
-function lock(value){
- $('#mini-lock').checked=value;document.body.dataset.locked=value;
- $('#mini-lock-note').textContent=value?`整个小窗已穿透 · ${shortcut()} 恢复操作`:`拖动标题移动 · 拖右下角缩放 · ${shortcut()} 穿透`;
-}
-api.onSummary(update);api.onOverlayLock(lock);update(await api.getSummary());lock(await api.getOverlayLock());
+api.onSummary(update);update(await api.getSummary());
 $('#mini-close').onclick=()=>api.closeMini();
 $('#mini-show').onclick=()=>api.showMain();
 $('#mini-pause').onclick=()=>api.pause();
 $('#mini-restart').onclick=()=>api.restart();
 $('#mini-stop').onclick=()=>api.stop();
 $('#mini-reset-size').onclick=()=>{api.resetMiniSize();$('.mini-more').open=false;};
-$('#mini-lock').onchange=async()=>lock(await api.setOverlayLock($('#mini-lock').checked));
 let gesture=null;
 function endGesture(){
  if(!gesture)return;
@@ -32,7 +26,7 @@ function endGesture(){
 for(const [selector,mode] of [['#mini-resize','resize']]){
  const element=$(selector);
  element.onpointerdown=event=>{
-  if(event.button!==0||document.body.dataset.locked==='true')return;
+  if(event.button!==0)return;
   event.preventDefault();endGesture();
   element.setPointerCapture(event.pointerId);gesture={element,id:event.pointerId};
   api.beginMiniGesture(mode,{x:event.screenX,y:event.screenY}).then(started=>{if(!started)endGesture();}).catch(endGesture);

@@ -16,7 +16,7 @@ module.exports.sanitizeArrow=sanitizeArrow;
 function sourceViewport(display,bounds,width,height){const sx=display.width/width,sy=display.height/height;return {x:(bounds.x-display.x)/sx,y:(bounds.y-display.y)/sy,width:bounds.width/sx,height:bounds.height/sy};}
 module.exports.sourceViewport=sourceViewport;
 
-const MINI_DEFAULT={width:360,height:360};
+const MINI_DEFAULT={width:360,height:320};
 const MINI_LIMITS={minWidth:300,minHeight:260,maxWidth:600,maxHeight:680};
 // Desktop coordinates are DIP, including Retina and displays left of the primary.
 function constrainMini(bounds,area){
